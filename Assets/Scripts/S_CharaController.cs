@@ -6,7 +6,7 @@ public class S_CharaController : MonoBehaviour
     [SerializeField] private Rigidbody m_rb;    
     [SerializeField] private float m_speed;
     [SerializeField] private float m_damage;
-    [SerializeField] private SpriteRenderer m_spriteRenderer;
+    [SerializeField] private SpriteRenderer m_sR;
 
     private Vector3 m_currentDirection;
 
@@ -14,14 +14,22 @@ public class S_CharaController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        m_rb = gameObject.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        m_currentDirection = Vector3.zero;
-        m_currentDirection = Vector3.right * Input.GetAxisRaw("Horizontal") + Vector3.forward * Input.GetAxisRaw("Vertical");
+        float x = Input.GetAxis("Horizontal");
+        float y = Input.GetAxis("Vertical");
+        Vector3 dir = new Vector3(x, 0, y);
+        m_rb.linearVelocity = dir * m_speed;
+
+        if (x != 0 && x < 0)
+            m_sR.flipX = true;
+
+        else if (x!=0 && x > 0)
+            m_sR.flipX = false;
 
         if (m_currentDirection != Vector3.zero)
         {
@@ -36,15 +44,7 @@ public class S_CharaController : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector3 dir = Vector3.right * m_currentDirection.x + Vector3.forward * m_currentDirection.z;
-        m_rb.MovePosition(m_rb.position + dir * m_speed * Time.fixedDeltaTime);
+        
     }
-
-    private void SetOrientation()
-    {
-        if (m_currentDirection.x !=0)
-        {
-            m_spriteRenderer.flipX = m_currentDirection.x < 0 ;
-        }
-    }
+    
 }
