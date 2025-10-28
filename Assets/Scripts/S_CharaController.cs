@@ -14,6 +14,7 @@ public class S_CharaController : MonoBehaviour
     [SerializeField] private bool isInShadow;
     [SerializeField] private float m_rayLength;
     [SerializeField] private LayerMask m_obstacle;
+    [SerializeField] private Vector3 m_offset;
 
     private Vector3 m_currentDirection;
 
@@ -59,7 +60,7 @@ public class S_CharaController : MonoBehaviour
     {
         Vector3 dirLight = -m_light.transform.forward;
 
-        if (Physics.Raycast(transform.position, dirLight, out RaycastHit hit, m_rayLength, m_obstacle))
+        if (Physics.Raycast(transform.position + m_offset, dirLight, out RaycastHit hit, m_rayLength, m_obstacle))
         {
            if (hit.collider != null)
            {
@@ -105,7 +106,7 @@ public class S_CharaController : MonoBehaviour
         Vector3 lightDir = m_light.transform.forward;
 
         Gizmos.color = isInShadow ? Color.red : Color.green;
-        Gizmos.DrawLine(m_rb.transform.position, m_rb.transform.position + (- m_light.transform.forward) * m_rayLength);
+        Gizmos.DrawLine(m_rb.transform.position + m_offset, m_rb.transform.position + (- m_light.transform.forward) * m_rayLength);
     }
 
 
