@@ -1,9 +1,10 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class S_CharaController : MonoBehaviour
 {
     [Header("Reference")]
-    [SerializeField] private Rigidbody m_rb;    
+    [SerializeField] private Rigidbody m_rb;
     [SerializeField] private float m_speed;
     [SerializeField] private float m_damage;
     [SerializeField] private float m_baseDamage;
@@ -18,14 +19,23 @@ public class S_CharaController : MonoBehaviour
 
     private Vector3 m_currentDirection;
 
+    // ---------------- Inventory intégré ----------------
+    [System.Serializable]
+    public class InventoryItem
+    {
+        public m_Item item;
+        public int quantity;
+    }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [Header("Inventory intégré")]
+    [SerializeField] private List<InventoryItem> m_Items = new List<InventoryItem>();
+    [SerializeField] private int m_MaxSize = 20;
+
     void Start()
     {
         m_rb = gameObject.GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         float x = Input.GetAxis("Horizontal");
@@ -35,18 +45,14 @@ public class S_CharaController : MonoBehaviour
 
         if (x != 0 && x < 0)
             m_sR.flipX = true;
-
-        else if (x!=0 && x > 0)
+        else if (x != 0 && x > 0)
             m_sR.flipX = false;
 
         if (m_currentDirection != Vector3.zero)
-        {
             OnStartMoving();
-        }
 
         if (m_light == null)
             return;
-
         else
             CheckLight();
     }
@@ -62,13 +68,12 @@ public class S_CharaController : MonoBehaviour
 
         if (Physics.Raycast(transform.position + m_offset, dirLight, out RaycastHit hit, m_rayLength, m_obstacle))
         {
-           if (hit.collider != null)
-           {
+            if (hit.collider != null)
+            {
                 if (!isInShadow)
                     OnEnterShadow();
-           }           
-        }          
-
+            }
+        }
         else
         {
             if (isInShadow)
@@ -85,7 +90,7 @@ public class S_CharaController : MonoBehaviour
 
     private void NormalForce()
     {
-        m_damage = m_baseDamage; 
+        m_damage = m_baseDamage;
     }
 
     private void OnExitShadow()
@@ -97,18 +102,74 @@ public class S_CharaController : MonoBehaviour
 
     private void ShadowForce()
     {
-        m_damage = m_baseDamage * 2; //�quilibrage force � revoir
+        m_damage = m_baseDamage * 2;
     }
-
 
     private void OnDrawGizmos()
     {
         Vector3 lightDir = m_light.transform.forward;
 
         Gizmos.color = isInShadow ? Color.red : Color.green;
-        Gizmos.DrawLine(m_rb.transform.position + m_offset, m_rb.transform.position + (- m_light.transform.forward) * m_rayLength);
+        Gizmos.DrawLine(m_rb.transform.position + m_offset, m_rb.transform.position + (-m_light.transform.forward) * m_rayLength);
     }
 
+    // ---------------- Méthodes de l'inventaire ----------------
 
+    public bool AddItem(m_Item newItem, int amount = 1)
+    {
+        if (newItem.IsStackable)
+        {
+            foreach (InventoryItem entry in m_Items)
+            {
+                if (entry.item == newItem)
+                {
+                    entry.quantity += amount;
+                    Debug.Log($"Ajouté {amount} x {newItem.ItemName} (stackable)");
+                    return true;
+                }
+            }
+        }
 
+        if (m_Items.Count >= m_MaxSize)
+        {
+            Debug.Log("Inventaire plein !");
+            return false;
+        }
+
+        InventoryItem newEntry = new InventoryItem
+        {
+            item = newItem,
+            quantity = amount
+        };
+        m_Items.Add(newEntry);
+        Debug.Log($"Ajouté {amount} x {newItem.ItemName}");
+        return true;
+    }
+
+    public void RemoveItem(m_Item itemToRemove, int amount = 1)
+    {
+        for (int i = 0; i < m_Items.Count; i++)
+        {
+            if (m_Items[i].item == itemToRemove)
+            {
+                if (itemToRemove.IsStackable)
+                {
+                    m_Items[i].quantity -= amount;
+                    if (m_Items[i].quantity <= 0)
+                        m_Items.RemoveAt(i);
+                }
+                else
+                {
+                    m_Items.RemoveAt(i);
+                }
+                Debug.Log($"Retiré {itemToRemove.ItemName}");
+                return;
+            }
+        }
+    }
+
+    public List<InventoryItem> GetItems()
+    {
+        return m_Items;
+    }
 }
