@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class S_CharaController : MonoBehaviour
 {
@@ -19,21 +19,23 @@ public class S_CharaController : MonoBehaviour
 
     private Vector3 m_currentDirection;
 
-    // ---------------- Inventory intégré ----------------
-    [System.Serializable]
-    public class InventoryItem
-    {
-        public m_Item item;
-        public int quantity;
-    }
+    [Header("Coins System")]
+    [SerializeField] private TextMeshProUGUI m_coinText;
+    private int m_coinCount = 0;
 
-    [Header("Inventory intégré")]
-    [SerializeField] private List<InventoryItem> m_Items = new List<InventoryItem>();
-    [SerializeField] private int m_MaxSize = 20;
+    [Header("Buff Collectibles")]
+    [SerializeField] private int m_coinsRequiredForBuff = 5;
+    [SerializeField] private float m_buffDuration = 10f;
+    [SerializeField] private float m_damageMultiplierDuringBuff = 2f;
+
+    private bool m_isBuffActive = false;
+    private float m_buffTimer = 0f;
 
     void Start()
     {
         m_rb = gameObject.GetComponent<Rigidbody>();
+        UpdateCoinUI();
+        UpdateDamage();
     }
 
     void Update()
@@ -51,15 +53,20 @@ public class S_CharaController : MonoBehaviour
         if (m_currentDirection != Vector3.zero)
             OnStartMoving();
 
-        if (m_light == null)
-            return;
-        else
+        if (m_light != null)
             CheckLight();
+
+        if (m_isBuffActive)
+        {
+            m_buffTimer -= Time.deltaTime;
+            if (m_buffTimer <= 0f)
+                DeactivateBuff();
+        }
     }
 
     private void OnStartMoving()
     {
-        //display animations
+        // display animations
     }
 
     private void CheckLight()
@@ -68,11 +75,8 @@ public class S_CharaController : MonoBehaviour
 
         if (Physics.Raycast(transform.position + m_offset, dirLight, out RaycastHit hit, m_rayLength, m_obstacle))
         {
-            if (hit.collider != null)
-            {
-                if (!isInShadow)
-                    OnEnterShadow();
-            }
+            if (hit.collider != null && !isInShadow)
+                OnEnterShadow();
         }
         else
         {
@@ -84,92 +88,95 @@ public class S_CharaController : MonoBehaviour
     private void OnEnterShadow()
     {
         isInShadow = true;
-        Debug.Log("ombre");
         ShadowForce();
-    }
-
-    private void NormalForce()
-    {
-        m_damage = m_baseDamage;
     }
 
     private void OnExitShadow()
     {
         isInShadow = false;
-        Debug.Log("plus ombre");
         NormalForce();
     }
 
     private void ShadowForce()
     {
-        m_damage = m_baseDamage * 2;
+        UpdateDamage();
+        Debug.Log("ombre → damage boosted");
+    }
+
+    private void NormalForce()
+    {
+        UpdateDamage();
+        Debug.Log("plus ombre → damage normal");
     }
 
     private void OnDrawGizmos()
     {
-        Vector3 lightDir = m_light.transform.forward;
+        if (!m_light) return;
 
         Gizmos.color = isInShadow ? Color.red : Color.green;
-        Gizmos.DrawLine(m_rb.transform.position + m_offset, m_rb.transform.position + (-m_light.transform.forward) * m_rayLength);
+        Gizmos.DrawLine(m_rb.transform.position + m_offset,
+                        m_rb.transform.position + (-m_light.transform.forward) * m_rayLength);
     }
 
-    // ---------------- Méthodes de l'inventaire ----------------
-
-    public bool AddItem(m_Item newItem, int amount = 1)
+    // ✅ Buff > Ombre > Normal (PAS DE STACK)
+    private void UpdateDamage()
     {
-        if (newItem.IsStackable)
+        if (m_isBuffActive)
         {
-            foreach (InventoryItem entry in m_Items)
-            {
-                if (entry.item == newItem)
-                {
-                    entry.quantity += amount;
-                    Debug.Log($"Ajouté {amount} x {newItem.ItemName} (stackable)");
-                    return true;
-                }
-            }
+            m_damage = m_baseDamage * m_damageMultiplierDuringBuff;
+            return;
         }
 
-        if (m_Items.Count >= m_MaxSize)
+        if (isInShadow)
         {
-            Debug.Log("Inventaire plein !");
-            return false;
+            m_damage = m_baseDamage * 2f;
+            return;
         }
 
-        InventoryItem newEntry = new InventoryItem
-        {
-            item = newItem,
-            quantity = amount
-        };
-        m_Items.Add(newEntry);
-        Debug.Log($"Ajouté {amount} x {newItem.ItemName}");
-        return true;
+        m_damage = m_baseDamage;
     }
 
-    public void RemoveItem(m_Item itemToRemove, int amount = 1)
+    private void ActivateBuff()
     {
-        for (int i = 0; i < m_Items.Count; i++)
+        m_isBuffActive = true;
+        m_buffTimer = m_buffDuration;
+        UpdateDamage();
+
+        Debug.Log($"BUFF ACTIVATED! Damage x{m_damageMultiplierDuringBuff} for {m_buffDuration} seconds");
+
+        m_coinCount = 0;
+        UpdateCoinUI();
+    }
+
+    private void DeactivateBuff()
+    {
+        m_isBuffActive = false;
+        UpdateDamage();
+        Debug.Log("Buff ended → Damage back to normal");
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Coin"))
         {
-            if (m_Items[i].item == itemToRemove)
-            {
-                if (itemToRemove.IsStackable)
-                {
-                    m_Items[i].quantity -= amount;
-                    if (m_Items[i].quantity <= 0)
-                        m_Items.RemoveAt(i);
-                }
-                else
-                {
-                    m_Items.RemoveAt(i);
-                }
-                Debug.Log($"Retiré {itemToRemove.ItemName}");
-                return;
-            }
+            m_coinCount++;
+
+            if (m_coinCount >= m_coinsRequiredForBuff && !m_isBuffActive)
+                ActivateBuff();
+
+            UpdateCoinUI();
+            Destroy(other.gameObject);
         }
     }
 
-    public List<InventoryItem> GetItems()
+    private void UpdateCoinUI()
     {
-        return m_Items;
+        if (m_coinText != null)
+            m_coinText.text = m_coinCount.ToString();
+    }
+
+    public int GetCoinCount()
+    {
+        return m_coinCount;
     }
 }
