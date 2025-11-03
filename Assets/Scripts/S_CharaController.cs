@@ -223,8 +223,8 @@ public class S_CharaController : MonoBehaviour
 [System.Serializable]
 public class HealthManager
 {
-    public float m_value = 10;
-    public float m_maxValue;
+    public float m_value;
+    public float m_maxValue = 10;
 
     public void Init()
     {

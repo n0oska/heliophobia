@@ -388,8 +388,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 813d39cab3e20bd48b167e21b9e7c452, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::S_EnemyController
-  m_health: {fileID: 11400000, guid: c28e032d49c0dee469e3581899556c57, type: 2}
-  m_hitPoints: 0
+  m_health:
+    m_value: 1
+    m_maxValue: 10
 --- !u!212 &415483136
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -738,8 +739,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 813d39cab3e20bd48b167e21b9e7c452, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::S_EnemyController
-  m_health: {fileID: 11400000, guid: c28e032d49c0dee469e3581899556c57, type: 2}
-  m_hitPoints: 0
+  m_health:
+    m_value: 0
+    m_maxValue: 0
 --- !u!212 &566108590
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1010,7 +1012,9 @@ MonoBehaviour:
   m_damage: 0
   m_baseDamage: 0
   m_sR: {fileID: 697960290}
-  m_healthManager: {fileID: 11400000, guid: c28e032d49c0dee469e3581899556c57, type: 2}
+  m_healthManager:
+    m_value: 0
+    m_maxValue: 0
   m_light: {fileID: 1261409541}
   isInShadow: 0
   m_rayLength: 20
