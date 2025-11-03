@@ -9,6 +9,7 @@ public class S_CharaController : MonoBehaviour
     [SerializeField] private float m_damage;
     [SerializeField] private float m_baseDamage;
     [SerializeField] private SpriteRenderer m_sR;
+    [SerializeField] private HealthManager m_healthManager;
 
     [Header("Shadow Manager")]
     [SerializeField] private Light m_light;
@@ -28,6 +29,14 @@ public class S_CharaController : MonoBehaviour
     [SerializeField] private float m_buffDuration = 10f;
     [SerializeField] private float m_damageMultiplierDuringBuff = 2f;
 
+    [Header("Combat system")]
+    [SerializeField] private Transform m_attackOrigin;
+    [SerializeField] private float m_attackRadius = 1f;
+    [SerializeField] private float m_cooldownTime = 0.5f;
+    [SerializeField] private float m_cooldownTimer = 0;
+    [SerializeField] private LayerMask m_enemyMask;
+    [SerializeField] private int m_attackDmg = 1;
+
     private bool m_isBuffActive = false;
     private float m_buffTimer = 0f;
 
@@ -36,10 +45,12 @@ public class S_CharaController : MonoBehaviour
         m_rb = gameObject.GetComponent<Rigidbody>();
         UpdateCoinUI();
         UpdateDamage();
+        
     }
 
     void Update()
     {
+        CheckDamage();
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
         Vector3 dir = new Vector3(x, 0, y);
@@ -62,11 +73,37 @@ public class S_CharaController : MonoBehaviour
             if (m_buffTimer <= 0f)
                 DeactivateBuff();
         }
-    }
+    }    
 
     private void OnStartMoving()
     {
         // display animations
+    }
+
+    private void CheckDamage()
+    {
+        if (m_cooldownTimer <= 0)
+        {
+            if (Input.GetKey(KeyCode.Mouse0))
+            {
+                Collider[] ennemiesInRange = Physics.OverlapSphere(m_attackOrigin.position, m_attackRadius, m_enemyMask);
+
+                foreach (var enemy in ennemiesInRange)
+                {
+                    var enemyCtrl = enemy.GetComponent<S_EnemyController>();
+                    if (enemyCtrl != null)
+                        enemyCtrl.m_health.TakeDamage(m_attackDmg);
+                    
+                }
+
+                m_cooldownTimer = m_cooldownTime;
+            }
+        }
+
+        else
+        {
+            m_cooldownTimer -= Time.deltaTime;
+        }
     }
 
     private void CheckLight()
@@ -111,11 +148,13 @@ public class S_CharaController : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        Gizmos.DrawWireSphere(m_attackOrigin.position, m_attackRadius);
+
         if (!m_light) return;
 
         Gizmos.color = isInShadow ? Color.red : Color.green;
         Gizmos.DrawLine(m_rb.transform.position + m_offset,
-                        m_rb.transform.position + (-m_light.transform.forward) * m_rayLength);
+                        m_rb.transform.position + (-m_light.transform.forward) * m_rayLength);        
     }
 
     // ✅ Buff > Ombre > Normal (PAS DE STACK)
@@ -180,3 +219,23 @@ public class S_CharaController : MonoBehaviour
         return m_coinCount;
     }
 }
+
+[System.Serializable]
+public class HealthManager
+{
+    public float m_value = 10;
+    public float m_maxValue;
+
+    public void Init()
+    {
+        m_value = m_maxValue;
+    }
+    public void TakeDamage(float damage)
+    {
+        m_value = Mathf.Max(0, m_value - damage);
+    }
+
+    public bool isDead() => m_value <= 0;
+
+}
+
