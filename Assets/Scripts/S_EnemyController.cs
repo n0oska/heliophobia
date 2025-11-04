@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class S_EnemyController : MonoBehaviour
 {
-    public HealthManager m_health = new HealthManager();    
+    public HealthManager m_health = new HealthManager(); 
+    private S_CharaController m_charaController;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -16,6 +17,8 @@ public class S_EnemyController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+
     }
 
     //private void OnTriggerEnter2D(Collider2D collision)
