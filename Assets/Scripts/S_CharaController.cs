@@ -159,7 +159,15 @@ public class S_CharaController : MonoBehaviour
         Gizmos.DrawLine(m_rb.transform.position + m_offset,
                         m_rb.transform.position + (-m_light.transform.forward) * m_rayLength);        
     }
-
+    public void ForceExitShadow()
+    {
+        if (isInShadow)
+        {
+            isInShadow = false;
+            UpdateDamage(); // recalcul du damage normal
+            Debug.Log("Anti-ombre active → damage normal");
+        }
+    }
     // ✅ Buff > Ombre > Normal (PAS DE STACK)
     private void UpdateDamage()
     {
