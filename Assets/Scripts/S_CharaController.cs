@@ -35,7 +35,6 @@ public class S_CharaController : MonoBehaviour
     [SerializeField] private float m_cooldownTime = 0.5f;
     [SerializeField] private float m_cooldownTimer = 0;
     [SerializeField] private LayerMask m_enemyMask;
-    [SerializeField] private int m_attackDmg = 1;
 
     private bool m_isBuffActive = false;
     public bool hasHit = false;
@@ -85,7 +84,7 @@ public class S_CharaController : MonoBehaviour
     {
         if (m_cooldownTimer <= 0)
         {
-            if (Input.GetKey(KeyCode.Joystick1Button15))
+            if (Input.GetKey(KeyCode.Mouse0))
             {
                 Collider[] ennemiesInRange = Physics.OverlapSphere(m_attackOrigin.position, m_attackRadius, m_enemyMask);
 
@@ -94,7 +93,7 @@ public class S_CharaController : MonoBehaviour
                     var enemyCtrl = enemy.GetComponent<S_EnemyController>();
                     if (enemyCtrl != null)
                     {
-                        enemyCtrl.m_health.TakeDamage(m_attackDmg);
+                        enemyCtrl.m_health.TakeDamage(m_damage);
                         hasHit = true;
                     }
                 }
