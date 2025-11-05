@@ -9,7 +9,9 @@ public class S_CharaController : MonoBehaviour
     [SerializeField] private float m_damage;
     [SerializeField] private float m_baseDamage;
     [SerializeField] private SpriteRenderer m_sR;
-    [SerializeField] private HealthManager m_healthManager;
+
+    [Header("Health Manager")]
+    [SerializeField] private HealthManager m_healthManager; // private, accessible via getter
 
     [Header("Shadow Manager")]
     [SerializeField] private Light m_light;
@@ -33,7 +35,7 @@ public class S_CharaController : MonoBehaviour
     [SerializeField] private Transform m_attackOrigin;
     [SerializeField] private float m_attackRadius = 1f;
     [SerializeField] private float m_cooldownTime = 0.5f;
-    [SerializeField] private float m_cooldownTimer = 0;
+    private float m_cooldownTimer = 0f;
     [SerializeField] private LayerMask m_enemyMask;
 
     private bool m_isBuffActive = false;
@@ -43,66 +45,69 @@ public class S_CharaController : MonoBehaviour
     void Start()
     {
         m_rb = gameObject.GetComponent<Rigidbody>();
+        m_healthManager.Init();
         UpdateCoinUI();
         UpdateDamage();
-        
     }
 
     void Update()
     {
-        CheckDamage();
+        // Movement
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
         Vector3 dir = new Vector3(x, 0, y);
         m_rb.linearVelocity = dir * m_speed;
 
-        if (x != 0 && x < 0)
-            m_sR.flipX = true;
-        else if (x != 0 && x > 0)
-            m_sR.flipX = false;
+        if (x != 0 && x < 0) m_sR.flipX = true;
+        else if (x != 0 && x > 0) m_sR.flipX = false;
 
-        if (m_currentDirection != Vector3.zero)
-            OnStartMoving();
+        if (m_currentDirection != Vector3.zero) OnStartMoving();
 
-        if (m_light != null)
-            CheckLight();
+        // Combat
+        HandleAttack();
 
+        // Shadow
+        if (m_light != null) CheckLight();
+
+        // Buff timer
         if (m_isBuffActive)
         {
             m_buffTimer -= Time.deltaTime;
-            if (m_buffTimer <= 0f)
-                DeactivateBuff();
+            if (m_buffTimer <= 0f) DeactivateBuff();
         }
-    }    
+    }
 
     private void OnStartMoving()
     {
         // display animations
     }
 
-    private void CheckDamage()
+    private void HandleAttack()
     {
-        if (m_cooldownTimer <= 0)
+        if (m_cooldownTimer <= 0f)
         {
             if (Input.GetKey(KeyCode.Mouse0))
             {
-                Collider[] ennemiesInRange = Physics.OverlapSphere(m_attackOrigin.position, m_attackRadius, m_enemyMask);
-
-                foreach (var enemy in ennemiesInRange)
+                Collider[] enemiesInRange = Physics.OverlapSphere(m_attackOrigin.position, m_attackRadius, m_enemyMask);
+                foreach (var enemy in enemiesInRange)
                 {
                     var enemyCtrl = enemy.GetComponent<S_EnemyController>();
+<<<<<<< Updated upstream
                     if (enemyCtrl != null)
                     {
                         enemyCtrl.m_health.TakeDamage(m_damage);
                         hasHit = true;
                     }
+=======
+                    if (enemyCtrl != null && enemyCtrl.GetHealthManager() != null)
+                        enemyCtrl.GetHealthManager().TakeDamage(m_attackDmg);
+>>>>>>> Stashed changes
                 }
 
                 m_cooldownTimer = m_cooldownTime;
                 hasHit = false;
             }
         }
-
         else
         {
             m_cooldownTimer -= Time.deltaTime;
@@ -115,52 +120,38 @@ public class S_CharaController : MonoBehaviour
 
         if (Physics.Raycast(transform.position + m_offset, dirLight, out RaycastHit hit, m_rayLength, m_obstacle))
         {
-            if (hit.collider != null && !isInShadow)
-                OnEnterShadow();
+            if (hit.collider != null && !isInShadow) OnEnterShadow();
         }
         else
         {
-            if (isInShadow)
-                OnExitShadow();
+            if (isInShadow) OnExitShadow();
         }
     }
 
     private void OnEnterShadow()
     {
         isInShadow = true;
-        ShadowForce();
+        UpdateDamage();
+        Debug.Log("Entered shadow → damage boosted");
     }
 
     private void OnExitShadow()
     {
         isInShadow = false;
-        NormalForce();
-    }
-
-    private void ShadowForce()
-    {
         UpdateDamage();
-        Debug.Log("ombre → damage boosted");
+        Debug.Log("Exited shadow → damage normal");
     }
-
-    private void NormalForce()
+    public void ForceExitShadow()
     {
-        UpdateDamage();
-        Debug.Log("plus ombre → damage normal");
+        if (isInShadow)
+        {
+            isInShadow = false;
+            UpdateDamage(); 
+            Debug.Log("Anti-ombre active → damage normal");
+        }
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(m_attackOrigin.position, m_attackRadius);
 
-        if (!m_light) return;
-
-        Gizmos.color = isInShadow ? Color.red : Color.green;
-        Gizmos.DrawLine(m_rb.transform.position + m_offset,
-                        m_rb.transform.position + (-m_light.transform.forward) * m_rayLength);        
-    }
-
-    // ✅ Buff > Ombre > Normal (PAS DE STACK)
     private void UpdateDamage()
     {
         if (m_isBuffActive)
@@ -202,7 +193,6 @@ public class S_CharaController : MonoBehaviour
         if (other.CompareTag("Coin"))
         {
             m_coinCount++;
-
             if (m_coinCount >= m_coinsRequiredForBuff && !m_isBuffActive)
                 ActivateBuff();
 
@@ -217,9 +207,22 @@ public class S_CharaController : MonoBehaviour
             m_coinText.text = m_coinCount.ToString();
     }
 
-    public int GetCoinCount()
+    public int GetCoinCount() => m_coinCount;
+
+    // ✅ Getter pour que les ennemis accèdent au HealthManager du player
+    public HealthManager GetHealthManager() => m_healthManager;
+
+    private void OnDrawGizmos()
     {
-        return m_coinCount;
+        if (m_attackOrigin != null)
+            Gizmos.DrawWireSphere(m_attackOrigin.position, m_attackRadius);
+
+        if (m_light != null)
+        {
+            Gizmos.color = isInShadow ? Color.red : Color.green;
+            Gizmos.DrawLine(transform.position + m_offset,
+                            transform.position + (-m_light.transform.forward) * m_rayLength);
+        }
     }
 }
 
@@ -233,12 +236,11 @@ public class HealthManager
     {
         m_value = m_maxValue;
     }
+
     public void TakeDamage(float damage)
     {
         m_value = Mathf.Max(0, m_value - damage);
     }
 
     public bool isDead() => m_value <= 0;
-
 }
-
