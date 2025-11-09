@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
 
 public class S_CharaController : MonoBehaviour
 {
@@ -10,6 +11,17 @@ public class S_CharaController : MonoBehaviour
     [SerializeField] private float m_baseDamage;
     [SerializeField] private SpriteRenderer m_sR;
     [SerializeField] private HealthManager m_healthManager;
+
+    [Header("Dash system")]
+    [SerializeField] private float m_dashForce;
+    [SerializeField] private float m_dashCooldown;
+    [SerializeField] private float m_dashDuration = 0.2f;
+    [SerializeField] private AnimationCurve m_dashCurve;
+    private bool isDashing;
+    private bool canDash;
+    private Vector3 m_dashDirection;
+    private float m_dashTimer;
+    private float m_dashCooldownTimer;
 
     [Header("Shadow Manager")]
     [SerializeField] private Light m_light;
@@ -37,6 +49,7 @@ public class S_CharaController : MonoBehaviour
     [SerializeField] private LayerMask m_enemyMask;
 
     private bool m_isBuffActive = false;
+    private bool hasDashed = false;
     public bool hasHit = false;
     private float m_buffTimer = 0f;
 
@@ -53,8 +66,8 @@ public class S_CharaController : MonoBehaviour
         CheckDamage();
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
-        Vector3 dir = new Vector3(x, 0, y);
-        m_rb.linearVelocity = dir * m_speed;
+        m_currentDirection = new Vector3(x, 0, y);
+        m_rb.linearVelocity = m_currentDirection * m_speed;
 
         if (x != 0 && x < 0)
             m_sR.flipX = true;
@@ -73,11 +86,55 @@ public class S_CharaController : MonoBehaviour
             if (m_buffTimer <= 0f)
                 DeactivateBuff();
         }
+
+        if (!canDash)
+        {
+            m_dashCooldownTimer -= Time.deltaTime;
+            if (m_dashCooldownTimer <= 0f)
+                canDash = true;
+        }
+        else
+            CheckDash();
     }    
+
+    private IEnumerator Dash()
+    {
+        isDashing = true;
+        canDash = false;
+        m_dashDirection = m_currentDirection;
+
+        //float time = 0f;
+        m_dashTimer = 0f;
+
+        while (m_dashTimer < m_dashDuration)
+        {
+            float t = m_dashTimer / m_dashDuration;
+            float curveMultiplier = m_dashCurve.Evaluate(t);
+
+            m_rb.linearVelocity = m_dashDirection * (m_dashForce * curveMultiplier);
+
+            m_dashTimer += Time.deltaTime;
+            yield return null;
+        }
+
+        isDashing = false;
+        m_dashCooldownTimer = m_dashCooldown;
+    }
 
     private void OnStartMoving()
     {
         // display animations
+    }
+
+    private void CheckDash()
+    {
+        if (Input.GetKey(KeyCode.LeftShift) && canDash)
+        {
+            StartCoroutine(Dash());
+        }
+
+        else
+            canDash = true;
     }
 
     private void CheckDamage()
