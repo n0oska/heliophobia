@@ -53,6 +53,13 @@ public class S_CharaController : MonoBehaviour
     public bool hasHit = false;
     private float m_buffTimer = 0f;
 
+    public Animator m_animator;
+
+    [SerializeField] private float m_holdThreshold = 0.5f;
+    private float m_buttonPressTime;
+    private bool m_isHolding;
+    private bool m_isCharging;
+
     void Start()
     {
         m_rb = gameObject.GetComponent<Rigidbody>();
@@ -95,6 +102,8 @@ public class S_CharaController : MonoBehaviour
         }
         else
             CheckDash();
+
+        CheckAttackInput();
     }    
 
     private IEnumerator Dash()
@@ -141,9 +150,11 @@ public class S_CharaController : MonoBehaviour
     {
         if (m_cooldownTimer <= 0)
         {
-            if (Input.GetKey(KeyCode.Mouse0))
+            if (Input.GetKey(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Joystick1Button2))
             {
                 Collider[] ennemiesInRange = Physics.OverlapSphere(m_attackOrigin.position, m_attackRadius, m_enemyMask);
+
+                m_animator.SetTrigger("Attack");
 
                 foreach (var enemy in ennemiesInRange)
                 {
@@ -163,6 +174,64 @@ public class S_CharaController : MonoBehaviour
         else
         {
             m_cooldownTimer -= Time.deltaTime;
+        }
+    }
+
+    private void CheckAttackInput()
+    {
+        if(m_cooldownTimer > 0)
+        {
+            m_cooldownTimer -= Time.deltaTime;
+            return;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Joystick1Button3))
+        {
+            m_buttonPressTime = Time.time;
+            m_isHolding = true;
+            m_isCharging = false;
+        }
+
+        if(m_isHolding && Input.GetKeyDown(KeyCode.Joystick1Button3))
+        {
+            float heldTime = Time.time - m_buttonPressTime;
+
+            if (heldTime >= m_holdThreshold)
+            {
+                m_isCharging = true;
+            } 
+        }
+
+        if (Input.GetKeyUp(KeyCode.Joystick1Button3))
+        {
+            m_isHolding = false;
+            float totalHoldTime = Time.time - m_buttonPressTime;
+            
+            if(totalHoldTime >= m_holdThreshold)
+            {
+                PerformChargedAttack();
+            }
+            else
+            {
+                CheckDamage();
+            }
+
+            m_isCharging = false;
+        }
+    }
+
+    private void PerformChargedAttack()
+    {
+        m_animator.SetTrigger("Attack2");
+        Collider[] enemiesInRange = Physics.OverlapSphere(m_attackOrigin.position, m_attackRadius * 1.5f, m_enemyMask);
+
+        foreach(var enemy in enemiesInRange)
+        {
+            var enemyCtrl = enemy.GetComponent<S_EnemyController>();
+            if(enemyCtrl != null)
+            {
+                enemyCtrl.m_health.TakeDamage(m_damage * 2f);
+            }
         }
     }
 
