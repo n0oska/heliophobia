@@ -234,6 +234,7 @@ public class S_CharaController : MonoBehaviour
         }
     }
 
+
     private void PerformChargedAttack()
     {
         m_animator.SetTrigger("Attack2");
@@ -248,6 +249,15 @@ public class S_CharaController : MonoBehaviour
             }
         }
     }
+public void O_TakeDamage(float damage)
+{
+    if (m_healthManager != null)
+    {
+        m_healthManager.TakeDamage(damage);
+        Debug.Log($"Le joueur prend {damage} dégâts");
+    }
+}
+
 
     private void CheckLight()
     {
