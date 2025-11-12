@@ -42,14 +42,16 @@ public class S_CharaController : MonoBehaviour
     [SerializeField] private float m_damageMultiplierDuringBuff = 2f;
 
     [Header("Combat system")]
-    [SerializeField] private Transform m_attackOrigin;
+    [SerializeField] private Vector3 m_attackOffset;
+    
     [SerializeField] private float m_attackRadius = 1f;
     [SerializeField] private float m_cooldownTime = 0.5f;
     [SerializeField] private float m_cooldownTimer = 0;
-    [SerializeField] private LayerMask m_enemyMask;
+    [SerializeField] private LayerMask m_enemyMask;   
 
     private bool m_isBuffActive = false;
     private bool hasDashed = false;
+    public bool hasDashHit = false;
     public bool hasHit = false;
     private float m_buffTimer = 0f;
 
@@ -65,7 +67,7 @@ public class S_CharaController : MonoBehaviour
         m_rb = gameObject.GetComponent<Rigidbody>();
         UpdateCoinUI();
         UpdateDamage();
-        
+        m_attackOffset = new Vector3(1, 0, 0);
     }
 
     void Update()
@@ -77,9 +79,16 @@ public class S_CharaController : MonoBehaviour
         m_rb.linearVelocity = m_currentDirection * m_speed;
 
         if (x != 0 && x < 0)
+        {
             m_sR.flipX = true;
+            m_attackOffset = new Vector3(-1, 0, 0);
+        }
+
         else if (x != 0 && x > 0)
+        {
             m_sR.flipX = false;
+            m_attackOffset = new Vector3(1, 0, 0);
+        }            
 
         if (m_currentDirection != Vector3.zero)
             OnStartMoving();
@@ -106,7 +115,7 @@ public class S_CharaController : MonoBehaviour
         CheckAttackInput();
     }    
 
-    private IEnumerator Dash()
+    private IEnumerator C_Dash()
     {
         isDashing = true;
         canDash = false;
@@ -126,6 +135,11 @@ public class S_CharaController : MonoBehaviour
             yield return null;
         }
 
+        if (isDashing && hasDashHit)
+        {
+            //TakeDmg ennemy
+        }
+
         isDashing = false;
         m_dashCooldownTimer = m_dashCooldown;
     }
@@ -139,7 +153,7 @@ public class S_CharaController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.LeftShift) && canDash)
         {
-            StartCoroutine(Dash());
+            StartCoroutine(C_Dash());
         }
 
         else
@@ -152,7 +166,7 @@ public class S_CharaController : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Joystick1Button2))
             {
-                Collider[] ennemiesInRange = Physics.OverlapSphere(m_attackOrigin.position, m_attackRadius, m_enemyMask);
+                Collider[] ennemiesInRange = Physics.OverlapSphere(m_rb.position + m_attackOffset, m_attackRadius, m_enemyMask);
 
                 m_animator.SetTrigger("Attack");
 
@@ -223,7 +237,7 @@ public class S_CharaController : MonoBehaviour
     private void PerformChargedAttack()
     {
         m_animator.SetTrigger("Attack2");
-        Collider[] enemiesInRange = Physics.OverlapSphere(m_attackOrigin.position, m_attackRadius * 1.5f, m_enemyMask);
+        Collider[] enemiesInRange = Physics.OverlapSphere(m_rb.position + m_attackOffset, m_attackRadius * 1.5f, m_enemyMask);
 
         foreach(var enemy in enemiesInRange)
         {
@@ -277,7 +291,7 @@ public class S_CharaController : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(m_attackOrigin.position, m_attackRadius);
+        Gizmos.DrawWireSphere(m_rb.position + m_attackOffset, m_attackRadius);
 
         if (!m_light) return;
 
@@ -338,10 +352,15 @@ public class S_CharaController : MonoBehaviour
             m_coinCount++;
 
             if (m_coinCount >= m_coinsRequiredForBuff && !m_isBuffActive)
-                ActivateBuff();
+                ActivateBuff(); //display particle system + buff
 
             UpdateCoinUI();
             Destroy(other.gameObject);
+        }
+
+        if (other.CompareTag("Ennemy") || other.CompareTag("DestroyableEvmt"))
+        {
+            hasDashHit = true;
         }
     }
 

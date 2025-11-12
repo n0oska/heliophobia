@@ -6495,6 +6495,10 @@ PrefabInstance:
       value: 0.22373062
       objectReference: {fileID: 0}
     - target: {fileID: 6524606961226487598, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
+      propertyPath: hasHit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6524606961226487598, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
       propertyPath: m_light
       value: 
       objectReference: {fileID: 1261409541}
@@ -6519,12 +6523,24 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6524606961226487598, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
+      propertyPath: m_buffDuration
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6524606961226487598, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
       propertyPath: m_dashCooldown
       value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 6524606961226487598, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
       propertyPath: m_dashDuration
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6524606961226487598, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
+      propertyPath: m_attackOffset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6524606961226487598, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
+      propertyPath: m_coinsRequiredForBuff
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6524606961226487598, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
       propertyPath: m_healthManager.m_maxValue
@@ -6608,7 +6624,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2534562263469488624, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7746706235243689266, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1442676942188797612, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
