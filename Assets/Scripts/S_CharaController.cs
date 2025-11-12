@@ -2,6 +2,8 @@ using UnityEngine;
 using TMPro;
 using System.Collections;
 using UnityEngine.UI;
+using Unity.Cinemachine;
+using Unity.VisualScripting;
 
 public class S_CharaController : MonoBehaviour
 {
@@ -54,9 +56,15 @@ public class S_CharaController : MonoBehaviour
     public HealthManager m_playerHealth = new HealthManager();
     [SerializeField] private GameObject m_startPos;
     public bool hasRespawned = false;
-    
 
-    
+    [Header("Camera")]
+    [SerializeField] private CinemachineCamera m_mainCam;
+    [SerializeField] private GameObject m_triggerCam;
+    public int killCount;
+    public int waveCount;
+
+
+    [Header("Other")]
     private bool m_isBuffActive = false;
     private bool hasDashed = false;
     public bool hasDashHit = false;
@@ -69,6 +77,7 @@ public class S_CharaController : MonoBehaviour
     private float m_buttonPressTime;
     private bool m_isHolding;
     private bool m_isCharging;
+    public bool hasClearedAllWaves = false;
 
     void Start()
     {
@@ -78,13 +87,13 @@ public class S_CharaController : MonoBehaviour
         UpdateDamage();
         m_attackOffset = new Vector3(1, 0, 0);
         
-        
     }
 
     void Update()
     {
         CheckDamage();
         CheckDeath();
+        CameraControl();
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
         m_currentDirection = new Vector3(x, 0, y);
@@ -125,6 +134,25 @@ public class S_CharaController : MonoBehaviour
             CheckDash();
 
         CheckAttackInput();
+    }
+
+    private void CameraControl()
+    {
+        if (m_triggerCam != null)
+        {
+            var CamScript = m_triggerCam.GetComponent<S_TriggerCam>();
+            if (killCount >= CamScript.m_ennemyNumber)
+                waveCount += 1;
+        
+            if (killCount >= CamScript.m_ennemyNumber && waveCount >= CamScript.m_waveNumber)
+            {
+             var pChara = m_rb.GetComponent<SpriteRenderer>();
+             Debug.Log("Cam follow");
+             hasClearedAllWaves = true;
+             m_mainCam.Follow = pChara.transform;
+            }
+        }
+        
     }
 
     private void CheckDeath()
@@ -322,13 +350,13 @@ public class S_CharaController : MonoBehaviour
     private void ShadowForce()
     {
         UpdateDamage();
-        Debug.Log("ombre → damage boosted");
+        //Debug.Log("ombre → damage boosted");
     }
 
     private void NormalForce()
     {
         UpdateDamage();
-        Debug.Log("plus ombre → damage normal");
+        //Debug.Log("plus ombre → damage normal");
     }
 
     private void OnDrawGizmos()
@@ -347,7 +375,7 @@ public class S_CharaController : MonoBehaviour
         {
             isInShadow = false;
             UpdateDamage(); // recalcul du damage normal
-            Debug.Log("Anti-ombre active → damage normal");
+            //Debug.Log("Anti-ombre active → damage normal");
         }
     }
     // ✅ Buff > Ombre > Normal (PAS DE STACK)
@@ -374,7 +402,7 @@ public class S_CharaController : MonoBehaviour
         m_buffTimer = m_buffDuration;
         UpdateDamage();
 
-        Debug.Log($"BUFF ACTIVATED! Damage x{m_damageMultiplierDuringBuff} for {m_buffDuration} seconds");
+        //Debug.Log($"BUFF ACTIVATED! Damage x{m_damageMultiplierDuringBuff} for {m_buffDuration} seconds");
 
         m_coinCount = 0;
         UpdateCoinUI();
@@ -384,7 +412,7 @@ public class S_CharaController : MonoBehaviour
     {
         m_isBuffActive = false;
         UpdateDamage();
-        Debug.Log("Buff ended → Damage back to normal");
+        //Debug.Log("Buff ended → Damage back to normal");
     }
 
     private void OnTriggerEnter(Collider other)
@@ -404,6 +432,21 @@ public class S_CharaController : MonoBehaviour
         // {
         //     hasDashHit = true;
         // }
+        if (other.CompareTag("TriggerCam"))
+        {
+            Debug.Log("in trigger");
+            hasClearedAllWaves = false;
+            CameraTriggerSet();
+        }
+    }
+
+    public void CameraTriggerSet()
+    {
+        m_mainCam.Follow = null;
+
+        killCount = 0;
+        waveCount = 0;       
+
     }
 
     private void UpdateCoinUI()

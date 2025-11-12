@@ -8,8 +8,10 @@ public class S_EnemyController : MonoBehaviour
 
     [Header("Layer Mask pour d�tecter le joueur")]
     [SerializeField] LayerMask m_playerLayer;
+    [SerializeField] private float m_castRadius = 1;
     [SerializeField] Vector3 m_currentPos;
     [SerializeField] Vector3 m_castOffset;
+    [SerializeField] GameObject player;
 
     void Start()
     {
@@ -27,13 +29,16 @@ public class S_EnemyController : MonoBehaviour
 
         if (m_health.isDead())
         {
+            var charaCon = player.GetComponent<S_CharaController>();
+            charaCon.killCount += 1;
+            Debug.Log(charaCon.killCount);
             Destroy(gameObject);
         }
     }
 
     private void FixedUpdate()
     {
-        Collider[] playerCollider = Physics.OverlapSphere(m_currentPos + m_castOffset, 1.5f, m_playerLayer);
+        Collider[] playerCollider = Physics.OverlapSphere(m_currentPos + m_castOffset, m_castRadius, m_playerLayer);
         // if (playerCollider != null)
         // {
         //     S_CharaController player = playerCollider.GetComponent<S_CharaController>();
@@ -56,6 +61,6 @@ public class S_EnemyController : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(this.gameObject.transform.position + m_castOffset, 1.5f);
+        Gizmos.DrawWireSphere(this.gameObject.transform.position + m_castOffset, m_castRadius);
     }
 }
