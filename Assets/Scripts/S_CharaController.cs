@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using UnityEngine.UI;
 
 public class S_CharaController : MonoBehaviour
 {
@@ -47,8 +48,15 @@ public class S_CharaController : MonoBehaviour
     [SerializeField] private float m_attackRadius = 1f;
     [SerializeField] private float m_cooldownTime = 0.5f;
     [SerializeField] private float m_cooldownTimer = 0;
-    [SerializeField] private LayerMask m_enemyMask;   
+    [SerializeField] private LayerMask m_enemyMask;
 
+    [Header("Health and death system")]
+    public HealthManager m_playerHealth = new HealthManager();
+    [SerializeField] private GameObject m_startPos;
+    public bool hasRespawned = false;
+    
+
+    
     private bool m_isBuffActive = false;
     private bool hasDashed = false;
     public bool hasDashHit = false;
@@ -65,14 +73,18 @@ public class S_CharaController : MonoBehaviour
     void Start()
     {
         m_rb = gameObject.GetComponent<Rigidbody>();
+        m_playerHealth.Init();
         UpdateCoinUI();
         UpdateDamage();
         m_attackOffset = new Vector3(1, 0, 0);
+        
+        
     }
 
     void Update()
     {
         CheckDamage();
+        CheckDeath();
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
         m_currentDirection = new Vector3(x, 0, y);
@@ -88,7 +100,7 @@ public class S_CharaController : MonoBehaviour
         {
             m_sR.flipX = false;
             m_attackOffset = new Vector3(1, 0, 0);
-        }            
+        }
 
         if (m_currentDirection != Vector3.zero)
             OnStartMoving();
@@ -113,7 +125,27 @@ public class S_CharaController : MonoBehaviour
             CheckDash();
 
         CheckAttackInput();
-    }    
+    }
+
+    private void CheckDeath()
+    {
+        if (m_playerHealth.isDead())
+        {
+            //death + réinitialiser hp
+            StartCoroutine(C_CheckDeath());
+        }
+    }
+    
+    private IEnumerator C_CheckDeath()
+    {
+        m_rb.transform.position = m_startPos.transform.position;
+
+        if (hasRespawned)
+        {
+            m_playerHealth.Init();
+            yield return null;
+        }
+    }
 
     private IEnumerator C_Dash()
     {
@@ -249,14 +281,14 @@ public class S_CharaController : MonoBehaviour
             }
         }
     }
-public void O_TakeDamage(float damage)
-{
-    if (m_healthManager != null)
-    {
-        m_healthManager.TakeDamage(damage);
-        Debug.Log($"Le joueur prend {damage} dégâts");
-    }
-}
+// public void O_TakeDamage(float damage)
+// {
+//     if (m_healthManager != null)
+//     {
+//         m_healthManager.TakeDamage(damage);
+//         Debug.Log($"Le joueur prend {damage} dégâts");
+//     }
+// }
 
 
     private void CheckLight()
@@ -368,10 +400,10 @@ public void O_TakeDamage(float damage)
             Destroy(other.gameObject);
         }
 
-        if (other.CompareTag("Ennemy") || other.CompareTag("DestroyableEvmt"))
-        {
-            hasDashHit = true;
-        }
+        // if (other.CompareTag("Ennemy") || other.CompareTag("DestroyableEvmt"))
+        // {
+        //     hasDashHit = true;
+        // }
     }
 
     private void UpdateCoinUI()

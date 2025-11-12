@@ -3,19 +3,28 @@ using UnityEngine;
 public class S_EnemyController : MonoBehaviour
 {
     public HealthManager m_health = new HealthManager(); 
-    [Header("Dégâts infligés au joueur")]
+    [Header("Dï¿½gï¿½ts infligï¿½s au joueur")]
     public int m_damage = 1;
 
-    [Header("Layer Mask pour détecter le joueur")]
-    public LayerMask m_playerLayer;
+    [Header("Layer Mask pour dï¿½tecter le joueur")]
+    [SerializeField] LayerMask m_playerLayer;
+    [SerializeField] Vector3 m_currentPos;
+    [SerializeField] Vector3 m_castOffset;
 
     void Start()
     {
         m_health.Init();
+        m_currentPos = this.gameObject.transform.position;
+        
     }
 
     void Update()
     {
+        if (this.gameObject.transform.position.x != 0 && this.gameObject.transform.position.x > 0)
+            m_castOffset = new Vector3(1, 0, 0);
+        if (this.gameObject.transform.position.x != 0 && this.gameObject.transform.position.x < 0)
+            m_castOffset = new Vector3(-1, 0, 0);
+
         if (m_health.isDead())
         {
             Destroy(gameObject);
@@ -24,13 +33,22 @@ public class S_EnemyController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Collider2D playerCollider = Physics2D.OverlapCircle(transform.position, 0.5f, m_playerLayer);
-        if (playerCollider != null)
+        Collider[] playerCollider = Physics.OverlapSphere(m_currentPos + m_castOffset, 1.5f, m_playerLayer);
+        // if (playerCollider != null)
+        // {
+        //     S_CharaController player = playerCollider.GetComponent<S_CharaController>();
+        //     if (player != null)
+        //     {
+        //         player.O_TakeDamage(m_damage);
+        //     }
+        // }
+
+        foreach (var player in playerCollider)
         {
-            S_CharaController player = playerCollider.GetComponent<S_CharaController>();
-            if (player != null)
+            var chara = player.GetComponent<S_CharaController>();
+            if (chara != null)
             {
-                player.O_TakeDamage(m_damage);
+                chara.m_playerHealth.TakeDamage(1);
             }
         }
     }
@@ -38,6 +56,6 @@ public class S_EnemyController : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, 0.5f);
+        Gizmos.DrawWireSphere(this.gameObject.transform.position + m_castOffset, 1.5f);
     }
 }
