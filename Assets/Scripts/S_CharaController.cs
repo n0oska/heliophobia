@@ -18,6 +18,8 @@ public class S_CharaController : MonoBehaviour
     [Header("Dash system")]
     [SerializeField] private float m_dashForce;
     [SerializeField] private float m_dashCooldown;
+    [SerializeField] private float m_dashRadius;
+    [SerializeField] private float m_dashDamage;
     [SerializeField] private float m_dashDuration = 0.2f;
     [SerializeField] private AnimationCurve m_dashCurve;
     private bool isDashing;
@@ -195,9 +197,20 @@ public class S_CharaController : MonoBehaviour
             yield return null;
         }
 
-        if (isDashing && hasDashHit)
+        if (isDashing)
         {
-            //TakeDmg ennemy
+            Collider[] ennemiesInRange = Physics.OverlapSphere(m_rb.position, m_dashRadius, m_enemyMask);
+
+            foreach (var enemy in ennemiesInRange)
+            {
+                var enemyCtrl = enemy.GetComponent<S_EnemyController>();
+                hasDashHit = true;
+
+                if (enemyCtrl != null && hasDashHit)
+                {
+                    enemyCtrl.m_health.TakeDamage(m_dashDamage);
+                }
+            }
         }
 
         isDashing = false;
