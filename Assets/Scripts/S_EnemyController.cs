@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class S_EnemyController : MonoBehaviour
@@ -12,7 +13,7 @@ public class S_EnemyController : MonoBehaviour
     [SerializeField] private float m_speed = 1;
     [SerializeField] private float m_stopDistance = 1.5f;
     [SerializeField] private float m_timerAttack = 0;
-    [SerializeField] private float m_coolDown = 1;
+    [SerializeField] private float m_coolDown = 1.5f;
     [SerializeField] private bool canAttack = true;
     [SerializeField] Vector3 m_currentPos;
     [SerializeField] Vector3 m_castOffset;
@@ -23,13 +24,13 @@ public class S_EnemyController : MonoBehaviour
     {
         m_health.Init();
         m_currentPos = this.gameObject.transform.position;
-        m_coolDown = 0;
+       
     }
 
     void Update()
     {
         GetMovement();
-        CombatDmg();
+        StartCoroutine(CombatDmg());
 
         if (this.gameObject.transform.position.x != 0 && this.gameObject.transform.position.x > 0)
             m_castOffset = new Vector3(1, 0, 0);
@@ -67,7 +68,7 @@ public class S_EnemyController : MonoBehaviour
         }
     }
 
-    private void CombatDmg()
+    private IEnumerator CombatDmg()
     {
         Collider[] playerCollider = Physics.OverlapSphere(transform.position + m_castOffset, m_castRadius, m_playerLayer);
 
@@ -75,27 +76,17 @@ public class S_EnemyController : MonoBehaviour
         {
             var chara = player.GetComponent<S_CharaController>();
 
-            if (m_coolDown <= m_timerAttack)
-            {
-                canAttack = true;
-                m_coolDown = 1.5f;
-                
-            }
-
-            if (m_coolDown >=  m_timerAttack)
-            {
-                canAttack = false;
-                m_coolDown = m_coolDown - Time.deltaTime;
-            }
-
             if (chara != null && canAttack)
             {
-                Debug.Log(chara);
                 chara.m_playerHealth.TakeDamage(1);
-            }            
+                canAttack = false;
+                yield return new WaitForSeconds(m_coolDown);
+                canAttack = true;
+            }
         }
     }
 
+    
     //private void FixedUpdate()
     //{
     //    Collider[] playerCollider = Physics.OverlapSphere(m_currentPos + m_castOffset, m_castRadius, m_playerLayer);       
