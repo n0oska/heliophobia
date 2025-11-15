@@ -42,7 +42,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8702724589190711820}
   - component: {fileID: 1992667733219571544}
-  - component: {fileID: 2534562263469488624}
   - component: {fileID: 1096431037215456561}
   - component: {fileID: 6524606961226487598}
   m_Layer: 0
@@ -126,27 +125,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!135 &2534562263469488624
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1442676942188797612}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.9
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &1096431037215456561
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -191,9 +169,17 @@ MonoBehaviour:
   m_damage: 0
   m_baseDamage: 0
   m_sR: {fileID: 1992667733219571544}
-  m_healthManager:
-    m_value: 0
-    m_maxValue: 0
+  m_dashForce: 0
+  m_dashCooldown: 0
+  m_dashRadius: 0
+  m_dashDamage: 0
+  m_dashDuration: 0.2
+  m_dashCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   m_light: {fileID: 0}
   isInShadow: 0
   m_rayLength: 20
@@ -205,14 +191,29 @@ MonoBehaviour:
   m_coinsRequiredForBuff: 5
   m_buffDuration: 10
   m_damageMultiplierDuringBuff: 2
-  m_attackOrigin: {fileID: 5282057826368784123}
+  m_attackOffset: {x: 0, y: 0, z: 0}
   m_attackRadius: 0.5
   m_cooldownTime: 0.5
   m_cooldownTimer: 0
   m_enemyMask:
     serializedVersion: 2
     m_Bits: 64
-  m_attackDmg: 1
+  m_playerHealth:
+    m_value: 0
+    m_maxValue: 10
+    isTakingDamage: 0
+  m_startPos: {fileID: 0}
+  hasRespawned: 0
+  m_mainCam: {fileID: 0}
+  m_triggerCam: {fileID: 0}
+  killCount: 0
+  waveCount: 0
+  hasEnteredTriggerCam: 0
+  hasDashHit: 0
+  hasHit: 0
+  m_animator: {fileID: 0}
+  m_holdThreshold: 0.5
+  hasClearedAllWaves: 0
 --- !u!1 &7746706235243689266
 GameObject:
   m_ObjectHideFlags: 0

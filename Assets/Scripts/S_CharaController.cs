@@ -13,7 +13,7 @@ public class S_CharaController : MonoBehaviour
     [SerializeField] private float m_damage;
     [SerializeField] private float m_baseDamage;
     [SerializeField] private SpriteRenderer m_sR;
-    [SerializeField] private HealthManager m_healthManager;
+    //[SerializeField] private HealthManager m_healthManager;
 
     [Header("Dash system")]
     [SerializeField] private float m_dashForce;
@@ -354,12 +354,33 @@ public class S_CharaController : MonoBehaviour
     private void OnEnterShadow()
     {
         isInShadow = true;
+
+        if (m_rb != null)
+        {
+            var sprite = m_rb.GetComponent<SpriteRenderer>().color;
+            sprite.b = 0.5f;
+            sprite.r = 0.5f;
+            sprite.g = 0.5f;
+
+            m_rb.GetComponent<SpriteRenderer>().color = sprite;
+        }
+
         ShadowForce();
     }
 
     private void OnExitShadow()
     {
         isInShadow = false;
+
+        if (m_rb != null)
+        {
+            var sprite = m_rb.GetComponent<SpriteRenderer>().color;
+            sprite.b = 1;
+            sprite.r = 1;
+            sprite.g = 1;
+
+            m_rb.GetComponent<SpriteRenderer>().color = sprite;
+        }
         NormalForce();
     }
 
@@ -483,6 +504,7 @@ public class HealthManager
 {
     public float m_value;
     public float m_maxValue = 10;
+    public bool isTakingDamage;
 
     public void Init()
     {
@@ -491,6 +513,12 @@ public class HealthManager
     public void TakeDamage(float damage)
     {
         m_value = Mathf.Max(0, m_value - damage);
+        isTakingDamage = true;
+        
+        if (isTakingDamage)
+        {
+            isTakingDamage = false;
+        }
     }
 
     public bool isDead() => m_value <= 0;
