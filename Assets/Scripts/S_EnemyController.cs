@@ -9,9 +9,12 @@ public class S_EnemyController : MonoBehaviour
     [Header("Layer Mask pour d�tecter le joueur")]
     [SerializeField] LayerMask m_playerLayer;
     [SerializeField] private float m_castRadius = 1;
+    [SerializeField] private float m_speed = 1;
+    [SerializeField] private float m_stopDistance = 1.5f;
     [SerializeField] Vector3 m_currentPos;
     [SerializeField] Vector3 m_castOffset;
     [SerializeField] GameObject player;
+    [SerializeField] Rigidbody m_rb;
 
     void Start()
     {
@@ -22,6 +25,8 @@ public class S_EnemyController : MonoBehaviour
 
     void Update()
     {
+        GetMovement();
+
         if (this.gameObject.transform.position.x != 0 && this.gameObject.transform.position.x > 0)
             m_castOffset = new Vector3(1, 0, 0);
         if (this.gameObject.transform.position.x != 0 && this.gameObject.transform.position.x < 0)
@@ -33,6 +38,27 @@ public class S_EnemyController : MonoBehaviour
             charaCon.killCount += 1;
             Debug.Log(charaCon.killCount);
             Destroy(gameObject);
+        }
+
+
+    }
+
+    private void GetMovement()
+    {
+        if (m_rb == null)
+            Debug.Log("Pas de rigidbody");
+
+        float distance = Vector3.Distance(m_rb.position, player.transform.position);
+
+        if (m_rb != null && player != null) 
+        {
+            if (distance > m_stopDistance)
+            {
+                Vector3 direction = (player.transform.position - m_rb.position).normalized;
+                direction.y = 0;
+
+                transform.position += direction * m_speed * Time.deltaTime;
+            }
         }
     }
 

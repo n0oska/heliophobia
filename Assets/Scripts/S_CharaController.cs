@@ -64,6 +64,7 @@ public class S_CharaController : MonoBehaviour
     [SerializeField] private GameObject m_triggerCam;
     public int killCount;
     public int waveCount;
+    public bool hasEnteredTriggerCam = false;
 
 
     [Header("Other")]
@@ -152,6 +153,8 @@ public class S_CharaController : MonoBehaviour
              Debug.Log("Cam follow");
              hasClearedAllWaves = true;
              m_mainCam.Follow = pChara.transform;
+             hasEnteredTriggerCam = false;
+
             }
         }
         
@@ -449,6 +452,7 @@ public class S_CharaController : MonoBehaviour
         {
             Debug.Log("in trigger");
             hasClearedAllWaves = false;
+            hasEnteredTriggerCam = true;
             CameraTriggerSet();
         }
     }
