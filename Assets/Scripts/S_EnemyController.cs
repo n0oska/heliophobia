@@ -26,7 +26,8 @@ public class S_EnemyController : MonoBehaviour
         m_health.Init();
         m_currentPos = this.gameObject.transform.position;
         m_rb = this.GetComponent<Rigidbody>();
-        S_CharaController[] components = FindObjectsByType<S_CharaController>(FindObjectsSortMode);
+        GameObject chara = GameObject.FindGameObjectWithTag("Player");
+        player = chara;
        
     }
 
@@ -42,9 +43,7 @@ public class S_EnemyController : MonoBehaviour
 
         if (m_health.isDead())
         {
-            var charaCon = player.GetComponent<S_CharaController>();
-            charaCon.killCount += 1;
-            Debug.Log(charaCon.killCount);
+            var charaCon = player.GetComponentInChildren<S_CharaController>();
             Destroy(gameObject);
         }
 
@@ -77,7 +76,7 @@ public class S_EnemyController : MonoBehaviour
 
         foreach (var player in playerCollider)
         {
-            var chara = player.GetComponent<S_CharaController>();
+            var chara = player.GetComponentInChildren<S_CharaController>();
 
             if (chara != null && canAttack)
             {

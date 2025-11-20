@@ -238,8 +238,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5127655803425823303}
-  - component: {fileID: 4515511705606452769}
-  - component: {fileID: 6364329881183675809}
   m_Layer: 6
   m_Name: P_Enemy transparent
   m_TagString: Untagged
@@ -263,47 +261,3 @@ Transform:
   - {fileID: 3292844953649578123}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4515511705606452769
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8231776233252487589}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 813d39cab3e20bd48b167e21b9e7c452, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::S_EnemyController
-  m_health:
-    m_value: 0
-    m_maxValue: 10
-    isTakingDamage: 0
-  m_damage: 1
-  m_playerLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  m_castRadius: 1
-  m_speed: 1
-  m_stopDistance: 1.5
-  m_timerAttack: 0
-  m_coolDown: 1.5
-  canAttack: 1
-  m_currentPos: {x: 0, y: 0, z: 0}
-  m_castOffset: {x: 0, y: 0, z: 0}
-  player: {fileID: 0}
-  m_rb: {fileID: 0}
---- !u!114 &6364329881183675809
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8231776233252487589}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ce2e7d2055f55644876493a2902692f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::S_transparent_enemy
-  O_alpha: 0.5
-  O_disableShadows: 1
