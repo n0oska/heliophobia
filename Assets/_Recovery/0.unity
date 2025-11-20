@@ -6610,6 +6610,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::S_EnemySpawner
   mSpawnPoints:
   - {fileID: 2103159735}
+  - {fileID: 0}
   mWaves:
   - mName: 
     mEnemies:
@@ -7356,7 +7357,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6106856343371633781, guid: 8d2f4aa888c7e0b42b7bf9fb279b8817, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.73
+      value: 0.21
       objectReference: {fileID: 0}
     - target: {fileID: 6106856343371633781, guid: 8d2f4aa888c7e0b42b7bf9fb279b8817, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7499,7 +7500,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3461434928449695753, guid: b737d8d7f955058468c313f34588bf94, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4488219678454348860, guid: b737d8d7f955058468c313f34588bf94, type: 3}
       propertyPath: m_Camera
@@ -7806,7 +7807,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6524606961226487598, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
       propertyPath: m_dashRadius
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6524606961226487598, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
       propertyPath: m_triggerCam

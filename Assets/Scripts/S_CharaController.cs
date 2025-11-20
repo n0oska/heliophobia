@@ -212,6 +212,7 @@ public class S_CharaController : MonoBehaviour
                 if (enemyCtrl != null && hasDashHit)
                 {
                     enemyCtrl.m_health.TakeDamage(m_dashDamage);
+                    Debug.Log(m_dashDamage);
                 }
             }
         }
@@ -404,7 +405,13 @@ public class S_CharaController : MonoBehaviour
 
         Gizmos.color = isInShadow ? Color.red : Color.green;
         Gizmos.DrawLine(m_rb.transform.position + m_offset,
-                        m_rb.transform.position + (-m_light.transform.forward) * m_rayLength);        
+                        m_rb.transform.position + (-m_light.transform.forward) * m_rayLength);  
+
+        if (canDash)
+        {
+            Gizmos.DrawWireSphere(m_rb.position, m_dashRadius);
+            Gizmos.color = isDashing ? Color.red : Color.green;
+        }      
     }
     public void ForceExitShadow()
     {
