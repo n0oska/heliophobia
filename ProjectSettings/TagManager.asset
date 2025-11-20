@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Coin
   - TriggerCam
+  - Spawner
   layers:
   - Default
   - TransparentFX

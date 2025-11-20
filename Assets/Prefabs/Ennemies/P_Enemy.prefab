@@ -32,8 +32,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 3385401264271683041}
+  m_Children: []
   m_Father: {fileID: 7381874009817839993}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6423139186649260295
@@ -123,6 +122,7 @@ MonoBehaviour:
   m_currentPos: {x: 0, y: 0, z: 0}
   m_castOffset: {x: 0, y: 0, z: 0}
   player: {fileID: 0}
+  spawner: {fileID: 0}
   m_rb: {fileID: 6373077633172152456}
 --- !u!136 &5979598582444001467
 CapsuleCollider:
@@ -205,7 +205,7 @@ Transform:
   m_LocalScale: {x: 0.9, y: 1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8911102118385425556}
+  m_Father: {fileID: 7381874009817839993}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8608348577202947416
 MeshFilter:
@@ -293,5 +293,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8911102118385425556}
+  - {fileID: 3385401264271683041}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

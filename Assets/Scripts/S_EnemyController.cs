@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEditor.SearchService;
 using UnityEngine;
+using Unity.VisualScripting;
 
 public class S_EnemyController : MonoBehaviour
 {
@@ -19,7 +20,9 @@ public class S_EnemyController : MonoBehaviour
     [SerializeField] Vector3 m_currentPos;
     [SerializeField] Vector3 m_castOffset;
     [SerializeField] GameObject player;
+    [SerializeField] GameObject spawner;
     [SerializeField] Rigidbody m_rb;
+
 
     void Start()
     {
@@ -28,6 +31,7 @@ public class S_EnemyController : MonoBehaviour
         m_rb = this.GetComponent<Rigidbody>();
         GameObject chara = GameObject.FindGameObjectWithTag("Player");
         player = chara;
+        spawner = GameObject.FindGameObjectWithTag("Spawner");
        
     }
 
@@ -35,6 +39,9 @@ public class S_EnemyController : MonoBehaviour
     {
         GetMovement();
         StartCoroutine(CombatDmg());
+        var charaCon = player.GetComponentInChildren<S_CharaController>();            
+        var spawnerScript = spawner.GetComponent<S_EnemySpawner>();
+        
 
         if (this.gameObject.transform.position.x != 0 && this.gameObject.transform.position.x > 0)
             m_castOffset = new Vector3(1, 0, 0);
@@ -42,12 +49,10 @@ public class S_EnemyController : MonoBehaviour
             m_castOffset = new Vector3(-1, 0, 0);
 
         if (m_health.isDead())
-        {
-            var charaCon = player.GetComponentInChildren<S_CharaController>();
-            Destroy(gameObject);
-        }
-
-        
+        {           
+            spawnerScript.isDead = true;            
+            Destroy(m_rb.gameObject);
+        }       
 
     }
 

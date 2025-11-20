@@ -6610,16 +6610,19 @@ MonoBehaviour:
   mWaves:
   - mName: 
     mEnemies:
-    - {fileID: 995237484680084101, guid: 1bac82858b8f45d40a6d528d655cb271, type: 3}
-    mSpawnRates:
-    - 0
-  - mName: 
-    mEnemies:
-    - {fileID: 995237484680084101, guid: 1bac82858b8f45d40a6d528d655cb271, type: 3}
-    - {fileID: 995237484680084101, guid: 1bac82858b8f45d40a6d528d655cb271, type: 3}
+    - {fileID: 3955604880452283655, guid: 15ca1df7a9441924d9a01ccabccf9fd5, type: 3}
     mSpawnRates:
     - 0
     - 1
+    - 2
+    - 3
+  - mName: 
+    mEnemies:
+    - {fileID: 3955604880452283655, guid: 15ca1df7a9441924d9a01ccabccf9fd5, type: 3}
+    - {fileID: 3955604880452283655, guid: 15ca1df7a9441924d9a01ccabccf9fd5, type: 3}
+    - {fileID: 3955604880452283655, guid: 15ca1df7a9441924d9a01ccabccf9fd5, type: 3}
+    - {fileID: 3955604880452283655, guid: 15ca1df7a9441924d9a01ccabccf9fd5, type: 3}
+    mSpawnRates: []
   hasClearedAllWaves: 0
   isDead: 0
 --- !u!4 &1634325074
