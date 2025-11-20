@@ -91,7 +91,7 @@ public class S_CharaController : MonoBehaviour
         UpdateCoinUI();
         UpdateDamage();
         m_attackOffset = new Vector3(1, 0, 0);
-        m_spawner = m_triggerCam.GetComponent<S_EnemySpawner>();
+        m_spawner = m_triggerCam.GetComponentInChildren<S_EnemySpawner>();
         
     }
 
@@ -147,10 +147,8 @@ public class S_CharaController : MonoBehaviour
         if (m_triggerCam != null)
         {
             var CamScript = m_triggerCam.GetComponent<S_TriggerCam>();
-            if (killCount >= CamScript.m_ennemyNumber)
-                waveCount += 1;
-        
-            if (killCount >= CamScript.m_ennemyNumber && waveCount >= CamScript.m_waveNumber)
+            
+            if (m_spawner.hasClearedAllWaves == true)
             {
              var pChara = m_rb.GetComponent<SpriteRenderer>();
              Debug.Log("Cam follow");
@@ -256,6 +254,12 @@ public class S_CharaController : MonoBehaviour
                     if (enemyCtrl != null)
                     {
                         enemyCtrl.m_health.TakeDamage(m_damage);
+                        hasHit = true;
+                    }
+                    var envirmtCtrl = enemy.GetComponent<S_Environement>();
+                    if (envirmtCtrl!=null)
+                    {
+                        envirmtCtrl.m_health.TakeDamage(m_damage);
                         hasHit = true;
                     }
                 }
