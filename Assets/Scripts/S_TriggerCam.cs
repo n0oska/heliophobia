@@ -15,7 +15,7 @@ public class S_TriggerCam : MonoBehaviour
     {
         var charaCon = m_chara.GetComponent<S_CharaController>();
         m_trigger = m_trigger.GetComponent<BoxCollider>();
-
+        var spawner = this.GetComponentInChildren<S_EnemySpawner>();
         if (m_trigger == null)
             Debug.Log("pas trigger");
 
@@ -24,7 +24,7 @@ public class S_TriggerCam : MonoBehaviour
             m_trigger.enabled = false; 
         }
 
-        if (charaCon.hasClearedAllWaves)
+        if (spawner.hasClearedAllWaves)
         {
             Destroy(this.gameObject);
         }

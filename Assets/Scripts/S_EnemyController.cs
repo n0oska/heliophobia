@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEditor.SearchService;
 using UnityEngine;
 
 public class S_EnemyController : MonoBehaviour
@@ -24,6 +25,8 @@ public class S_EnemyController : MonoBehaviour
     {
         m_health.Init();
         m_currentPos = this.gameObject.transform.position;
+        m_rb = this.GetComponent<Rigidbody>();
+        S_CharaController[] components = FindObjectsByType<S_CharaController>(FindObjectsSortMode);
        
     }
 

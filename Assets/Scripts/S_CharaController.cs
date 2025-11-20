@@ -81,6 +81,8 @@ public class S_CharaController : MonoBehaviour
     private bool m_isHolding;
     private bool m_isCharging;
     public bool hasClearedAllWaves = false;
+    private Wave m_wave;
+    private S_EnemySpawner m_spawner;
 
     void Start()
     {
@@ -89,6 +91,7 @@ public class S_CharaController : MonoBehaviour
         UpdateCoinUI();
         UpdateDamage();
         m_attackOffset = new Vector3(1, 0, 0);
+        m_spawner = m_triggerCam.GetComponent<S_EnemySpawner>();
         
     }
 

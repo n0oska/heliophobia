@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 [System.Serializable]
 public class Wave
@@ -20,8 +21,10 @@ public class S_EnemySpawner : MonoBehaviour
 
     private int mCurrentWave = 0;
     private bool mIsSpawning = false;
+    public bool hasClearedAllWaves = false;
     private List<GameObject> mAliveEnemies = new List<GameObject>();
 
+    
     private void Update()
     {
         if (!mIsSpawning && mAliveEnemies.Count == 0 && mCurrentWave < mWaves.Count)
@@ -49,6 +52,11 @@ public class S_EnemySpawner : MonoBehaviour
 
         mIsSpawning = false;
         mCurrentWave++;
+
+        if (mCurrentWave == mWaves.Count && mAliveEnemies.Count == 0)
+        {
+            hasClearedAllWaves = true;
+        }
     }
 
     private IEnumerator TrackEnemyDeath(GameObject enemy)
