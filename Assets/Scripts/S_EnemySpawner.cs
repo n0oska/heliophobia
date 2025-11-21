@@ -69,9 +69,13 @@ public class S_EnemySpawner : MonoBehaviour
 
     private IEnumerator C_TrackEnemyDeath(GameObject enemy)
     {
+
+        GameObject trackedEnemy = enemy;
+
+
         while (enemy != null)
             yield return null;
 
-        mAliveEnemies.Remove(enemy);
+        mAliveEnemies.Remove(trackedEnemy);
     }
 }
