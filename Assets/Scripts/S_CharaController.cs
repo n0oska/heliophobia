@@ -61,7 +61,9 @@ public class S_CharaController : MonoBehaviour
 
     [Header("Camera")]
     [SerializeField] private CinemachineCamera m_mainCam;
+    //[SerializeField] private CinemachineBasicMultiChannelPerlin m_channels;
     [SerializeField] private GameObject m_triggerCam;
+    [SerializeField] private GameObject m_lookTriggerCam;
     public int killCount;
     public int waveCount;
     public bool hasEnteredTriggerCam = false;
@@ -92,6 +94,7 @@ public class S_CharaController : MonoBehaviour
         UpdateDamage();
         m_attackOffset = new Vector3(1, 0, 0);
         m_spawner = m_triggerCam.GetComponentInChildren<S_EnemySpawner>();
+        //m_channels.enabled = false;
         
     }
 
@@ -140,6 +143,7 @@ public class S_CharaController : MonoBehaviour
             CheckDash();
 
         CheckAttackInput();
+        CamShake();
     }
 
     private void CameraControl()
@@ -154,6 +158,7 @@ public class S_CharaController : MonoBehaviour
              Debug.Log("Cam follow");
              hasClearedAllWaves = true;
              m_mainCam.Follow = pChara.transform;
+             
              hasEnteredTriggerCam = false;
 
             }
@@ -494,10 +499,7 @@ public class S_CharaController : MonoBehaviour
 
     public void CameraTriggerSet()
     {
-        m_mainCam.Follow = null;
-
-        killCount = 0;
-        waveCount = 0;       
+        m_mainCam.Follow = null;           
 
     }
 
@@ -510,6 +512,11 @@ public class S_CharaController : MonoBehaviour
     public int GetCoinCount()
     {
         return m_coinCount;
+    }
+
+    private void CamShake()
+    {
+    
     }
 }
 

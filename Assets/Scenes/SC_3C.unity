@@ -6977,6 +6977,9 @@ GameObject:
   - component: {fileID: 2017590678}
   - component: {fileID: 2017590677}
   - component: {fileID: 2017590676}
+  - component: {fileID: 2017590679}
+  - component: {fileID: 2017590680}
+  - component: {fileID: 2017590681}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -7061,6 +7064,65 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2017590679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2017590674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineBasicMultiChannelPerlin
+  NoiseProfile: {fileID: 11400000, guid: 9c0fca6f5e8308d4f8e953312743fb48, type: 2}
+  PivotOffset: {x: 0, y: 0, z: 0}
+  AmplitudeGain: 1
+  FrequencyGain: 1
+  m_NoiseOffsets: {x: 0, y: 0, z: 0}
+--- !u!65 &2017590680
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2017590674}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.21584415, y: 4.5172634, z: 13.293163}
+  m_Center: {x: -7.9534545, y: -2.0211036, z: 9.106984}
+--- !u!65 &2017590681
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2017590674}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.0834427, y: 4.2148542, z: 8.6047535}
+  m_Center: {x: 12.124741, y: -1.6074449, z: 10.031116}
 --- !u!1 &2055610606 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2902425983170778878, guid: 8d2f4aa888c7e0b42b7bf9fb279b8817, type: 3}
@@ -7413,7 +7475,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3461434928449695753, guid: b737d8d7f955058468c313f34588bf94, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4488219678454348860, guid: b737d8d7f955058468c313f34588bf94, type: 3}
       propertyPath: m_Camera
@@ -7575,7 +7637,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 881599606622306756, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 1442676942188797612, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
       propertyPath: m_Layer
@@ -7688,6 +7750,10 @@ PrefabInstance:
     - target: {fileID: 6524606961226487598, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
       propertyPath: m_attackOffset.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6524606961226487598, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
+      propertyPath: m_lookTriggerCam
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6524606961226487598, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
       propertyPath: m_enemyMask.m_Bits
