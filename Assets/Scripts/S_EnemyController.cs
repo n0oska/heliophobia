@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEditor.SearchService;
 using UnityEngine;
 using Unity.VisualScripting;
+using Unity.Cinemachine;
 
 public class S_EnemyController : MonoBehaviour
 {
@@ -21,7 +22,10 @@ public class S_EnemyController : MonoBehaviour
     [SerializeField] Vector3 m_castOffset;
     [SerializeField] GameObject player;
     [SerializeField] GameObject spawner;
+    [SerializeField] private CinemachineCamera m_cam;
     [SerializeField] Rigidbody m_rb;
+    [SerializeField] private CinemachineBasicMultiChannelPerlin m_channels;
+    
 
 
     void Start()
@@ -32,6 +36,10 @@ public class S_EnemyController : MonoBehaviour
         GameObject chara = GameObject.FindGameObjectWithTag("Player");
         player = chara;
         spawner = GameObject.FindGameObjectWithTag("Spawner");
+        var cam = GameObject.FindFirstObjectByType<CinemachineCamera>();
+        m_cam = cam;
+        Debug.Log(m_cam);
+        
        
     }
 
@@ -39,7 +47,6 @@ public class S_EnemyController : MonoBehaviour
     {
         GetMovement();
         StartCoroutine(CombatDmg());
-        var charaCon = player.GetComponentInChildren<S_CharaController>();            
         var spawnerScript = spawner.GetComponent<S_EnemySpawner>();
         
 
@@ -54,6 +61,7 @@ public class S_EnemyController : MonoBehaviour
             Destroy(m_rb.gameObject);
         }       
 
+        
     }
 
     private void GetMovement()
@@ -61,13 +69,15 @@ public class S_EnemyController : MonoBehaviour
         if (m_rb == null)
             Debug.Log("Pas de rigidbody");
 
-        float distance = Vector3.Distance(m_rb.position, player.transform.position);
+        var spriteChara = player.GetComponentInChildren<SpriteRenderer>();
 
-        if (m_rb != null && player != null) 
+        float distance = Vector3.Distance(m_rb.position, spriteChara.transform.position);
+
+        if (m_rb != null && spriteChara != null) 
         {
             if (distance > m_stopDistance)
             {
-                Vector3 direction = (player.transform.position - m_rb.position).normalized;
+                Vector3 direction = (spriteChara.transform.position - m_rb.position).normalized;
                 direction.y = 0;
 
                 transform.position += direction * m_speed * Time.deltaTime;
@@ -84,9 +94,10 @@ public class S_EnemyController : MonoBehaviour
             var chara = player.GetComponentInChildren<S_CharaController>();
 
             if (chara != null && canAttack)
-            {
-                chara.m_playerHealth.TakeDamage(1);
+            {                            
                 canAttack = false;
+                chara.m_playerHealth.TakeDamage(1);              
+                
                 yield return new WaitForSeconds(m_coolDown);
                 canAttack = true;
             }

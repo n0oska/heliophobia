@@ -230,13 +230,14 @@ MonoBehaviour:
   m_castRadius: 1
   m_speed: 1
   m_stopDistance: 1.5
-  m_timerAttack: 0
+  m_timerAttack: 1.5
   m_coolDown: 1.5
   canAttack: 1
   m_currentPos: {x: 0, y: 0, z: 0}
   m_castOffset: {x: 0, y: 0, z: 0}
   player: {fileID: 0}
   spawner: {fileID: 0}
+  m_cam: {fileID: 0}
   m_rb: {fileID: 3728719415907989705}
 --- !u!54 &3728719415907989705
 Rigidbody:
