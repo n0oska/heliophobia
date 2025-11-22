@@ -64,9 +64,10 @@ public class S_EnemyController : MonoBehaviour
             m_castOffset = new Vector3(-1, 0, 0);
 
         if (m_health.isDead())
-        {           
+        { 
+            //GameObject parent = m_rb.GetComponentInParent<GameObject>();          
             spawnerScript.isDead = true;            
-            Destroy(m_rb.gameObject);
+            Destroy(gameObject);
         }       
 
         

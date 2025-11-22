@@ -21,6 +21,10 @@ public class S_EnemySpawner : MonoBehaviour
     [Header("Waves Configuration")]
     public List<Wave> mWaves = new List<Wave>();
 
+    [Header("Chara ref")]
+    [SerializeField] private GameObject m_chara;
+
+    private S_CharaController m_charaScript;
     private int mCurrentWave = 0;
     private int ennemyByWave = 0;
     private bool mIsSpawning = false;
@@ -35,30 +39,38 @@ public class S_EnemySpawner : MonoBehaviour
 
     public bool isDead = false;
 
+    void Start()
+    {
+        m_charaScript = m_chara.GetComponent<S_CharaController>();
+    }
+
     private void Update()
     {
 
-
-        if (!mIsSpawning && mAliveEnemies.Count == 0 && mCurrentWave < mWaves.Count && canSpawnNextWave)
+        if (m_charaScript.hasEnteredTriggerCam)
         {
-            StartCoroutine(SpawnWave(mWaves[mCurrentWave]));
-            canSpawnNextWave = false;
-        }
+            if (!mIsSpawning && mAliveEnemies.Count == 0 && mCurrentWave < mWaves.Count && canSpawnNextWave)
+            {
+                StartCoroutine(SpawnWave(mWaves[mCurrentWave]));
+                canSpawnNextWave = false;
+            }
 
-        if (hasSpawnedAll && ennemyByWave == dead.Count)
-        {
-            //Debug.Log("has enter code");
-            StartCoroutine(C_CheckWave());            
+            if (hasSpawnedAll && ennemyByWave == dead.Count)
+            {
+                //Debug.Log("has enter code");
+                StartCoroutine(C_CheckWave());            
+            }        
+
+            if (mCurrentWave >= mWaves.Count && mAliveEnemies.Count == 0)
+            {
+                hasClearedAllWaves = true;
+            }
+
+            Debug.Log(mAliveEnemies.Count);
+            //Debug.Log(mWaves.Count);
+            Debug.Log(mCurrentWave);
         }        
-
-        if (mCurrentWave >= mWaves.Count && mAliveEnemies.Count == 0)
-        {
-            hasClearedAllWaves = true;
-        }
-
-        Debug.Log(mAliveEnemies.Count);
-        //Debug.Log(mWaves.Count);
-        Debug.Log(mCurrentWave);
+        
     }
     
     private IEnumerator C_CheckWave()

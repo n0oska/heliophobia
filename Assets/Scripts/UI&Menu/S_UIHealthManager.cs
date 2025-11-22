@@ -15,12 +15,11 @@ public class S_UIHealthManager : MonoBehaviour
         m_healthSlider.value = m_healthManagerPlayer.m_playerHealth.m_maxValue;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        if (m_healthManagerPlayer.m_playerHealth.isTakingDamage)
-        {
-            UpdateUI();
-        }
+        
+        UpdateUI();
+        
     }
 
     private void UpdateUI()
