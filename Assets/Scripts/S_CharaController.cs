@@ -71,7 +71,7 @@ public class S_CharaController : MonoBehaviour
 
     [Header("Other")]
     private bool m_isBuffActive = false;
-    private bool hasDashed = false;
+    //private bool hasDashed = false;
     public bool hasDashHit = false;
     public bool hasHit = false;
     private float m_buffTimer = 0f;

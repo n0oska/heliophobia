@@ -16,7 +16,7 @@ public class S_transparent_enemy : MonoBehaviour
         O_renderer = GetComponent<Renderer>();
 
         ApplyTransparency();
-        DisableShadows();
+        //DisableShadows();
     }
 
     void Update()
@@ -39,24 +39,24 @@ public class S_transparent_enemy : MonoBehaviour
         }
     }
 
-    void DisableShadows()
-    {
-        if (!O_disableShadows) return;
+    // void DisableShadows()
+    // {
+    //     if (!O_disableShadows) return;
 
-        if (O_renderer != null)
-        {
-            O_renderer.shadowCastingMode = ShadowCastingMode.Off;
-            O_renderer.receiveShadows = false;
-        }
+    //     if (O_renderer != null)
+    //     {
+    //         O_renderer.shadowCastingMode = ShadowCastingMode.Off;
+    //         O_renderer.receiveShadows = false;
+    //     }
 
-        Light[] lights = FindObjectsOfType<Light>();
-        foreach (Light light in lights)
-        {
-            if (light.shadows != LightShadows.None)
-            {
-                light.shadowBias = 1f;
-                light.shadowNormalBias = 1f;
-            }
-        }
-    }
+    //     Light[] lights = Light.FindObjectsOfType<Light>();
+    //     foreach (Light light in lights)
+    //     {
+    //         if (light.shadows != LightShadows.None)
+    //         {
+    //             light.shadowBias = 1f;
+    //             light.shadowNormalBias = 1f;
+    //         }
+    //     }
+    // }
 }
