@@ -234,7 +234,7 @@ public class S_CharaController : MonoBehaviour
 
     private void CheckDash()
     {
-        if (Input.GetKey(KeyCode.LeftShift) && canDash)
+        if (Input.GetKey(KeyCode.LeftShift) && canDash || Input.GetKey(KeyCode.Joystick1Button1))
         {
             StartCoroutine(C_Dash());
         }
