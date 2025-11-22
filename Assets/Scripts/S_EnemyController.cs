@@ -25,6 +25,9 @@ public class S_EnemyController : MonoBehaviour
     [SerializeField] private CinemachineCamera m_cam;
     [SerializeField] Rigidbody m_rb;
     [SerializeField] private CinemachineBasicMultiChannelPerlin m_channels;
+
+    private CapsuleCollider col;
+    private bool hasSpawned = false;
     
 
 
@@ -39,12 +42,17 @@ public class S_EnemyController : MonoBehaviour
         var cam = GameObject.FindFirstObjectByType<CinemachineCamera>();
         m_cam = cam;
         Debug.Log(m_cam);
+        col = gameObject.GetComponent<CapsuleCollider>();
+        col.enabled = false;
+        hasSpawned = true;   
         
        
     }
 
     void Update()
     {
+        if (hasSpawned)
+            col.enabled = true;
         GetMovement();
         StartCoroutine(CombatDmg());
         var spawnerScript = spawner.GetComponent<S_EnemySpawner>();
