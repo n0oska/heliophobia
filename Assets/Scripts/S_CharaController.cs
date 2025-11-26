@@ -456,6 +456,15 @@ public class S_CharaController : MonoBehaviour
     {
         m_isBuffActive = true;
         m_buffTimer = m_buffDuration;
+
+        var sprite = m_rb.GetComponent<SpriteRenderer>().color;
+        sprite.b = 0.5f;
+        sprite.r = 0.5f;
+        sprite.g = 0.5f;
+
+        m_rb.GetComponent<SpriteRenderer>().color = sprite;
+
+
         UpdateDamage();
 
         //Debug.Log($"BUFF ACTIVATED! Damage x{m_damageMultiplierDuringBuff} for {m_buffDuration} seconds");
@@ -468,6 +477,13 @@ public class S_CharaController : MonoBehaviour
     {
         m_isBuffActive = false;
         UpdateDamage();
+
+        var sprite = m_rb.GetComponent<SpriteRenderer>().color;
+        sprite.b = 1;
+        sprite.r = 1;
+        sprite.g = 1;
+
+        m_rb.GetComponent<SpriteRenderer>().color = sprite;
         //Debug.Log("Buff ended → Damage back to normal");
     }
 
@@ -482,6 +498,14 @@ public class S_CharaController : MonoBehaviour
 
             UpdateCoinUI();
             Destroy(other.gameObject);
+        }
+
+        if (other.CompareTag("TestCoin"))
+        {
+            m_coinCount++;
+
+            if (m_coinCount >= m_coinsRequiredForBuff && !m_isBuffActive)
+                ActivateBuff(); //display particle system + buff            
         }
 
         // if (other.CompareTag("Ennemy") || other.CompareTag("DestroyableEvmt"))

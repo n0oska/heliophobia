@@ -15,6 +15,8 @@ public class Wave
 
 public class S_EnemySpawner : MonoBehaviour
 {
+    
+
     [Header("Spawn Points")]
     public List<Transform> mSpawnPoints;
 
@@ -49,7 +51,7 @@ public class S_EnemySpawner : MonoBehaviour
 
         if (m_charaScript.hasEnteredTriggerCam)
         {
-            if (!mIsSpawning && mAliveEnemies.Count == 0 && mCurrentWave < mWaves.Count && canSpawnNextWave)
+            if (!mIsSpawning && mAliveEnemies.Count == 0 && mCurrentWave < mWaves.Count && canSpawnNextWave && this.enabled == true)
             {
                 StartCoroutine(SpawnWave(mWaves[mCurrentWave]));
                 canSpawnNextWave = false;
@@ -108,7 +110,7 @@ public class S_EnemySpawner : MonoBehaviour
         }
         ennemyByWave = mAliveEnemies.Count;
         Debug.Log(ennemyByWave);
-        hasSpawnedAll = true;       
+        hasSpawnedAll = true;
         mIsSpawning = false; 
     }
 
@@ -121,7 +123,7 @@ public class S_EnemySpawner : MonoBehaviour
         while (trackedEnemy != null)
             yield return null;
         //Debug.Log(trackedEnemy);
-        
+
 
         mAliveEnemies.Remove(trackedEnemy);
         dead.Add(trackedEnemy);
