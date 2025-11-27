@@ -4,6 +4,7 @@ using System.Collections;
 using UnityEngine.UI;
 using Unity.Cinemachine;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class S_CharaController : MonoBehaviour
 {
@@ -83,7 +84,8 @@ public class S_CharaController : MonoBehaviour
     private bool m_isHolding;
     private bool m_isCharging;
     public bool hasClearedAllWaves = false;
-    private Wave m_wave;
+    public bool setTrigger = false;
+    private S_TriggerCam m_trigger;
     private S_EnemySpawner m_spawner;
 
     void Start()
@@ -94,6 +96,7 @@ public class S_CharaController : MonoBehaviour
         UpdateDamage();
         m_attackOffset = new Vector3(1, 0, 0);
         m_spawner = m_triggerCam.GetComponentInChildren<S_EnemySpawner>();
+        m_trigger = m_triggerCam.GetComponent<S_TriggerCam>();
         //m_channels.enabled = false;
         
     }
@@ -103,6 +106,7 @@ public class S_CharaController : MonoBehaviour
         CheckDamage();
         CheckDeath();
         CameraControl();
+        ReloadScene();
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
         m_currentDirection = new Vector3(x, 0, y);
@@ -143,27 +147,37 @@ public class S_CharaController : MonoBehaviour
             CheckDash();
 
         CheckAttackInput();
-        CamShake();
+
+
+        
+
+        if (m_trigger.hasEnteredTriggerCam)
+        {
+            CameraTriggerSet();
+        }
     }
 
     private void CameraControl()
     {
-        if (m_triggerCam != null)
-        {
-            var CamScript = m_triggerCam.GetComponent<S_TriggerCam>();
-            
-            if (m_spawner.hasClearedAllWaves == true)
-            {
-             var pChara = m_rb.GetComponent<SpriteRenderer>();
-             Debug.Log("Cam follow");
-             hasClearedAllWaves = true;
-             m_mainCam.Follow = pChara.transform;
-             
-             hasEnteredTriggerCam = false;
+        //var m_trigger = FindAnyObjectByType<S_TriggerCam>(FindObjectsInactive.Exclude);
 
-            }
-        }
-        
+        //if (!m_trigger.hasEnteredTriggerCam)
+        //    return;
+
+        var spawner = m_triggerCam.GetComponentInChildren<S_EnemySpawner>();
+        Debug.Log("zizi");
+        Debug.Log(spawner.hasClearedAllWaves);
+        if (spawner.hasClearedAllWaves)
+        {
+            
+            var pChara = m_rb.GetComponent<SpriteRenderer>();
+            Debug.Log("Cam follow");             
+            m_mainCam.Follow = pChara.transform;
+             
+            hasEnteredTriggerCam = false;
+            setTrigger = false;
+            Debug.Log(setTrigger);
+        }        
     }
 
     private void CheckDeath()
@@ -508,15 +522,16 @@ public class S_CharaController : MonoBehaviour
                 ActivateBuff(); //display particle system + buff            
         }
 
+        if (other.CompareTag("TriggerCam") || other.CompareTag("TestTrigger"))
+        {
+            m_triggerCam = other.gameObject;
+            m_trigger = m_triggerCam.GetComponent<S_TriggerCam>();
+        }
+
         // if (other.CompareTag("Ennemy") || other.CompareTag("DestroyableEvmt"))
         // {
         //     hasDashHit = true;
-        // }
-        var scriptTrigger = m_triggerCam.GetComponent<S_TriggerCam>();
-        if (scriptTrigger.hasEnteredTriggerCam)
-        {
-            CameraTriggerSet();
-        }
+        // }        
     }
 
     public void CameraTriggerSet()
@@ -536,9 +551,12 @@ public class S_CharaController : MonoBehaviour
         return m_coinCount;
     }
 
-    private void CamShake()
+    private void ReloadScene()
     {
-    
+        if (Input.GetKey(KeyCode.P))
+        {
+            SceneManager.LoadScene("SC_3C");
+        }
     }
 }
 

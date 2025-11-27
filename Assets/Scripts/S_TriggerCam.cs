@@ -10,9 +10,9 @@ public class S_TriggerCam : MonoBehaviour
     void Start()
     {
         //var spawners = GameObject.FindGameObjectsWithTag("Spawner");
-        var spawners = FindAnyObjectByType<S_EnemySpawner>(FindObjectsInactive.Exclude);
-        Debug.Log(spawners);
-        spawners.enabled = false;
+        //var spawners = FindAnyObjectByType<S_EnemySpawner>(FindObjectsInactive.Exclude);
+        //Debug.Log(spawners);
+        //spawners.enabled = false;
     }
 
     void Update()
@@ -26,37 +26,52 @@ public class S_TriggerCam : MonoBehaviour
 
         if (!hasEnteredTriggerCam)
         {
-            spawner.enabled = false;
+            //spawner.enabled = false;
         }
 
-        if (hasEnteredTriggerCam)
+        if (hasEnteredTriggerCam && !this.gameObject.CompareTag("TestTrigger"))
         {
-            spawner.enabled = true;
-            charaCon.hasClearedAllWaves = false;
+            //spawner.enabled = true;
+            spawner.hasClearedAllWaves = false;            
             m_trigger.enabled = false;            
+        }
+
+        if (hasEnteredTriggerCam && this.gameObject.CompareTag("TestTrigger"))
+        {
+            //spawner.enabled = true;
+            spawner.hasClearedAllWaves = false;
+            m_trigger.enabled = true;
         }
 
         if (spawner.hasClearedAllWaves)
         {
-            if (!this.gameObject.CompareTag("TestTrigger"))
+            if (this.gameObject.CompareTag("TestTrigger"))
             {
-                Debug.Log("testTrigger");
+                Debug.Log("TestTrigger");
+                hasEnteredTriggerCam = false;
                 return;
             }
                 
             else
+            {
                 Destroy(this.gameObject);
-
-            
+                hasEnteredTriggerCam = false;
+            }
+                            
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        var spawner = this.gameObject.GetComponentInChildren<S_EnemySpawner>();
+        var charaCon = m_chara.GetComponent<S_CharaController>();
+
         if (other.CompareTag("Player"))
         {
             Debug.Log("ziz");
             hasEnteredTriggerCam = true;
+            charaCon.setTrigger = true;
+            spawner.hasClearedAllWaves = false;
         }
     }
 }
