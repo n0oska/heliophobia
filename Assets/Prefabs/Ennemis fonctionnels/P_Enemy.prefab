@@ -249,7 +249,7 @@ MonoBehaviour:
     m_value: 0
     m_maxValue: 10
     isTakingDamage: 0
-  m_damage: 3
+  m_damage: 10
   m_playerLayer:
     serializedVersion: 2
     m_Bits: 256

@@ -162,15 +162,15 @@ MonoBehaviour:
     m_value: 0
     m_maxValue: 10
     isTakingDamage: 0
-  m_damage: 1
+  m_damage: 15
   m_playerLayer:
     serializedVersion: 2
     m_Bits: 256
   m_castRadius: 1
-  m_speed: 1
+  m_speed: 0.6
   m_stopDistance: 1.5
   m_timerAttack: 0
-  m_coolDown: 1.5
+  m_coolDown: 2
   canAttack: 1
   m_currentPos: {x: 0, y: 0, z: 0}
   m_castOffset: {x: 0, y: 0, z: 0}

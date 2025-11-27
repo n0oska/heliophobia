@@ -38,7 +38,16 @@ public class S_TriggerCam : MonoBehaviour
 
         if (spawner.hasClearedAllWaves)
         {
-            Destroy(this.gameObject);
+            if (!this.gameObject.CompareTag("TestTrigger"))
+            {
+                Debug.Log("testTrigger");
+                return;
+            }
+                
+            else
+                Destroy(this.gameObject);
+
+            
         }
     }
 
