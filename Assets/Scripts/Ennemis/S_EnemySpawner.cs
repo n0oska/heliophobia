@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using NUnit.Framework;
 using System.Linq;
+using Unity.Cinemachine;
 
 [System.Serializable]
 public class Wave
@@ -37,6 +38,8 @@ public class S_EnemySpawner : MonoBehaviour
     public bool hasClearedAllWaves = false;
     private bool hasClearedThisWave = false;
     private bool canSpawnNextWave = true;
+
+    [SerializeField] private CinemachineImpulseSource impulseSource;
 
     private List<GameObject> mAliveEnemies = new List<GameObject>();
 
@@ -88,9 +91,15 @@ public class S_EnemySpawner : MonoBehaviour
         if (hasClearedThisWave)
         {
             //Debug.Log("devrait changer de Wave");
+
+            if(impulseSource != null)
+                impulseSource.GenerateImpulse();
+
+
             mCurrentWave++;
             hasClearedThisWave = false;
             canSpawnNextWave = true;
+
             yield return new WaitForSeconds(0.3f);            
         }
     }
