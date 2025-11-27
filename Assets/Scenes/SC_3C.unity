@@ -5196,6 +5196,7 @@ MonoBehaviour:
     mSpawnRates: []
   m_chara: {fileID: 161421594}
   hasClearedAllWaves: 0
+  impulseSource: {fileID: 0}
   isDead: 0
 --- !u!1 &161421594 stripped
 GameObject:
@@ -6253,6 +6254,7 @@ MonoBehaviour:
     mSpawnRates: []
   m_chara: {fileID: 161421594}
   hasClearedAllWaves: 0
+  impulseSource: {fileID: 0}
   isDead: 0
 --- !u!1 &1138250330
 GameObject:
@@ -7547,6 +7549,7 @@ MonoBehaviour:
     mSpawnRates: []
   m_chara: {fileID: 161421594}
   hasClearedAllWaves: 0
+  impulseSource: {fileID: 2017590682}
   isDead: 0
 --- !u!1 &1704650402
 GameObject:
@@ -8230,6 +8233,8 @@ GameObject:
   - component: {fileID: 2017590676}
   - component: {fileID: 2017590680}
   - component: {fileID: 2017590681}
+  - component: {fileID: 2017590683}
+  - component: {fileID: 2017590682}
   m_Layer: 9
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -8356,6 +8361,83 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.8205395, y: 4.2148542, z: 8.6047535}
   m_Center: {x: 11.756192, y: -1.6074582, z: 10.031183}
+--- !u!114 &2017590682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2017590674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineImpulseSource
+  ImpulseDefinition:
+    ImpulseChannel: 1
+    ImpulseShape: 2
+    CustomImpulseShape:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    ImpulseDuration: 0.2
+    ImpulseType: 0
+    DissipationRate: 0.25
+    RawSignal: {fileID: 0}
+    AmplitudeGain: 1
+    FrequencyGain: 1
+    RepeatMode: 0
+    Randomize: 1
+    TimeEnvelope:
+      AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      AttackTime: 0
+      SustainTime: 0.2
+      DecayTime: 0.7
+      ScaleWithImpact: 1
+      HoldForever: 0
+    ImpactRadius: 100
+    DirectionMode: 0
+    DissipationMode: 2
+    DissipationDistance: 100
+    PropagationSpeed: 343
+  DefaultVelocity: {x: 0, y: -1, z: 0}
+--- !u!114 &2017590683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2017590674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b2d199b96b516448144ab30fb26aed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineImpulseListener
+  ApplyAfter: 2
+  ChannelMask: 1
+  Gain: 1
+  Use2DDistance: 0
+  UseCameraSpace: 0
+  SignalCombinationMode: 0
+  ReactionSettings:
+    m_SecondaryNoise: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+    AmplitudeGain: 1
+    FrequencyGain: 1
+    Duration: 1
+    m_NoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &2055610606 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2902425983170778878, guid: 8d2f4aa888c7e0b42b7bf9fb279b8817, type: 3}
