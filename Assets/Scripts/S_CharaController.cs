@@ -512,11 +512,9 @@ public class S_CharaController : MonoBehaviour
         // {
         //     hasDashHit = true;
         // }
-        if (other.CompareTag("TriggerCam"))
+        var scriptTrigger = m_triggerCam.GetComponent<S_TriggerCam>();
+        if (scriptTrigger.hasEnteredTriggerCam)
         {
-            Debug.Log("in trigger");
-            hasClearedAllWaves = false;
-            hasEnteredTriggerCam = true;
             CameraTriggerSet();
         }
     }

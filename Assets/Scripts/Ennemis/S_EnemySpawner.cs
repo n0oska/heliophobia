@@ -11,6 +11,7 @@ public class Wave
     public string mName = "Wave";
     public List<GameObject> mEnemies = new List<GameObject>();
     public List<float> mSpawnRates = new List<float>();
+    
 }
 
 public class S_EnemySpawner : MonoBehaviour
@@ -21,12 +22,14 @@ public class S_EnemySpawner : MonoBehaviour
     public List<Transform> mSpawnPoints;
 
     [Header("Waves Configuration")]
+    private Wave m_wave = new Wave();
     public List<Wave> mWaves = new List<Wave>();
 
     [Header("Chara ref")]
     [SerializeField] private GameObject m_chara;
 
     private S_CharaController m_charaScript;
+    private S_TriggerCam m_trigger;
     private int mCurrentWave = 0;
     private int ennemyByWave = 0;
     private bool mIsSpawning = false;
@@ -44,12 +47,14 @@ public class S_EnemySpawner : MonoBehaviour
     void Start()
     {
         m_charaScript = m_chara.GetComponent<S_CharaController>();
+        m_trigger = gameObject.GetComponentInParent<S_TriggerCam>();
+        Debug.Log(m_trigger);        
     }
 
     private void Update()
     {
 
-        if (m_charaScript.hasEnteredTriggerCam)
+        if (m_trigger.hasEnteredTriggerCam)
         {
             if (!mIsSpawning && mAliveEnemies.Count == 0 && mCurrentWave < mWaves.Count && canSpawnNextWave && this.enabled == true)
             {

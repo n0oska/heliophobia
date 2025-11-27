@@ -6,6 +6,7 @@ public class S_TriggerCam : MonoBehaviour
     [SerializeField] Collider m_trigger;
     public int m_waveNumber;
     public int m_ennemyNumber;
+    public bool hasEnteredTriggerCam = false;
     void Start()
     {
         //var spawners = GameObject.FindGameObjectsWithTag("Spawner");
@@ -23,20 +24,30 @@ public class S_TriggerCam : MonoBehaviour
         if (m_trigger == null)
             Debug.Log("pas trigger");
 
-        if (!charaCon.hasEnteredTriggerCam)
+        if (!hasEnteredTriggerCam)
         {
             spawner.enabled = false;
         }
 
-        if (charaCon.hasEnteredTriggerCam)
+        if (hasEnteredTriggerCam)
         {
             spawner.enabled = true;
+            charaCon.hasClearedAllWaves = false;
             m_trigger.enabled = false;            
         }
 
         if (spawner.hasClearedAllWaves)
         {
             Destroy(this.gameObject);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("ziz");
+            hasEnteredTriggerCam = true;
         }
     }
 }
