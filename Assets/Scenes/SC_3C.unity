@@ -6077,7 +6077,7 @@ MonoBehaviour:
     mSpawnRates: []
   m_chara: {fileID: 161421594}
   hasClearedAllWaves: 0
-  impulseSource: {fileID: 0}
+  impulseSource: {fileID: 2017590682}
   isDead: 0
 --- !u!1 &1138250330
 GameObject:
