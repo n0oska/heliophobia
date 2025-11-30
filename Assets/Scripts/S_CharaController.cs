@@ -98,7 +98,8 @@ public class S_CharaController : MonoBehaviour
         m_spawner = m_triggerCam.GetComponentInChildren<S_EnemySpawner>();
         m_trigger = m_triggerCam.GetComponent<S_TriggerCam>();
         //m_channels.enabled = false;
-        
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = false;
     }
 
     void Update()
