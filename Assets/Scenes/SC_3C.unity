@@ -5107,7 +5107,7 @@ PrefabInstance:
     - target: {fileID: 765979943456291852, guid: d323882c0bd76c24fa045d66c00b4f3f, type: 3}
       propertyPath: m_coin
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2374480364778439639, guid: 68fcefeb12fbc1f45aa37855b065e400, type: 3}
     - target: {fileID: 1966111022496814240, guid: d323882c0bd76c24fa045d66c00b4f3f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -19.69
@@ -6311,6 +6311,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1704650403}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1213904625
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1213904626}
+  m_Layer: 0
+  m_Name: spawnpoint (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1213904626
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1213904625}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -9.38, y: 1.31, z: -5.21}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1634325074}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1225887611
 GameObject:
   m_ObjectHideFlags: 0
@@ -7297,6 +7328,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2103159735}
+  - {fileID: 1213904626}
   m_Father: {fileID: 581436208092869876}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1634325075
@@ -7313,19 +7345,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::S_EnemySpawner
   mSpawnPoints:
   - {fileID: 2103159735}
+  - {fileID: 1213904626}
   mWaves:
   - mName: 
     mEnemies:
     - {fileID: 8930768713651231165, guid: ffb7e101db65ac847a95d0e41fea3032, type: 3}
     - {fileID: 8930768713651231165, guid: ffb7e101db65ac847a95d0e41fea3032, type: 3}
     - {fileID: 8930768713651231165, guid: ffb7e101db65ac847a95d0e41fea3032, type: 3}
-    mSpawnRates: []
+    mSpawnRates:
+    - 0
+    - 1
+    - 1.5
   - mName: 
     mEnemies:
     - {fileID: 8930768713651231165, guid: ffb7e101db65ac847a95d0e41fea3032, type: 3}
     - {fileID: 2555081290046007356, guid: cffa062c10aa7024b8406e47f77715bd, type: 3}
     - {fileID: 7400497147665886288, guid: a0f1b86b6c33a154e80db10327dc8187, type: 3}
-    mSpawnRates: []
+    mSpawnRates:
+    - 0
+    - 0.7
+    - 1.4
   m_chara: {fileID: 161421594}
   hasClearedAllWaves: 0
   impulseSource: {fileID: 2017590682}
@@ -7782,7 +7821,7 @@ PrefabInstance:
     - target: {fileID: 765979943456291852, guid: d323882c0bd76c24fa045d66c00b4f3f, type: 3}
       propertyPath: m_coin
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2374480364778439639, guid: 68fcefeb12fbc1f45aa37855b065e400, type: 3}
     - target: {fileID: 1966111022496814240, guid: d323882c0bd76c24fa045d66c00b4f3f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -14.55
@@ -8197,7 +8236,7 @@ PrefabInstance:
     - target: {fileID: 765979943456291852, guid: d323882c0bd76c24fa045d66c00b4f3f, type: 3}
       propertyPath: m_coin
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2374480364778439639, guid: 68fcefeb12fbc1f45aa37855b065e400, type: 3}
     - target: {fileID: 1966111022496814240, guid: d323882c0bd76c24fa045d66c00b4f3f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -24.24
@@ -8530,7 +8569,7 @@ PrefabInstance:
     - target: {fileID: 765979943456291852, guid: d323882c0bd76c24fa045d66c00b4f3f, type: 3}
       propertyPath: m_coin
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2374480364778439639, guid: 68fcefeb12fbc1f45aa37855b065e400, type: 3}
     - target: {fileID: 1966111022496814240, guid: d323882c0bd76c24fa045d66c00b4f3f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -28.81

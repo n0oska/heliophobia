@@ -163,21 +163,27 @@ public class S_CharaController : MonoBehaviour
 
         //if (!m_trigger.hasEnteredTriggerCam)
         //    return;
-
-        var spawner = m_triggerCam.GetComponentInChildren<S_EnemySpawner>();
-        Debug.Log("zizi");
-        Debug.Log(spawner.hasClearedAllWaves);
-        if (spawner.hasClearedAllWaves)
+        if (m_triggerCam != null)
         {
+            var spawner = m_triggerCam.GetComponentInChildren<S_EnemySpawner>();
+            Debug.Log("zizi");
+            Debug.Log(spawner.hasClearedAllWaves);
+            if (spawner.hasClearedAllWaves)
+            {
             
-            var pChara = m_rb.GetComponent<SpriteRenderer>();
-            Debug.Log("Cam follow");             
-            m_mainCam.Follow = pChara.transform;
+                var pChara = m_rb.GetComponent<SpriteRenderer>();
+                Debug.Log("Cam follow");             
+                m_mainCam.Follow = pChara.transform;
              
-            hasEnteredTriggerCam = false;
-            setTrigger = false;
-            Debug.Log(setTrigger);
-        }        
+                hasEnteredTriggerCam = false;
+                setTrigger = false;
+                Debug.Log(setTrigger);
+            }        
+        }
+
+        else 
+            return;
+        
     }
 
     private void CheckDeath()
