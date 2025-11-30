@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 //using Unity.VisualScripting;
 using Unity.Cinemachine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class S_EnemyController : MonoBehaviour
 {
@@ -22,9 +23,11 @@ public class S_EnemyController : MonoBehaviour
     [SerializeField] Vector3 m_castOffset;
     [SerializeField] GameObject player;
     [SerializeField] GameObject spawner;
+    [SerializeField] GameObject ScoreManager;
     [SerializeField] private CinemachineCamera m_cam;
     [SerializeField] Rigidbody m_rb;
     [SerializeField] private CinemachineBasicMultiChannelPerlin m_channels;
+    public int m_Value;
 
     private CapsuleCollider col;
     private bool hasSpawned = false;
@@ -65,6 +68,12 @@ public class S_EnemyController : MonoBehaviour
 
         if (m_health.isDead())
         { 
+            var scriptScore = GameObject.FindAnyObjectByType<S_ScoreManager>();
+            if (scriptScore != null)
+            {
+                Debug.Log("score activé sah");
+                scriptScore.m_score += m_Value;
+            }
             //GameObject parent = m_rb.GetComponentInParent<GameObject>();          
             spawnerScript.isDead = true;            
             Destroy(gameObject);
@@ -129,6 +138,7 @@ public class S_EnemyController : MonoBehaviour
     //        }
     //    }
     //}
+
 
     private void OnDrawGizmosSelected()
     {

@@ -263,6 +263,8 @@ MonoBehaviour:
   m_castOffset: {x: 0, y: 0, z: 0}
   player: {fileID: 0}
   spawner: {fileID: 0}
+  ScoreManager: {fileID: 0}
   m_cam: {fileID: 0}
   m_rb: {fileID: 4107336761542276825}
   m_channels: {fileID: 0}
+  m_Value: 40

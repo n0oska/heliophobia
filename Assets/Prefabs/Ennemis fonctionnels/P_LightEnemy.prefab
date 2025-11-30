@@ -176,9 +176,11 @@ MonoBehaviour:
   m_castOffset: {x: 0, y: 0, z: 0}
   player: {fileID: 0}
   spawner: {fileID: 0}
+  ScoreManager: {fileID: 0}
   m_cam: {fileID: 0}
   m_rb: {fileID: 3707480181137176801}
   m_channels: {fileID: 0}
+  m_Value: 100
 --- !u!114 &5066452267449762183
 MonoBehaviour:
   m_ObjectHideFlags: 0

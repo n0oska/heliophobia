@@ -10,6 +10,8 @@ public class mDayNightCycle : MonoBehaviour
     [Header("Light Reference")]
     [SerializeField] private Light mDirectionalLight;
 
+    private bool hasCycleEnded = false;
+
     private float mTimer = 0f;
 
     void Start()
@@ -22,6 +24,11 @@ public class mDayNightCycle : MonoBehaviour
 
     void Update()
     {
+        CreateCycle();
+    }
+
+    public void CreateCycle()
+    {
         mTimer += Time.deltaTime;
         float t = Mathf.Clamp01(mTimer / mDayDuration);
 
@@ -30,14 +37,24 @@ public class mDayNightCycle : MonoBehaviour
 
         mDirectionalLight.color = mLightColor.Evaluate(t);
         mDirectionalLight.intensity = mLightIntensityCurve.Evaluate(t);
+
+        if (mTimer >= mDayDuration)
+        {
+            hasCycleEnded = true;
+            ResetDayCycle();
+        }
     }
 
     public void ResetDayCycle()
     {
-        mTimer = 0f;
+        if (hasCycleEnded)
+        {
+            mTimer = 0f;
 
-        transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-        mDirectionalLight.color = mLightColor.Evaluate(0f);
-        mDirectionalLight.intensity = mLightIntensityCurve.Evaluate(0f);
+            transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+            mDirectionalLight.color = mLightColor.Evaluate(0f);
+            mDirectionalLight.intensity = mLightIntensityCurve.Evaluate(0f);
+        }
+        
     }
 }
