@@ -39,11 +39,10 @@ public class S_CharaController : MonoBehaviour
     private Vector3 m_currentDirection;
 
     [Header("Coins System")]
-    [SerializeField] private TextMeshProUGUI m_coinText;
-    private int m_coinCount = 0;
+    public int m_coinCount = 0;
 
     [Header("Buff Collectibles")]
-    [SerializeField] private int m_coinsRequiredForBuff = 5;
+    [SerializeField] public int m_coinsRequiredForBuff = 5;
     [SerializeField] private float m_buffDuration = 10f;
     [SerializeField] private float m_damageMultiplierDuringBuff = 2f;
 
@@ -92,7 +91,7 @@ public class S_CharaController : MonoBehaviour
     {
         m_rb = gameObject.GetComponent<Rigidbody>();
         m_playerHealth.Init();
-        UpdateCoinUI();
+        //UpdateCoinUI();
         UpdateDamage();
         m_attackOffset = new Vector3(1, 0, 0);
         m_spawner = m_triggerCam.GetComponentInChildren<S_EnemySpawner>();
@@ -135,7 +134,10 @@ public class S_CharaController : MonoBehaviour
         {
             m_buffTimer -= Time.deltaTime;
             if (m_buffTimer <= 0f)
-                DeactivateBuff();
+            {
+                m_coinCount = 0;
+                DeactivateBuff();                
+            }
         }
 
         if (!canDash)
@@ -490,8 +492,8 @@ public class S_CharaController : MonoBehaviour
 
         //Debug.Log($"BUFF ACTIVATED! Damage x{m_damageMultiplierDuringBuff} for {m_buffDuration} seconds");
 
-        m_coinCount = 0;
-        UpdateCoinUI();
+        //m_coinCount = 0;
+        //UpdateCoinUI();
     }
 
     private void DeactivateBuff()
@@ -517,7 +519,7 @@ public class S_CharaController : MonoBehaviour
             if (m_coinCount >= m_coinsRequiredForBuff && !m_isBuffActive)
                 ActivateBuff(); //display particle system + buff
 
-            UpdateCoinUI();
+            //UpdateCoinUI();
             Destroy(other.gameObject);
         }
 
@@ -547,11 +549,11 @@ public class S_CharaController : MonoBehaviour
 
     }
 
-    private void UpdateCoinUI()
-    {
-        if (m_coinText != null)
-            m_coinText.text = m_coinCount.ToString();
-    }
+    // private void UpdateCoinUI()
+    // {
+    //     if (m_coinText != null)
+    //         m_coinText.text = m_coinCount.ToString();
+    // }
 
     public int GetCoinCount()
     {
