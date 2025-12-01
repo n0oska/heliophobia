@@ -68,6 +68,10 @@ public class S_CharaController : MonoBehaviour
     public int waveCount;
     public bool hasEnteredTriggerCam = false;
 
+    [Header("WinScreen")]
+    [SerializeField] Canvas m_winScreen;
+    [SerializeField] Button m_restartButton;
+    [SerializeField] Button m_quitButton;
 
     [Header("Other")]
     private bool m_isBuffActive = false;
@@ -99,6 +103,7 @@ public class S_CharaController : MonoBehaviour
         //m_channels.enabled = false;
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = false;
+        m_winScreen.enabled = false;
     }
 
     void Update()
@@ -162,17 +167,16 @@ public class S_CharaController : MonoBehaviour
 
     private void CameraControl()
     {
-        //var m_trigger = FindAnyObjectByType<S_TriggerCam>(FindObjectsInactive.Exclude);
-
-        //if (!m_trigger.hasEnteredTriggerCam)
-        //    return;
         if (m_triggerCam != null)
         {
-            var spawner = m_triggerCam.GetComponentInChildren<S_EnemySpawner>();
-            Debug.Log("zizi");
-            Debug.Log(spawner.hasClearedAllWaves);
-            if (spawner.hasClearedAllWaves)
+            var spawner = m_triggerCam.GetComponentInChildren<S_EnemySpawner>();    
+
+            if (/*m_triggerCam == null &&*/ spawner.hasClearedAllWaves)
             {
+                Debug.Log("zizi");
+                Debug.Log(spawner.hasClearedAllWaves);
+                // if (spawner.hasClearedAllWaves)
+                // {
             
                 var pChara = m_rb.GetComponent<SpriteRenderer>();
                 Debug.Log("Cam follow");             
@@ -184,8 +188,21 @@ public class S_CharaController : MonoBehaviour
             }        
         }
 
+        if (m_triggerCam == null)
+        {
+            m_winScreen.enabled = true;
+            m_restartButton.Select();
+        }
+        //var m_trigger = FindAnyObjectByType<S_TriggerCam>(FindObjectsInactive.Exclude);
+
+        //if (!m_trigger.hasEnteredTriggerCam)
+        //    return;
+        
+
         else 
             return;
+
+       
         
     }
 
@@ -566,6 +583,16 @@ public class S_CharaController : MonoBehaviour
         {
             SceneManager.LoadScene("SC_3C");
         }
+    }
+
+    public void OnRestartClick()
+    {
+        SceneManager.LoadScene("SC_3C");
+    }
+
+    public void OnQuitClick()
+    {
+        SceneManager.LoadScene("SC_Menu");
     }
 }
 

@@ -9515,10 +9515,6 @@ PrefabInstance:
       value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 6524606961226487598, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
-      propertyPath: m_winScreen
-      value: 
-      objectReference: {fileID: 1565749237}
-    - target: {fileID: 6524606961226487598, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
       propertyPath: m_baseDamage
       value: 2
       objectReference: {fileID: 0}
@@ -9530,10 +9526,6 @@ PrefabInstance:
       propertyPath: m_dashRadius
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 6524606961226487598, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
-      propertyPath: m_quitButton
-      value: 
-      objectReference: {fileID: 213035275}
     - target: {fileID: 6524606961226487598, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
       propertyPath: m_triggerCam
       value: 
