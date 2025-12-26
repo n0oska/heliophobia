@@ -234,20 +234,24 @@ public class S_CharaController : MonoBehaviour
 
         //float time = 0f;
         m_dashTimer = 0f;
+        
 
         while (m_dashTimer < m_dashDuration)
         {
             float t = m_dashTimer / m_dashDuration;
             float curveMultiplier = m_dashCurve.Evaluate(t);
-
-            m_rb.linearVelocity = m_dashDirection * (m_dashForce * curveMultiplier);
+           
 
             m_dashTimer += Time.deltaTime;
+
+            m_rb.linearVelocity = m_dashDirection * (m_dashForce * curveMultiplier);
             yield return null;
         }
 
         if (isDashing)
         {
+            //m_rb.linearVelocity = m_dashDirection * (m_dashForce * curveMultiplier);
+
             Collider[] ennemiesInRange = Physics.OverlapSphere(m_rb.position, m_dashRadius, m_enemyMask);
 
             foreach (var enemy in ennemiesInRange)
@@ -274,7 +278,7 @@ public class S_CharaController : MonoBehaviour
 
     private void CheckDash()
     {
-        if (Input.GetKey(KeyCode.LeftShift) && canDash || Input.GetKey(KeyCode.Joystick1Button1))
+        if (Input.GetKey(KeyCode.LeftShift) && canDash || Input.GetKey(KeyCode.Joystick1Button1)  && canDash)
         {
             StartCoroutine(C_Dash());
         }

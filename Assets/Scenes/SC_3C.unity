@@ -7516,7 +7516,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1565749235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7661,7 +7661,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60.000004
+  field of view: 90
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -8123,7 +8123,7 @@ Transform:
   m_GameObject: {fileID: 1740610120}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.3, y: 3.84, z: -8.27}
+  m_LocalPosition: {x: -2.3, y: 3.84, z: -14.1}
   m_LocalScale: {x: 131.13506, y: 17.679, z: 3.3481}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8313,8 +8313,8 @@ Transform:
   m_GameObject: {fileID: 1785856242}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0000014305, y: 0, z: 0}
-  m_LocalScale: {x: 121.911514, y: 1, z: 8.3467}
+  m_LocalPosition: {x: -0.0000014305, y: 0, z: -3.4}
+  m_LocalScale: {x: 121.911514, y: 1, z: 14.563709}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1704650403}
@@ -8712,7 +8712,7 @@ MonoBehaviour:
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
-    FieldOfView: 60.000004
+    FieldOfView: 90
     OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 1000
@@ -8765,8 +8765,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.6983204, y: 4.5172634, z: 57.55935}
-  m_Center: {x: -7.2122164, y: -2.0211504, z: 7.550888}
+  m_Size: {x: 4.546646, y: 4.5172634, z: 57.55935}
+  m_Center: {x: -16.090275, y: -2.0212743, z: 7.550888}
 --- !u!65 &2017590681
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8786,8 +8786,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4.4618645, y: 4.2148542, z: 55.029327}
-  m_Center: {x: 10.43553, y: -1.6074872, z: 4.023306}
+  m_Size: {x: 3.616848, y: 4.2148542, z: 55.029327}
+  m_Center: {x: 17.192839, y: -1.6074872, z: 4.023306}
 --- !u!114 &2017590682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9492,7 +9492,7 @@ PrefabInstance:
       objectReference: {fileID: 1261409541}
     - target: {fileID: 6524606961226487598, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
       propertyPath: m_speed
-      value: 4
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6524606961226487598, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
       propertyPath: m_mainCam
@@ -9512,7 +9512,7 @@ PrefabInstance:
       objectReference: {fileID: 121248849}
     - target: {fileID: 6524606961226487598, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
       propertyPath: m_dashForce
-      value: 40
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 6524606961226487598, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
       propertyPath: m_winScreen
@@ -9524,7 +9524,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6524606961226487598, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
       propertyPath: m_dashDamage
-      value: 200
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6524606961226487598, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
       propertyPath: m_dashRadius
@@ -9552,11 +9552,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6524606961226487598, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
       propertyPath: m_dashCooldown
-      value: 0.4
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6524606961226487598, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
       propertyPath: m_dashDuration
-      value: 0.1
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 6524606961226487598, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
       propertyPath: m_restartButton
