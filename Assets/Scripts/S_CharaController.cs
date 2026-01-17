@@ -523,7 +523,7 @@ public class S_CharaController : MonoBehaviour
 
     private void PS_Spawn()
     {
-        Vector3 particleSystemOffset = new Vector3(0f,0.5f,0.1f);
+        Vector3 particleSystemOffset = new Vector3(0f,1.75f,0f);
         particlesInstance = Instantiate(poweredUpParticles, m_rb.transform.position + particleSystemOffset, Quaternion.identity);
     }
 

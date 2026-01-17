@@ -85,6 +85,17 @@ public class S_EnemyController : MonoBehaviour
             spawnerScript.isDead = true;            
             Destroy(gameObject);
         }
+
+        if (m_health.isTakingDamage)
+        {
+            SpriteRenderer m_sprite = this.gameObject.GetComponent<SpriteRenderer>();
+            m_sprite.color = Color.white;
+        }
+
+        if (!m_health.isTakingDamage)
+        {
+            SpriteRenderer m_sprite = this.gameObject.GetComponent<SpriteRenderer>();
+        }
         
         if (m_health.isTakingDamage && !isStunned)
         {
