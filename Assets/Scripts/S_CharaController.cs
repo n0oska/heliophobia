@@ -616,6 +616,7 @@ public class HealthManager
     public float m_value;
     public float m_maxValue = 10;
     public bool isTakingDamage;
+    public float previousHealthValue;
 
     public void Init()
     {
@@ -626,10 +627,12 @@ public class HealthManager
         m_value = Mathf.Max(0, m_value - damage);
         isTakingDamage = true;
         
-        if (isTakingDamage)
-        {
-            isTakingDamage = false;
-        }
+        //if (isTakingDamage)
+        //{            
+        //    isTakingDamage = false;
+        //}
+
+        previousHealthValue = Mathf.Max(0, m_value + damage);
     }
 
     public bool isDead() => m_value <= 0;

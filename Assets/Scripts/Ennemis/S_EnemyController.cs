@@ -32,8 +32,11 @@ public class S_EnemyController : MonoBehaviour
     private CapsuleCollider col;
     private bool hasSpawned = false;
     private bool canMove = true;
+    private bool isStunned = false;
     
-    private float stunTime = 0.5f;
+    private float stunTime;
+    private float stunTimer = 0.5f;
+    private float previousHeathValue;
     
 
 
@@ -50,8 +53,9 @@ public class S_EnemyController : MonoBehaviour
         Debug.Log(m_cam);
         col = gameObject.GetComponent<CapsuleCollider>();
         col.enabled = false;
-        hasSpawned = true;   
-        
+        hasSpawned = true;
+        stunTime = stunTimer;
+        previousHeathValue = m_health.m_maxValue;
        
     }
 
@@ -81,30 +85,44 @@ public class S_EnemyController : MonoBehaviour
             spawnerScript.isDead = true;            
             Destroy(gameObject);
         }
-        if (m_health.isTakingDamage)
+        
+        if (m_health.isTakingDamage && !isStunned)
+        {
+            isStunned = true;
+            m_health.isTakingDamage = false;
+            Debug.Log("hastakendmg");
+        }
+        
+        if (isStunned)
         {
             stunTime -= Time.deltaTime;
 
-            while (stunTime > 0)
+            if (stunTime >= 0)
+            {
                 StunTarget();
-        }       
+            }
+
+            else
+            {
+                canMove = true;
+                canAttack = true;
+                stunTime = stunTimer;
+                isStunned = false;
+                Debug.Log("fin stun");
+            }
+        }
 
         
     }
 
     private void StunTarget()
     {
+        Debug.Log("inStun");
         canMove = false;
         canAttack = false;            
         
-        //mettre anim dégats
+        //mettre anim dégats        
 
-        if (stunTime <= 0)
-        {
-            canMove = true;
-            canAttack = true;
-            stunTime = 0.5f;
-        }
     }
 
     private void GetMovement()
