@@ -35,6 +35,9 @@ public class S_CharaController : MonoBehaviour
     [SerializeField] private float m_rayLength;
     [SerializeField] private LayerMask m_obstacle;
     [SerializeField] private Vector3 m_offset;
+    [SerializeField] private ParticleSystem poweredUpParticles;
+
+    private ParticleSystem particlesInstance;
 
     private Vector3 m_currentDirection;
 
@@ -138,6 +141,7 @@ public class S_CharaController : MonoBehaviour
         if (m_isBuffActive)
         {
             m_buffTimer -= Time.deltaTime;
+            PS_Spawn();
             if (m_buffTimer <= 0f)
             {
                 m_coinCount = 0;
@@ -499,7 +503,7 @@ public class S_CharaController : MonoBehaviour
     private void ActivateBuff()
     {
         m_isBuffActive = true;
-        m_buffTimer = m_buffDuration;
+        m_buffTimer = m_buffDuration;        
 
         var sprite = m_rb.GetComponent<SpriteRenderer>().color;
         sprite.b = 0.5f;
@@ -515,6 +519,12 @@ public class S_CharaController : MonoBehaviour
 
         //m_coinCount = 0;
         //UpdateCoinUI();
+    }
+
+    private void PS_Spawn()
+    {
+        Vector3 particleSystemOffset = new Vector3(0f,0.5f,0.1f);
+        particlesInstance = Instantiate(poweredUpParticles, m_rb.transform.position + particleSystemOffset, Quaternion.identity);
     }
 
     private void DeactivateBuff()

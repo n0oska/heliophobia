@@ -31,6 +31,9 @@ public class S_EnemyController : MonoBehaviour
 
     private CapsuleCollider col;
     private bool hasSpawned = false;
+    private bool canMove = true;
+    
+    private float stunTime = 0.5f;
     
 
 
@@ -77,9 +80,31 @@ public class S_EnemyController : MonoBehaviour
             //GameObject parent = m_rb.GetComponentInParent<GameObject>();          
             spawnerScript.isDead = true;            
             Destroy(gameObject);
+        }
+        if (m_health.isTakingDamage)
+        {
+            stunTime -= Time.deltaTime;
+
+            while (stunTime > 0)
+                StunTarget();
         }       
 
         
+    }
+
+    private void StunTarget()
+    {
+        canMove = false;
+        canAttack = false;            
+        
+        //mettre anim dégats
+
+        if (stunTime <= 0)
+        {
+            canMove = true;
+            canAttack = true;
+            stunTime = 0.5f;
+        }
     }
 
     private void GetMovement()
@@ -91,7 +116,7 @@ public class S_EnemyController : MonoBehaviour
 
         float distance = Vector3.Distance(m_rb.position, spriteChara.transform.position);
 
-        if (m_rb != null && spriteChara != null) 
+        if (m_rb != null && spriteChara != null && canMove)
         {
             if (distance > m_stopDistance)
             {
