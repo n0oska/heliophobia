@@ -86,9 +86,6 @@ public class S_EnemyController : MonoBehaviour
             m_castOffset = new Vector3(-1, 0, 0);
             m_spriteRenderer.flipX = true;            
         }
-
-        Debug.Log(dirToPlayer.x);
-        Debug.Log(player);
         //Debug.Log($"PlayerX: {player.transform.position.x} | EnemyX: {transform.position.x} | dirX: {dirToPlayer.x}");
 
         if (m_health.isDead())

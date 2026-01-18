@@ -160,6 +160,7 @@ MonoBehaviour:
     m_value: 0
     m_maxValue: 10
     isTakingDamage: 0
+    previousHealthValue: 0
   m_damage: 5
   m_playerLayer:
     serializedVersion: 2
@@ -178,6 +179,7 @@ MonoBehaviour:
   m_cam: {fileID: 0}
   m_rb: {fileID: 3611627691874513639}
   m_channels: {fileID: 0}
+  m_ennemyHitPs: {fileID: 7009506689941312136, guid: 63c6eeabb2bceac49a50d3cc7e4847e1, type: 3}
   m_Value: 75
 --- !u!114 &8257064745822161884
 MonoBehaviour:
