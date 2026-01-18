@@ -27,16 +27,24 @@ public class S_EnemyController : MonoBehaviour
     [SerializeField] private CinemachineCamera m_cam;
     [SerializeField] Rigidbody m_rb;
     [SerializeField] private CinemachineBasicMultiChannelPerlin m_channels;
+    [SerializeField] private ParticleSystem m_ennemyHitPs;
+
+    private ParticleSystem m_ennemyHitPsInstance;
     public int m_Value;
 
     private CapsuleCollider col;
     private bool hasSpawned = false;
     private bool canMove = true;
     private bool isStunned = false;
+
+    private SpriteRenderer m_spriteRenderer;
     
     private float stunTime;
     private float stunTimer = 0.5f;
     private float previousHeathValue;
+    private Quaternion PsRotation;
+    private bool hasPsSpawned = false;
+
     
 
 
@@ -56,7 +64,7 @@ public class S_EnemyController : MonoBehaviour
         hasSpawned = true;
         stunTime = stunTimer;
         previousHeathValue = m_health.m_maxValue;
-       
+        m_spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -69,9 +77,17 @@ public class S_EnemyController : MonoBehaviour
         
 
         if (this.gameObject.transform.position.x != 0 && this.gameObject.transform.position.x > 0)
+        {
             m_castOffset = new Vector3(1, 0, 0);
+            m_spriteRenderer.flipX = false;
+            PsRotation = Quaternion.Euler(0,0,0);
+        }
         if (this.gameObject.transform.position.x != 0 && this.gameObject.transform.position.x < 0)
+        {
             m_castOffset = new Vector3(-1, 0, 0);
+            m_spriteRenderer.flipX = true;
+            PsRotation = Quaternion.Euler(0,180,0);
+        }
 
         if (m_health.isDead())
         { 
@@ -88,13 +104,19 @@ public class S_EnemyController : MonoBehaviour
 
         if (m_health.isTakingDamage)
         {
-            SpriteRenderer m_sprite = this.gameObject.GetComponent<SpriteRenderer>();
-            m_sprite.color = Color.white;
+            ParticlesInstance();
+            var m_sprite = this.gameObject.GetComponent<SpriteRenderer>().color;
+            m_sprite.b = 250f;
+            m_sprite.r = 250f;
+            m_sprite.g= 250f;
         }
 
         if (!m_health.isTakingDamage)
         {
-            SpriteRenderer m_sprite = this.gameObject.GetComponent<SpriteRenderer>();
+            var m_sprite = this.gameObject.GetComponent<SpriteRenderer>().color;
+            m_sprite.r = 250;
+            m_sprite.g = 0;
+            m_sprite.b = 0;
         }
         
         if (m_health.isTakingDamage && !isStunned)
@@ -123,7 +145,7 @@ public class S_EnemyController : MonoBehaviour
             }
         }
 
-        
+        Debug.Log(PsRotation);
     }
 
     private void StunTarget()
@@ -174,6 +196,16 @@ public class S_EnemyController : MonoBehaviour
                 canAttack = true;
             }
         }
+    }
+
+    private void ParticlesInstance()
+    {
+        //offset si besoin
+        
+        m_ennemyHitPsInstance = Instantiate(m_ennemyHitPs, transform.position, PsRotation);
+        
+
+        
     }
 
     

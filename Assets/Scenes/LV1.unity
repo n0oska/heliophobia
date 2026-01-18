@@ -127,6 +127,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1998257790094902991, guid: ffb7e101db65ac847a95d0e41fea3032, type: 3}
+      propertyPath: m_ennemyHitPs
+      value: 
+      objectReference: {fileID: 7009506689941312136, guid: aa356b7bd5d873a438ad81ed70737db3, type: 3}
     - target: {fileID: 7413614969064406208, guid: ffb7e101db65ac847a95d0e41fea3032, type: 3}
       propertyPath: m_LocalPosition.x
       value: -46.61
@@ -166,6 +170,10 @@ PrefabInstance:
     - target: {fileID: 7413614969064406208, guid: ffb7e101db65ac847a95d0e41fea3032, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8405007105534950710, guid: ffb7e101db65ac847a95d0e41fea3032, type: 3}
+      propertyPath: m_Color.r
+      value: 0.98039216
       objectReference: {fileID: 0}
     - target: {fileID: 8930768713651231165, guid: ffb7e101db65ac847a95d0e41fea3032, type: 3}
       propertyPath: m_Name
