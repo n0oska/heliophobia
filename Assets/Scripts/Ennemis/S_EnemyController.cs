@@ -74,20 +74,22 @@ public class S_EnemyController : MonoBehaviour
         GetMovement();
         StartCoroutine(CombatDmg());
         var spawnerScript = spawner.GetComponent<S_EnemySpawner>();
-        
 
-        if (this.gameObject.transform.position.x != 0 && this.gameObject.transform.position.x > 0)
+        Vector3 dirToPlayer = (player.transform.position - m_rb.transform.position).normalized;
+        if (dirToPlayer.x != 0 && dirToPlayer.x > 0)
         {
             m_castOffset = new Vector3(1, 0, 0);
             m_spriteRenderer.flipX = false;
-            PsRotation = Quaternion.Euler(0,0,0);
         }
-        if (this.gameObject.transform.position.x != 0 && this.gameObject.transform.position.x < 0)
+        if (dirToPlayer.x != 0 && dirToPlayer.x < 0)
         {
             m_castOffset = new Vector3(-1, 0, 0);
-            m_spriteRenderer.flipX = true;
-            PsRotation = Quaternion.Euler(0,180,0);
+            m_spriteRenderer.flipX = true;            
         }
+
+        Debug.Log(dirToPlayer.x);
+        Debug.Log(player);
+        //Debug.Log($"PlayerX: {player.transform.position.x} | EnemyX: {transform.position.x} | dirX: {dirToPlayer.x}");
 
         if (m_health.isDead())
         { 
@@ -105,6 +107,7 @@ public class S_EnemyController : MonoBehaviour
         if (m_health.isTakingDamage)
         {
             ParticlesInstance();
+            hasPsSpawned = true;
             var m_sprite = this.gameObject.GetComponent<SpriteRenderer>().color;
             m_sprite.b = 250f;
             m_sprite.r = 250f;
@@ -145,7 +148,7 @@ public class S_EnemyController : MonoBehaviour
             }
         }
 
-        Debug.Log(PsRotation);
+       
     }
 
     private void StunTarget()
@@ -200,11 +203,16 @@ public class S_EnemyController : MonoBehaviour
 
     private void ParticlesInstance()
     {
-        //offset si besoin
-        
-        m_ennemyHitPsInstance = Instantiate(m_ennemyHitPs, transform.position, PsRotation);
-        
+        //offset si besoin*
+        Quaternion rotation;
 
+        if (m_spriteRenderer.flipX)
+            rotation = Quaternion.Euler(0, 0, 0);
+        else 
+            rotation = Quaternion.Euler(0, 180, 0);
+
+        m_ennemyHitPsInstance = Instantiate(m_ennemyHitPs, transform.position, rotation);
+        hasPsSpawned = false;      
         
     }
 
