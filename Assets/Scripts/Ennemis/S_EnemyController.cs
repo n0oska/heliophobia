@@ -101,10 +101,10 @@ public class S_EnemyController : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (m_health.isTakingDamage)
+        if (m_health.isTakingDamage && !hasPsSpawned)
         {
-            ParticlesInstance();
             hasPsSpawned = true;
+            StartCoroutine(C_ParticlesInstance());            
             var m_sprite = this.gameObject.GetComponent<SpriteRenderer>().color;
             m_sprite.b = 250f;
             m_sprite.r = 250f;
@@ -143,9 +143,7 @@ public class S_EnemyController : MonoBehaviour
                 isStunned = false;
                 Debug.Log("fin stun");
             }
-        }
-
-       
+        }       
     }
 
     private void StunTarget()
@@ -198,7 +196,7 @@ public class S_EnemyController : MonoBehaviour
         }
     }
 
-    private void ParticlesInstance()
+    private IEnumerator C_ParticlesInstance()
     {
         //offset si besoin*
         Quaternion rotation;
@@ -209,8 +207,8 @@ public class S_EnemyController : MonoBehaviour
             rotation = Quaternion.Euler(0, 180, 0);
 
         m_ennemyHitPsInstance = Instantiate(m_ennemyHitPs, transform.position, rotation);
-        hasPsSpawned = false;      
-        
+        yield return new WaitForSeconds(0.2f);
+        hasPsSpawned = false;        
     }
 
     
