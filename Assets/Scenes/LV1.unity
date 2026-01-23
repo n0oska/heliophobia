@@ -12999,9 +12999,29 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1548471599476902917, guid: 8a82350be83cda941a21c604898eeb23, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1576951375775773385, guid: 8a82350be83cda941a21c604898eeb23, type: 3}
       propertyPath: m_text
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1776792796545548760, guid: 8a82350be83cda941a21c604898eeb23, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1776792796545548760, guid: 8a82350be83cda941a21c604898eeb23, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c0ad7f811ccfca64ebe4b7ba8e255687, type: 3}
+    - target: {fileID: 1776792796545548760, guid: 8a82350be83cda941a21c604898eeb23, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1776792796545548760, guid: 8a82350be83cda941a21c604898eeb23, type: 3}
+      propertyPath: m_UseSpriteMesh
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3236080682761767917, guid: 8a82350be83cda941a21c604898eeb23, type: 3}
       propertyPath: m_Camera
@@ -13086,6 +13106,10 @@ PrefabInstance:
     - target: {fileID: 3894106847418039652, guid: 8a82350be83cda941a21c604898eeb23, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7297257372219704005, guid: 8a82350be83cda941a21c604898eeb23, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
