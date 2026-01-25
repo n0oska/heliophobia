@@ -27,6 +27,30 @@ MonoBehaviour:
     m_Key: Skip
     m_Metadata:
       m_Items: []
+  - m_Id: 2328092900397056
+    m_Key: Restart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2328267882565632
+    m_Key: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2328353035325440
+    m_Key: Sound
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2328402901405696
+    m_Key: Controls
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2328473445404672
+    m_Key: Back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2338393599315968
+    m_Key: Pause menu
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

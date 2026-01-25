@@ -30,6 +30,30 @@ MonoBehaviour:
     m_Localized: Espace / A pour skip
     m_Metadata:
       m_Items: []
+  - m_Id: 2328092900397056
+    m_Localized: Recommencer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2328267882565632
+    m_Localized: Continuer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2328353035325440
+    m_Localized: Son
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2328402901405696
+    m_Localized: "Contr\xF4les"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2328473445404672
+    m_Localized: Retour
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2338393599315968
+    m_Localized: Menu pause
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

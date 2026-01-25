@@ -10,6 +10,8 @@ public class S_DialogueUI : MonoBehaviour
 {
     [SerializeField] private Canvas m_canvas;
     [SerializeField] private Image m_image;
+    [SerializeField] private GameObject m_Namiaus;
+    [SerializeField] private ParticleSystem m_namiausParticles;
     [SerializeField] private List<TextMeshProUGUI> m_textList;
     
     private int currentIndex = 0;
@@ -49,6 +51,8 @@ public class S_DialogueUI : MonoBehaviour
         if (hasDialogueEnded)
         {
             m_canvas.enabled = false;
+            m_namiausParticles.Play();
+            m_Namiaus.SetActive(false);
         }
 
         //if (hasDialogueEnded)
