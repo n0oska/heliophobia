@@ -16,7 +16,19 @@ MonoBehaviour:
   m_TableCollectionNameGuidString: 6b7164c7c4886e5469b69e19b9af9e52
   m_Entries:
   - m_Id: 19275964416
-    m_Key: Namiaus LVL1
+    m_Key: Namiaus LVL1 mission
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2303240378322944
+    m_Key: Namiaus LV1 Bonjour
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2304027884064768
+    m_Key: LV1 Controles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2304758477295616
+    m_Key: LVL1 vampire
     m_Metadata:
       m_Items: []
   m_Metadata:

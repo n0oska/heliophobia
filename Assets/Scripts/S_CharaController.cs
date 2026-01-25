@@ -240,7 +240,7 @@ public class S_CharaController : MonoBehaviour
         m_dashTimer = 0f;
         
 
-        while (m_dashTimer < m_dashDuration)
+        while (m_dashTimer <= m_dashDuration)
         {
             float t = m_dashTimer / m_dashDuration;
             float curveMultiplier = m_dashCurve.Evaluate(t);

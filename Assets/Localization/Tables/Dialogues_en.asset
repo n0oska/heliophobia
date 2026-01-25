@@ -21,7 +21,27 @@ MonoBehaviour:
   - m_Id: 19275964416
     m_Localized: "Nameows : \nIf you wanna be a vampire lord, bring me three essential
       blood samples and i will consecrate you. But be careful Stanislaus, others
-      creatures got the same objective as you. "
+      creatures got the same objective as you. Good luck !"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2303240378322944
+    m_Localized: "Nameows : \nHello stanislas, you're finally awake. I can now explain
+      your new vampire abilities to you."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2304027884064768
+    m_Localized: 'Nameows :
+
+      You can move around using ZQSD or the left joystick,
+      and you can wield you sword sing left click or X'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2304758477295616
+    m_Localized: 'Nameows :
+
+      As a vampire, you can dash a short distance using
+      left shift or RT. Your enemies'' blood drops can make you stronger, but light
+      weakens you. So try to stay in the shadows.'
     m_Metadata:
       m_Items: []
   references:

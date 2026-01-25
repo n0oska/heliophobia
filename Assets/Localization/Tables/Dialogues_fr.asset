@@ -21,8 +21,26 @@ MonoBehaviour:
   - m_Id: 19275964416
     m_Localized: "Namiaus : \nSi tu veux \xEAtre un seigneur vampire, ram\xE8nes
       moi trois \xE9chantillons de sang primordial et je te sacrerais. Mais fais
-      attention Stanislaus, d'autres cr\xE9atures ont le m\xEAme objectif que toi
-      !"
+      attention Stanislaus, d'autres cr\xE9atures ont le m\xEAme objectif que toi.
+      Bonne chance !"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2303240378322944
+    m_Localized: "Namiaus : \nBonjour Stanislaus, tu t'es enfin r\xE9veill\xE9, je
+      vais pouvoir t'expliquer tes nouvelles comp\xE9tences de vampire."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2304027884064768
+    m_Localized: "Namiaus :\nTu peux te d\xE9placer normalement en utilisant ZQSD
+      ou le joystick gauche, et tu peux manier ton \xE9p\xE9e gr\xE2ce au clic gauche
+      ou \xE0 X."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2304758477295616
+    m_Localized: "Namiaus :\n\xC9tant un vampire, tu peux dasher sur une courte distance
+      en utilisant maj gauche ou RT. Les gouttes de sang de tes ennemis peuvent te
+      rendre plus fort, mais la lumi\xE8re t'affaiblis. Essayes donc de rester dans
+      l'ombre."
     m_Metadata:
       m_Items: []
   references:
