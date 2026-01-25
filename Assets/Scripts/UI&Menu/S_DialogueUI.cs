@@ -46,6 +46,11 @@ public class S_DialogueUI : MonoBehaviour
             StartNextText();
         }
 
+        if (hasDialogueEnded)
+        {
+            m_canvas.enabled = false;
+        }
+
         //if (hasDialogueEnded)
         //{
         //    hasDialogueEnded = false;
@@ -62,6 +67,11 @@ public class S_DialogueUI : MonoBehaviour
         if (currentIndex < m_textList.Count)
         {
             m_textList[currentIndex].enabled = true;
+        }
+
+        else
+        {
+            hasDialogueEnded = true;
         }
 
         //for (int i = 0; i < m_textList.Count; i++)
