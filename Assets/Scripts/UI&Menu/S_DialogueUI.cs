@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEditor.UI;
+//using UnityEditor.UI;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
@@ -10,56 +10,74 @@ public class S_DialogueUI : MonoBehaviour
 {
     [SerializeField] private Canvas m_canvas;
     [SerializeField] private Image m_image;
-    [SerializeField] private TextMeshProUGUI m_textToShow;
     [SerializeField] private List<TextMeshProUGUI> m_textList;
     
-
+    private int currentIndex = 0;
     //[SerializeField] private TextMeshProUGUI nextTextToshow;
 
     private bool hasDialogueEnded = false;
     private bool hasSkipped = true;
+    private bool firstDialogue = true;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        StartCoroutine(C_EcrisTaMere());
+        //StartCoroutine(C_EcrisTaMere());
+        if (m_textList == null || m_textList.Count == 0) return;
+
+        foreach (TextMeshProUGUI text in  m_textList)
+        {
+            text.enabled = false;
+        }
+
+        if (m_textList.Count > 0)
+        {
+            m_textList[0].enabled = true;
+        }
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            hasSkipped = true;
+            //hasSkipped = true;
+            Debug.Log("input");
+            StartNextText();
         }
 
-        if (hasDialogueEnded)
-        {
-            StartCoroutine(C_EcrisTaMere());
-        }
+        //if (hasDialogueEnded)
+        //{
+        //    hasDialogueEnded = false;
+        //    StartCoroutine(C_EcrisTaMere());
+        //}
     }
 
-    private IEnumerator C_EcrisTaMere()
+    private void StartNextText()
     {
-        hasSkipped = false;
-        for (int i = 0; i < m_textList.Count;)
+        Debug.Log("next"); 
+        m_textList[currentIndex].enabled = false;
+        currentIndex++;
+
+        if (currentIndex < m_textList.Count)
         {
-            if (i == m_textList.Count)
-            {
-                m_textToShow = m_textList.ElementAt(m_textList.Count);
-            }
-
-            // if (hasDialogueEnded)
-            // {
-                
-            // }
-
-            if (hasSkipped)
-            {
-                hasDialogueEnded = true;
-                i++;
-                yield return new WaitForEndOfFrame();
-            }
-            
+            m_textList[currentIndex].enabled = true;
         }
+
+        //for (int i = 0; i < m_textList.Count; i++)
+        //{
+        //    Debug.Log("for");
+            
+        //    while (!hasSkipped)
+        //    {
+        //        yield return null;
+        //    }
+
+        //    //hasSkipped = false;         
+            
+        //}
+
+        //hasDialogueEnded = true;
+        //Debug.Log("fin coroutine");
     }
 }

@@ -12,7 +12,7 @@ public class S_MenuInGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.JoystickButton7))
+        if (Input.GetKeyDown(KeyCode.M) || Input.GetKeyDown(KeyCode.JoystickButton7))
         {
             SceneManager.LoadScene("SC_Menu");
         }

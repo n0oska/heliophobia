@@ -177,18 +177,18 @@ public class S_CharaController : MonoBehaviour
 
             if (/*m_triggerCam == null &&*/ spawner.hasClearedAllWaves)
             {
-                Debug.Log("zizi");
-                Debug.Log(spawner.hasClearedAllWaves);
+                //Debug.Log("zizi");
+                //Debug.Log(spawner.hasClearedAllWaves);
                 // if (spawner.hasClearedAllWaves)
                 // {
             
                 var pChara = m_rb.GetComponent<SpriteRenderer>();
-                Debug.Log("Cam follow");             
+                //Debug.Log("Cam follow");             
                 m_mainCam.Follow = pChara.transform;
              
                 hasEnteredTriggerCam = false;
                 setTrigger = false;
-                Debug.Log(setTrigger);
+                //Debug.Log(setTrigger);
             }        
         }
 
@@ -266,7 +266,7 @@ public class S_CharaController : MonoBehaviour
                 if (enemyCtrl != null && hasDashHit)
                 {
                     enemyCtrl.m_health.TakeDamage(m_dashDamage);
-                    Debug.Log(m_dashDamage);
+                    //Debug.Log(m_dashDamage);
                 }
             }
         }
