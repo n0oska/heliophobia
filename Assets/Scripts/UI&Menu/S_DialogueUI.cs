@@ -51,8 +51,9 @@ public class S_DialogueUI : MonoBehaviour
         if (hasDialogueEnded)
         {
             m_canvas.enabled = false;
-            m_namiausParticles.Play();
+            Instantiate(m_namiausParticles, transform.position, Quaternion.identity);
             m_Namiaus.SetActive(false);
+            Destroy(this);
         }
 
         //if (hasDialogueEnded)

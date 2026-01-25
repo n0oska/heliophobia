@@ -49,6 +49,8 @@ public class S_EnemySpawner : MonoBehaviour
 
     public bool isDead = false;
 
+    private float destroyTimer = 3f;
+
     void Start()
     {
         m_charaScript = m_chara.GetComponent<S_CharaController>();
@@ -81,14 +83,18 @@ public class S_EnemySpawner : MonoBehaviour
                 Debug.Log(hasClearedAllWaves);
                 m_trigger.hasEnteredTriggerCam = false;
                 Debug.Log(m_trigger.hasEnteredTriggerCam);
-                StartCoroutine(C_ResetWave());
+
+                destroyTimer -= Time.deltaTime;
+                if (destroyTimer < 0)
+                    Destroy(this.gameObject);
+                //StartCoroutine(C_ResetWave());
             }            
         }
     }
 
     private IEnumerator C_ResetWave()
     {
-        yield return new WaitForFixedUpdate();
+        yield return new WaitForSeconds(1.5f);
         mCurrentWave = 0;
         mWaves = mWaveOrigin;
         //hasClearedAllWaves = false;
@@ -125,16 +131,19 @@ public class S_EnemySpawner : MonoBehaviour
         for (int i = 0; i < wave.mEnemies.Count; i++)
         {
             GameObject prefab = wave.mEnemies[i];
-            float spawnRate = (i < wave.mSpawnRates.Count) ? wave.mSpawnRates[i] : 0f;
+            float spawnRate = (i < wave.mSpawnRates.Count) ? wave.mSpawnRates[i] : 0.2f;
 
             Transform spawnPoint = mSpawnPoints[Random.Range(0, mSpawnPoints.Count)];
             GameObject enemy = Instantiate(prefab, spawnPoint.position, spawnPoint.rotation);
 
             mAliveEnemies.Add(enemy);
+            Debug.Log(mWaves.Count());
+            Debug.Log(mCurrentWave);
+            Debug.Log(mAliveEnemies.Count);
             
             StartCoroutine(C_TrackEnemyDeath(enemy));
 
-            yield return new WaitForSeconds(spawnRate);
+            yield return new WaitForEndOfFrame();
         }
         ennemyByWave = mAliveEnemies.Count;
         Debug.Log(ennemyByWave);
@@ -156,5 +165,6 @@ public class S_EnemySpawner : MonoBehaviour
         mAliveEnemies.Remove(trackedEnemy);
         dead.Add(trackedEnemy);
         Debug.Log(dead.Count);
+        Debug.Log(mAliveEnemies);
     }
 }

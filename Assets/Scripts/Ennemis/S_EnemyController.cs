@@ -41,6 +41,7 @@ public class S_EnemyController : MonoBehaviour
     
     private float stunTime;
     private float stunTimer = 0.5f;
+    private float stunCooldown = 2.5f;
     private float previousHeathValue;
     private Quaternion PsRotation;
     private bool hasPsSpawned = false;
@@ -126,13 +127,17 @@ public class S_EnemyController : MonoBehaviour
             Debug.Log("hastakendmg");
         }
         
-        if (isStunned)
+        if (isStunned && stunCooldown ==0)
         {
             stunTime -= Time.deltaTime;
-
+            
             if (stunTime >= 0)
             {
                 StunTarget();
+                stunCooldown -= Time.deltaTime;
+
+                if (stunCooldown <= 0)
+                    stunCooldown = 0;
             }
 
             else
@@ -150,7 +155,7 @@ public class S_EnemyController : MonoBehaviour
     {
         Debug.Log("inStun");
         canMove = false;
-        canAttack = false;            
+        canAttack = false;
         
         //mettre anim dégats        
 

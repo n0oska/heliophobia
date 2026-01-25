@@ -173,7 +173,12 @@ public class S_CharaController : MonoBehaviour
     {
         if (m_triggerCam != null)
         {
-            var spawner = m_triggerCam.GetComponentInChildren<S_EnemySpawner>();    
+            var spawner = m_triggerCam.GetComponentInChildren<S_EnemySpawner>();
+            Debug.Log(spawner);
+            if (spawner == null)
+            {
+                return;
+            }
 
             if (/*m_triggerCam == null &&*/ spawner.hasClearedAllWaves)
             {
@@ -185,7 +190,7 @@ public class S_CharaController : MonoBehaviour
                 var pChara = m_rb.GetComponent<SpriteRenderer>();
                 //Debug.Log("Cam follow");             
                 m_mainCam.Follow = pChara.transform;
-             
+                
                 hasEnteredTriggerCam = false;
                 setTrigger = false;
                 //Debug.Log(setTrigger);
