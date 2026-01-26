@@ -131,7 +131,7 @@ public class S_EnemySpawner : MonoBehaviour
         for (int i = 0; i < wave.mEnemies.Count; i++)
         {
             GameObject prefab = wave.mEnemies[i];
-            float spawnRate = (i < wave.mSpawnRates.Count) ? wave.mSpawnRates[i] : 0.2f;
+            float spawnRate = (i < wave.mSpawnRates.Count) ? wave.mSpawnRates[i] : 0;
 
             Transform spawnPoint = mSpawnPoints[Random.Range(0, mSpawnPoints.Count)];
             GameObject enemy = Instantiate(prefab, spawnPoint.position, spawnPoint.rotation);
@@ -143,9 +143,9 @@ public class S_EnemySpawner : MonoBehaviour
             
             StartCoroutine(C_TrackEnemyDeath(enemy));
 
-            yield return new WaitForEndOfFrame();
+            yield return new WaitForSeconds(1);
         }
-        ennemyByWave = mAliveEnemies.Count;
+        ennemyByWave = wave.mEnemies.Count;
         Debug.Log(ennemyByWave);
         hasSpawnedAll = true;
         mIsSpawning = false; 
@@ -161,6 +161,7 @@ public class S_EnemySpawner : MonoBehaviour
             yield return null;
         //Debug.Log(trackedEnemy);
 
+        //ennemyByWave = mAliveEnemies.Count;
 
         mAliveEnemies.Remove(trackedEnemy);
         dead.Add(trackedEnemy);
