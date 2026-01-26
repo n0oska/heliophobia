@@ -471,9 +471,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: S_CharaController, Assembly-CSharp
-        m_MethodName: OnRestartClick
+      - m_Target: {fileID: 2361290220556257198}
+        m_TargetAssemblyTypeName: S_WinScreen, Assembly-CSharp
+        m_MethodName: OnNextLVLClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -742,9 +742,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: S_CharaController, Assembly-CSharp
-        m_MethodName: OnQuitClick
+      - m_Target: {fileID: 2361290220556257198}
+        m_TargetAssemblyTypeName: S_WinScreen, Assembly-CSharp
+        m_MethodName: OnRestartClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -766,6 +766,7 @@ GameObject:
   - component: {fileID: 7706197078392442608}
   - component: {fileID: 8917791189061268098}
   - component: {fileID: 6937225581810200735}
+  - component: {fileID: 2361290220556257198}
   m_Layer: 5
   m_Name: WinScreen
   m_TagString: Untagged
@@ -856,3 +857,16 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &2361290220556257198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7194786953596399592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a015ffe53ab79c349bbdad43815f6878, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::S_WinScreen
+  m_nextLvlButton: {fileID: 4711588356929707376}

@@ -7980,7 +7980,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a015ffe53ab79c349bbdad43815f6878, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  m_nextLvlButton: {fileID: 0}
+  m_nextLvlButton: {fileID: 670114893552245934}
 --- !u!1001 &592916763
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21260,9 +21260,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4341458100419198341, guid: b44dee12ed920004bb5bb47431132616, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4341458100419198341, guid: b44dee12ed920004bb5bb47431132616, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2011663050}
+    - target: {fileID: 4711588356929707376, guid: b44dee12ed920004bb5bb47431132616, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4711588356929707376, guid: b44dee12ed920004bb5bb47431132616, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -21283,6 +21291,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 591461396}
   m_SourcePrefab: {fileID: 100100000, guid: b44dee12ed920004bb5bb47431132616, type: 3}
+--- !u!114 &670114893552245934 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4711588356929707376, guid: b44dee12ed920004bb5bb47431132616, type: 3}
+  m_PrefabInstance: {fileID: 670114893552245933}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1001 &2408693881486819212
 PrefabInstance:
   m_ObjectHideFlags: 0
