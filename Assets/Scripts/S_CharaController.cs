@@ -14,6 +14,7 @@ public class S_CharaController : MonoBehaviour
     [SerializeField] private float m_damage;
     [SerializeField] private float m_baseDamage;
     [SerializeField] private SpriteRenderer m_sR;
+
     //[SerializeField] private HealthManager m_healthManager;
 
     [Header("Dash system")]
@@ -195,13 +196,7 @@ public class S_CharaController : MonoBehaviour
                 setTrigger = false;
                 //Debug.Log(setTrigger);
             }        
-        }
-
-        if (m_triggerCam == null)
-        {
-            m_winScreen.enabled = true;
-            m_restartButton.Select();
-        }
+        }        
         //var m_trigger = FindAnyObjectByType<S_TriggerCam>(FindObjectsInactive.Exclude);
 
         //if (!m_trigger.hasEnteredTriggerCam)
@@ -571,6 +566,13 @@ public class S_CharaController : MonoBehaviour
         {
             m_triggerCam = other.gameObject;
             m_trigger = m_triggerCam.GetComponent<S_TriggerCam>();
+        }
+
+        if (other.CompareTag("EndTrigger"))
+        {
+            m_winScreen.enabled = true;
+            Cursor.visible = true;
+            m_restartButton.Select();
         }
 
         // if (other.CompareTag("Ennemy") || other.CompareTag("DestroyableEvmt"))

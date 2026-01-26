@@ -37,6 +37,7 @@ public class S_MenuInGame : MonoBehaviour
     void ToggleMenu()
     {
         isMenuOpen = !isMenuOpen;
+        Cursor.visible = !Cursor.visible;
 
         if (isMenuOpen)
         {
