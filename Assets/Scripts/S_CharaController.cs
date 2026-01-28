@@ -95,6 +95,14 @@ public class S_CharaController : MonoBehaviour
     private S_TriggerCam m_trigger;
     private S_EnemySpawner m_spawner;
 
+    [Header("Sound Effects")]
+    [SerializeField] private AudioSource m_audioSource;
+    [SerializeField] private AudioClip m_dashSFX;
+    [SerializeField] private AudioClip m_attackSFX;
+    [SerializeField] private AudioClip m_deathSFX;
+    private bool m_hasPlayedDeathSFX = false;
+
+
     void Start()
     {
         m_rb = gameObject.GetComponent<Rigidbody>();
@@ -108,6 +116,9 @@ public class S_CharaController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = false;
         m_winScreen.enabled = false;
+        if (m_audioSource == null)
+            m_audioSource = GetComponent<AudioSource>();
+
     }
 
     void Update()
@@ -223,6 +234,7 @@ public class S_CharaController : MonoBehaviour
     {
         m_rb.transform.position = m_startPos.transform.position;
 
+
         if (hasRespawned)
         {
             m_playerHealth.Init();
@@ -238,7 +250,9 @@ public class S_CharaController : MonoBehaviour
 
         //float time = 0f;
         m_dashTimer = 0f;
-        
+
+        if (m_audioSource && m_dashSFX)
+            m_audioSource.PlayOneShot(m_dashSFX);
 
         while (m_dashTimer <= m_dashDuration)
         {
@@ -300,6 +314,9 @@ public class S_CharaController : MonoBehaviour
                 Collider[] ennemiesInRange = Physics.OverlapSphere(m_rb.position + m_attackOffset, m_attackRadius, m_enemyMask);
 
                 m_animator.SetTrigger("Attack");
+                if (m_audioSource && m_attackSFX)
+                    m_audioSource.PlayOneShot(m_attackSFX);
+
 
                 foreach (var enemy in ennemiesInRange)
                 {
@@ -615,6 +632,7 @@ public class S_CharaController : MonoBehaviour
     {
         SceneManager.LoadScene("SC_Menu");
     }
+
 }
 
 [System.Serializable]
@@ -643,6 +661,9 @@ public class HealthManager
     }
 
     public bool isDead() => m_value <= 0;
+
+
+
 
 }
 
