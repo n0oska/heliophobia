@@ -168,6 +168,8 @@ public class S_CharaController : MonoBehaviour
         {
             CameraTriggerSet();
         }
+
+        m_playerHealth.EndOfFrame();
     }
 
     private void CameraControl()
@@ -624,6 +626,7 @@ public class HealthManager
     public float m_maxValue = 10;
     public bool isTakingDamage;
     public float previousHealthValue;
+    public bool dmgTakenThisFrame;
 
     public void Init()
     {
@@ -640,6 +643,13 @@ public class HealthManager
         //}
 
         previousHealthValue = Mathf.Max(0, m_value + damage);
+
+        
+    }
+
+    public void EndOfFrame()
+    {
+        isTakingDamage = false;
     }
 
     public bool isDead() => m_value <= 0;
