@@ -187,7 +187,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 72
   m_offset: {x: 0, y: -0.77, z: 0}
-  m_coinText: {fileID: 0}
+  poweredUpParticles: {fileID: 0}
+  m_coinCount: 0
   m_coinsRequiredForBuff: 5
   m_buffDuration: 10
   m_damageMultiplierDuringBuff: 2
@@ -202,18 +203,28 @@ MonoBehaviour:
     m_value: 0
     m_maxValue: 10
     isTakingDamage: 0
+    previousHealthValue: 0
   m_startPos: {fileID: 0}
   hasRespawned: 0
   m_mainCam: {fileID: 0}
   m_triggerCam: {fileID: 0}
+  m_lookTriggerCam: {fileID: 0}
   killCount: 0
   waveCount: 0
   hasEnteredTriggerCam: 0
+  m_winScreen: {fileID: 0}
+  m_restartButton: {fileID: 0}
+  m_quitButton: {fileID: 0}
   hasDashHit: 0
   hasHit: 0
   m_animator: {fileID: 0}
   m_holdThreshold: 0.5
   hasClearedAllWaves: 0
+  setTrigger: 0
+  m_audioSource: {fileID: 0}
+  m_dashSFX: {fileID: 0}
+  m_attackSFX: {fileID: 8300000, guid: 95633a087631abb4f99194de47bd1a00, type: 3}
+  m_deathSFX: {fileID: 0}
 --- !u!1 &7746706235243689266
 GameObject:
   m_ObjectHideFlags: 0
