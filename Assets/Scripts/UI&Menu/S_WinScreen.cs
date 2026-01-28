@@ -4,13 +4,15 @@ using UnityEngine.UI;
 
 public class S_WinScreen : MonoBehaviour
 {
-    [SerializeField] private Button m_nextLvlButton; 
+    [SerializeField] private Button m_nextLvlButton;
+    [SerializeField] private  Canvas m_canvas;
 
     private Scene loadedScene;
     private int loadedSceneIndex; 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        m_canvas.enabled = false;
         loadedScene = SceneManager.GetActiveScene();
     }
 

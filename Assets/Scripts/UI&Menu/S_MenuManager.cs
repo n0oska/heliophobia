@@ -65,7 +65,7 @@ public class S_MenuManager : MonoBehaviour
 
     public void OnStartClick()
     {
-        SceneManager.LoadScene("SC_3C");
+        SceneManager.LoadScene("LV1");
     }
 
     public void OnQuitClick()

@@ -870,3 +870,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::S_WinScreen
   m_nextLvlButton: {fileID: 4711588356929707376}
+  m_canvas: {fileID: 7706197078392442608}
