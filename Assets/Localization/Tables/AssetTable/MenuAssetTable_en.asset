@@ -22,6 +22,10 @@ MonoBehaviour:
     m_Localized: '3048cd0d14fbd4042b3c322864962f4c[ControlesMappingStanAnglais]'
     m_Metadata:
       m_Items: []
+  - m_Id: 709125932912640
+    m_Localized: 'cb02397a576c2fb40b46ccad0ab09b5c[united-kingdom-flag-icon]'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

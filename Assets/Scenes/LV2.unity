@@ -1416,7 +1416,7 @@ PrefabInstance:
     - target: {fileID: 6524606961226487598, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
       propertyPath: m_winScreen
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1816195697}
     - target: {fileID: 6524606961226487598, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
       propertyPath: m_baseDamage
       value: 2
@@ -1531,7 +1531,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8376844007137121120, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -58.34
+      value: -58.8
       objectReference: {fileID: 0}
     - target: {fileID: 8376844007137121120, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2754,7 +2754,7 @@ Transform:
   m_GameObject: {fileID: 447165160}
   serializedVersion: 2
   m_LocalRotation: {x: -0.0014999936, y: 0, z: 0, w: 0.99999887}
-  m_LocalPosition: {x: -58.34, y: 0.9900001, z: -12.83}
+  m_LocalPosition: {x: -58.8, y: 0.9900001, z: -12.83}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5602,7 +5602,7 @@ Transform:
   m_GameObject: {fileID: 988160372}
   serializedVersion: 2
   m_LocalRotation: {x: -0.0014999936, y: 0, z: 0, w: 0.99999887}
-  m_LocalPosition: {x: -58.34, y: 0.9900001, z: -12.83}
+  m_LocalPosition: {x: -58.8, y: 0.9900001, z: -12.83}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12846,6 +12846,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: EndTrigger
       objectReference: {fileID: 0}
+    - target: {fileID: 7126042949497578585, guid: c22c5e17e5c41c04e96ceba66834df8a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.02
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14272,6 +14276,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
+--- !u!223 &1816195697 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 7706197078392442608, guid: b44dee12ed920004bb5bb47431132616, type: 3}
+  m_PrefabInstance: {fileID: 1482994159}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1820923793
 GameObject:
   m_ObjectHideFlags: 0

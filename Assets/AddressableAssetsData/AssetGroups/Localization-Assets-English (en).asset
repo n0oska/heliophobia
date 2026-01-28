@@ -21,6 +21,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-en
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cb02397a576c2fb40b46ccad0ab09b5c
+    m_Address: united-kingdom-flag-icon
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: a9c94147e2367cc4895d5a8fb8aee85e, type: 2}
   m_SchemaSet:

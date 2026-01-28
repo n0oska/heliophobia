@@ -1,12 +1,15 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Localization.Settings;
+using UnityEngine.Localization;
 
 public class S_MenuManager : MonoBehaviour
 {
     [Header("Main menu")]
     [SerializeField] private Button m_startButton;
     [SerializeField] private Canvas m_canvasMain;
+    [SerializeField] private GameObject m_panelMain;
     private bool isInOptions = false;
 
     [Header("Options menu")]
@@ -16,6 +19,10 @@ public class S_MenuManager : MonoBehaviour
     [SerializeField] private GameObject m_panelOptions;
     [SerializeField] private Button m_backButtonPanelOptions;
     [SerializeField] private Slider m_sliderSound;
+
+    [Header("Locale")]
+    [SerializeField] private Locale French;
+    [SerializeField] private Locale English;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -66,6 +73,16 @@ public class S_MenuManager : MonoBehaviour
     public void OnStartClick()
     {
         SceneManager.LoadScene("LV1");
+    }
+
+    public void OnFlagClick()
+    {
+        if (LocalizationSettings.SelectedLocale == English)
+        {
+            LocalizationSettings.SelectedLocale = French;
+        }
+        else
+            LocalizationSettings.SelectedLocale = English;
     }
 
     public void OnQuitClick()
