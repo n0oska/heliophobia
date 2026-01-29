@@ -17841,7 +17841,7 @@ PrefabInstance:
     - target: {fileID: 6524606961226487598, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
       propertyPath: m_playerHealth.m_audioSource
       value: 
-      objectReference: {fileID: 1124861744}
+      objectReference: {fileID: 1686381064}
     - target: {fileID: 6524606961226487598, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
       propertyPath: m_dashCurve.m_Curve.Array.size
       value: 2
@@ -19727,7 +19727,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
