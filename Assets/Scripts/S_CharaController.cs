@@ -100,7 +100,8 @@ public class S_CharaController : MonoBehaviour
     [SerializeField] private AudioClip m_dashSFX;
     [SerializeField] private AudioClip m_attackSFX;
     [SerializeField] private AudioClip m_deathSFX;
-    private bool m_hasPlayedDeathSFX = false;
+
+
 
 
     void Start()
@@ -645,6 +646,9 @@ public class HealthManager
     public bool isTakingDamage;
     public float previousHealthValue;
     public bool dmgTakenThisFrame;
+    public AudioSource m_audioSource;
+    public AudioClip m_hitSFX;
+    public S_CharaController Player;
 
     public void Init()
     {
@@ -654,7 +658,14 @@ public class HealthManager
     {
         m_value = Mathf.Max(0, m_value - damage);
         isTakingDamage = true;
-        
+
+        if (Player != null && isTakingDamage)
+
+            if (m_audioSource && m_hitSFX)
+                m_audioSource.PlayOneShot(m_hitSFX);
+                 Debug.Log("BAAAAAAAAAAAA");
+
+
         //if (isTakingDamage)
         //{            
         //    isTakingDamage = false;
