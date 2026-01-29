@@ -126,6 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::S_Environement
   m_health:
     m_value: 0
-    m_maxValue: 5
+    m_maxValue: 8
     isTakingDamage: 0
-  m_coin: {fileID: 0}
+    previousHealthValue: 0
+  m_coin: {fileID: 2374480364778439639, guid: 68fcefeb12fbc1f45aa37855b065e400, type: 3}

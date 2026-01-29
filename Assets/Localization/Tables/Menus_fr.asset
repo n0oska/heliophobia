@@ -19,7 +19,7 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 138494861312
-    m_Localized: Jouer
+    m_Localized: Selection de niveaux
     m_Metadata:
       m_Items: []
   - m_Id: 143360253952
@@ -52,6 +52,18 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 2338393599315968
     m_Localized: Menu pause
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3754789591896064
+    m_Localized: Niveau 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3754848568004608
+    m_Localized: Niveau 2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3754905849614336
+    m_Localized: Niveau 3
     m_Metadata:
       m_Items: []
   references:

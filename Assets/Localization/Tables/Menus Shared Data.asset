@@ -51,6 +51,18 @@ MonoBehaviour:
     m_Key: Pause menu
     m_Metadata:
       m_Items: []
+  - m_Id: 3754789591896064
+    m_Key: Nv1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3754848568004608
+    m_Key: Nv2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3754905849614336
+    m_Key: Niv3
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

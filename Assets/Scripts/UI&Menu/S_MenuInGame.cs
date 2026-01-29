@@ -73,12 +73,14 @@ public class S_MenuInGame : MonoBehaviour
 
     public void OnQuitClick()
     {
+        Time.timeScale = 1;
         m_canvasMenu.enabled=false;
         SceneManager.LoadScene("SC_Menu");
     }
 
     public void OnRestartClick()
     {
+        Time.timeScale = 1;
         m_canvasMenu.enabled = false;
         SceneManager.LoadScene("LV1");
     }

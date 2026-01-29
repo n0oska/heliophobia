@@ -20,6 +20,10 @@ public class S_MenuManager : MonoBehaviour
     [SerializeField] private Button m_backButtonPanelOptions;
     [SerializeField] private Slider m_sliderSound;
 
+    [Header("Level selector")]
+    [SerializeField] private GameObject m_lvlSelectorPanel;
+    [SerializeField] private Button m_lvl1Button;
+
     [Header("Locale")]
     [SerializeField] private Locale French;
     [SerializeField] private Locale English;
@@ -30,6 +34,7 @@ public class S_MenuManager : MonoBehaviour
         m_canvasOptions.enabled = false;
         m_panelOptions.SetActive(false);
         m_panelSound.SetActive(false);
+        m_lvlSelectorPanel.SetActive(false);
     }
 
     public void Options()
@@ -70,9 +75,31 @@ public class S_MenuManager : MonoBehaviour
         m_buttonSound.Select();
     }
 
-    public void OnStartClick()
+    public void OnLv1Click()
     {
         SceneManager.LoadScene("LV1");
+    }
+
+    public void OnLv2Click()
+    {
+        SceneManager.LoadScene("LV2");
+    }
+
+    public void OnLv3Click()
+    {
+        SceneManager.LoadScene("LV3");
+    }
+
+    public void OnLvlSelectorBackClick()
+    {
+        m_lvlSelectorPanel.SetActive(false);
+        m_startButton.Select();
+    }
+
+    public void OnLvlSelectorClick()
+    {
+        m_lvlSelectorPanel.SetActive(true);
+        m_lvl1Button.Select();
     }
 
     public void OnFlagClick()

@@ -564,6 +564,8 @@ public class S_CharaController : MonoBehaviour
         {
             m_coinCount++;
 
+            m_playerHealth.m_value += 10;
+
             if (m_coinCount >= m_coinsRequiredForBuff && !m_isBuffActive)
                 ActivateBuff(); //display particle system + buff
 
