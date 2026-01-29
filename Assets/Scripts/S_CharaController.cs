@@ -92,6 +92,7 @@ public class S_CharaController : MonoBehaviour
     private bool m_isCharging;
     public bool hasClearedAllWaves = false;
     public bool setTrigger = false;
+    public bool cameraFollow = true;
     private S_TriggerCam m_trigger;
     private S_EnemySpawner m_spawner;
 
@@ -183,12 +184,18 @@ public class S_CharaController : MonoBehaviour
 
     private void CameraControl()
     {
+        if (m_triggerCam == null)
+        {
+            Debug.Log("chillz");
+        }
         if (m_triggerCam != null)
         {
+            Debug.Log("kill");
             var spawner = m_triggerCam.GetComponentInChildren<S_EnemySpawner>();
             Debug.Log(spawner);
             if (spawner == null)
             {
+                Debug.Log("mort");
                 return;
             }
 
@@ -198,10 +205,13 @@ public class S_CharaController : MonoBehaviour
                 //Debug.Log(spawner.hasClearedAllWaves);
                 // if (spawner.hasClearedAllWaves)
                 // {
-            
+                Debug.Log("should follow");
                 var pChara = m_rb.GetComponent<SpriteRenderer>();
                 //Debug.Log("Cam follow");             
                 m_mainCam.Follow = pChara.transform;
+                cameraFollow = true;
+
+                Debug.Log(m_mainCam.Follow);
                 
                 hasEnteredTriggerCam = false;
                 setTrigger = false;
@@ -600,7 +610,8 @@ public class S_CharaController : MonoBehaviour
 
     public void CameraTriggerSet()
     {
-        m_mainCam.Follow = null;           
+        m_mainCam.Follow = null;
+        cameraFollow = false;
 
     }
 

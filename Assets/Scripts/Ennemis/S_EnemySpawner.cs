@@ -49,7 +49,7 @@ public class S_EnemySpawner : MonoBehaviour
 
     public bool isDead = false;
 
-    private float destroyTimer = 3f;
+    private float destroyTimer = 5f;
 
     void Start()
     {
@@ -84,9 +84,11 @@ public class S_EnemySpawner : MonoBehaviour
                 m_trigger.hasEnteredTriggerCam = false;
                 Debug.Log(m_trigger.hasEnteredTriggerCam);
 
-                destroyTimer -= Time.deltaTime;
-                if (destroyTimer < 0)
-                    Destroy(this.gameObject);
+                //destroyTimer -= Time.deltaTime;
+
+
+                //if (destroyTimer < 0)
+                //    Destroy(this.gameObject);
                 //StartCoroutine(C_ResetWave());
             }            
         }

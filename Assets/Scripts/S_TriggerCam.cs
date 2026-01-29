@@ -43,7 +43,7 @@ public class S_TriggerCam : MonoBehaviour
             m_trigger.enabled = true;
         }
 
-        if (spawner.hasClearedAllWaves)
+        if (spawner.hasClearedAllWaves && charaCon.cameraFollow)
         {
             if (this.gameObject.CompareTag("TestTrigger"))
             {
