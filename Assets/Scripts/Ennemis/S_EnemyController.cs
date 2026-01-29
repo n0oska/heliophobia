@@ -46,9 +46,6 @@ public class S_EnemyController : MonoBehaviour
     private Quaternion PsRotation;
     private bool hasPsSpawned = false;
 
-    [SerializeField] private AudioSource m_audioSource;
-    [SerializeField] private AudioClip m_hitSFX;
-
 
 
     void Start()
@@ -208,8 +205,7 @@ public class S_EnemyController : MonoBehaviour
                 yield return new WaitForSeconds(m_coolDown);
                 canAttack = true;
             }
-            if (m_audioSource && m_hitSFX)
-                m_audioSource.PlayOneShot(m_hitSFX);
+
         }
     }
 
