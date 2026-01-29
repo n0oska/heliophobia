@@ -22,6 +22,10 @@ MonoBehaviour:
     m_Localized: "d2a5a41059708fe44934cacb02fba41b[Sch\xE9maControlsStan]"
     m_Metadata:
       m_Items: []
+  - m_Id: 709125932912640
+    m_Localized: 'b00e99fdef0e346429ed7544a0ba9371[france-flag-png-2]'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -19,6 +19,10 @@ MonoBehaviour:
     m_Key: ControlsScheme
     m_Metadata:
       m_Items: []
+  - m_Id: 709125932912640
+    m_Key: Drapeau
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items:
     - rid: 4921740104683487320
@@ -36,6 +40,10 @@ MonoBehaviour:
       data:
         m_Entries:
         - m_KeyId: 16505942016
+          m_TableCodes:
+          - fr
+          - en
+        - m_KeyId: 709125932912640
           m_TableCodes:
           - fr
           - en

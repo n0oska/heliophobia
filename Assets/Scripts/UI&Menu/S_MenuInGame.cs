@@ -16,13 +16,23 @@ public class S_MenuInGame : MonoBehaviour
     [Header("Options")]
     [SerializeField] Button m_backButton;
     [SerializeField] Button m_soundButton;
-    [SerializeField] Button m_controlsButton;
+
+    [Header("Sound")]
+    [SerializeField] GameObject m_soundPanel;
+    [SerializeField] Slider m_soundSlider;
+
+    [Header("Controls")]
+    [SerializeField] Button m_controlsBackButton;
+    [SerializeField] GameObject m_controlsPanel;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         m_canvasMenu.enabled = false;
         m_optionsMenu.enabled = false;
+        m_controlsPanel.SetActive(false);
+        m_soundPanel.SetActive(false);
     }
 
     // Update is called once per frame
@@ -76,5 +86,38 @@ public class S_MenuInGame : MonoBehaviour
     public void OnOptionsClick()
     {
         m_optionsMenu.enabled = true;
+        m_canvasMenu.enabled = false;
+    }
+
+    public void OnOptionsBackClick()
+    {
+        m_optionsMenu.enabled = false;
+        m_canvasMenu.enabled = true;
+    }
+
+    public void OnSoundClick()
+    {
+        m_soundPanel.SetActive(true);
+        m_soundSlider.Select();
+    }
+
+    public void OnControlsClick()
+    {
+        m_controlsPanel.SetActive(true);
+        m_controlsBackButton.Select();
+    }
+
+    public void OnBackClickSound()
+    {
+        m_soundPanel.SetActive(false);
+        m_optionsMenu.enabled = true;
+        m_soundButton.Select();
+    }
+
+    public void OnBackClickControls()
+    {
+        m_controlsPanel.SetActive(false);
+        m_optionsMenu.enabled = true;
+        m_soundButton.Select();
     }
 }
