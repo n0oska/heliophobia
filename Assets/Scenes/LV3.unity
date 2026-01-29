@@ -4496,6 +4496,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 617108345}
     - target: {fileID: 6524606961226487598, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
+      propertyPath: m_attackSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 761bcbc45fe5ec34b880f1b6f77c12b4, type: 3}
+    - target: {fileID: 6524606961226487598, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
       propertyPath: m_dashForce
       value: 60
       objectReference: {fileID: 0}
@@ -4578,7 +4582,7 @@ PrefabInstance:
     - target: {fileID: 6524606961226487598, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
       propertyPath: m_playerHealth.m_hitSFX
       value: 
-      objectReference: {fileID: 8300000, guid: ca532c6e38b4ca94c88edf0ac95217f8, type: 3}
+      objectReference: {fileID: 8300000, guid: d563ac62a9f228542aa6dc77486d5f24, type: 3}
     - target: {fileID: 6524606961226487598, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
       propertyPath: m_playerHealth.m_maxValue
       value: 50
@@ -12041,11 +12045,11 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.5
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 50
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -12174,7 +12178,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 75
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
