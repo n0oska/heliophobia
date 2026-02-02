@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 4107336761542276825}
   - component: {fileID: 3818631124684093858}
   - component: {fileID: 1998257790094902991}
+  - component: {fileID: 8076302727697524094}
   m_Layer: 6
   m_Name: P_Enemy
   m_TagString: Untagged
@@ -260,4 +261,27 @@ MonoBehaviour:
   m_rb: {fileID: 4107336761542276825}
   m_channels: {fileID: 0}
   m_ennemyHitPs: {fileID: 7009506689941312136, guid: aa356b7bd5d873a438ad81ed70737db3, type: 3}
+  m_anim: {fileID: 8076302727697524094}
   m_Value: 40
+--- !u!95 &8076302727697524094
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8930768713651231165}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 648169a0c4d2903448596f319df86489, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

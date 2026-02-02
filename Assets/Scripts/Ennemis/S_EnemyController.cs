@@ -28,6 +28,7 @@ public class S_EnemyController : MonoBehaviour
     [SerializeField] Rigidbody m_rb;
     [SerializeField] private CinemachineBasicMultiChannelPerlin m_channels;
     [SerializeField] private ParticleSystem m_ennemyHitPs;
+    [SerializeField] private Animator m_anim;
 
     private ParticleSystem m_ennemyHitPsInstance;
     public int m_Value;
@@ -80,12 +81,12 @@ public class S_EnemyController : MonoBehaviour
         if (dirToPlayer.x != 0 && dirToPlayer.x > 0)
         {
             m_castOffset = new Vector3(1, 0, 0);
-            m_spriteRenderer.flipX = false;
+            m_spriteRenderer.flipX = true;
         }
         if (dirToPlayer.x != 0 && dirToPlayer.x < 0)
         {
             m_castOffset = new Vector3(-1, 0, 0);
-            m_spriteRenderer.flipX = true;            
+            m_spriteRenderer.flipX = false;            
         }
         //Debug.Log($"PlayerX: {player.transform.position.x} | EnemyX: {transform.position.x} | dirX: {dirToPlayer.x}");
 
@@ -127,7 +128,7 @@ public class S_EnemyController : MonoBehaviour
             stunCooldown = 2.5f;
             Debug.Log("hastakendmg");
         }
-        
+
         if (isStunned)
         {
             stunTime -= Time.deltaTime;
@@ -171,6 +172,8 @@ public class S_EnemyController : MonoBehaviour
 
     private void GetMovement()
     {
+        m_anim.SetTrigger("Walk");
+
         if (m_rb == null)
             Debug.Log("Pas de rigidbody");
 
@@ -205,12 +208,15 @@ public class S_EnemyController : MonoBehaviour
                 
                 yield return new WaitForSeconds(m_coolDown);
                 canAttack = true;
+                m_anim.SetTrigger("Attack");
             }
         }
     }
 
     private IEnumerator C_ParticlesInstance()
     {
+
+
         //offset si besoin*
         Quaternion rotation;
 
@@ -221,10 +227,13 @@ public class S_EnemyController : MonoBehaviour
 
         m_ennemyHitPsInstance = Instantiate(m_ennemyHitPs, transform.position, rotation);
         yield return new WaitForSeconds(0.2f);
-        hasPsSpawned = false;        
+        hasPsSpawned = false;
+
+        m_anim.SetTrigger("TakeDamage");
+
     }
 
-    
+
     //private void FixedUpdate()
     //{
     //    Collider[] playerCollider = Physics.OverlapSphere(m_currentPos + m_castOffset, m_castRadius, m_playerLayer);       

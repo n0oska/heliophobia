@@ -145,8 +145,8 @@ public class S_CharaController : MonoBehaviour
             m_attackOffset = new Vector3(1, 0, 0);
         }
 
-        if (m_currentDirection != Vector3.zero)
-            OnStartMoving();
+        //if (m_currentDirection != Vector3.zero)
+            //OnStartMoving();
 
         if (m_light != null)
             CheckLight();
@@ -180,6 +180,13 @@ public class S_CharaController : MonoBehaviour
         {
             CameraTriggerSet();
         }
+
+        bool isMoving = m_currentDirection.sqrMagnitude > 0.01f;
+        m_animator.SetBool("IsMoving", isMoving);
+        m_currentDirection = new Vector3(x, 0, y);
+        m_rb.linearVelocity = m_currentDirection * m_speed;
+
+
     }
 
     private void CameraControl()
@@ -299,10 +306,11 @@ public class S_CharaController : MonoBehaviour
         m_dashCooldownTimer = m_dashCooldown;
     }
 
-    private void OnStartMoving()
-    {
+    //private void OnStartMoving()
+    //{
         // display animations
-    }
+        //m_animator.SetTrigger("IsMoving");
+    //}
 
     private void CheckDash()
     {

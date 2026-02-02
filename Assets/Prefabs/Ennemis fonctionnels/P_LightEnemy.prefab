@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5066452267449762183}
   - component: {fileID: 7795455081540127992}
   - component: {fileID: 1043051050444758486}
+  - component: {fileID: 417629861687109754}
   m_Layer: 6
   m_Name: P_LightEnemy
   m_TagString: Untagged
@@ -182,6 +183,7 @@ MonoBehaviour:
   m_rb: {fileID: 3707480181137176801}
   m_channels: {fileID: 0}
   m_ennemyHitPs: {fileID: 7009506689941312136, guid: ea351a5bcf8990541a59342528686910, type: 3}
+  m_anim: {fileID: 417629861687109754}
   m_Value: 100
 --- !u!114 &5066452267449762183
 MonoBehaviour:
@@ -291,3 +293,25 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!95 &417629861687109754
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2555081290046007356}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1f2b569bc99d52c478b117279b3d89f3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
