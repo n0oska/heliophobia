@@ -2,13 +2,13 @@
 - Project name: heliophobia
 - Unity version: Unity 6000.2.7f2
 - Active scene:
-  - Name: LV3
+  - Name: LV2
   - Tags:
     - Untagged, Respawn, Finish, EditorOnly, MainCamera, Player, GameController, Coin, TriggerCam, Spawner, TestCoin, TestTrigger, EndTrigger
   - Layers:
     - Default, TransparentFX, Ignore Raycast, Obstacle, Water, UI, Enemy, Destroyable, Player, Camera
 - Active game object:
-  - Name: WinScreen
+  - Name: EA_Tr_Hills_Grass_02a_LOD0 (3)
   - Tag: Untagged
-  - Layer: UI
+  - Layer: Default
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->

@@ -20707,10 +20707,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 295670317}
     m_Modifications:
+    - target: {fileID: 167185186821502366, guid: b737d8d7f955058468c313f34588bf94, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1410.0005
+      objectReference: {fileID: 0}
     - target: {fileID: 927994193827879623, guid: b737d8d7f955058468c313f34588bf94, type: 3}
       propertyPath: m_player
       value: 
       objectReference: {fileID: 2011663047}
+    - target: {fileID: 2766001587620620876, guid: b737d8d7f955058468c313f34588bf94, type: 3}
+      propertyPath: m_Name
+      value: Restart
+      objectReference: {fileID: 0}
     - target: {fileID: 3461434928449695753, guid: b737d8d7f955058468c313f34588bf94, type: 3}
       propertyPath: m_Name
       value: P_DeathScreen

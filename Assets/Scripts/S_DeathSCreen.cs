@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class S_DeathSCreen : MonoBehaviour
 {
@@ -8,14 +9,13 @@ public class S_DeathSCreen : MonoBehaviour
     [SerializeField] GameObject m_player;
 
     private S_CharaController m_charaCon;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
         m_deathScreen.enabled = false;
         m_charaCon = m_player.GetComponent<S_CharaController>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         CheckDeath();
@@ -34,8 +34,7 @@ public class S_DeathSCreen : MonoBehaviour
 
     public void OnRestartClick()
     {
-        m_charaCon.hasRespawned = true;
         Time.timeScale = 1;
-        m_deathScreen.enabled = false;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
