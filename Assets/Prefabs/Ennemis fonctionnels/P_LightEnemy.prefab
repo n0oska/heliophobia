@@ -197,6 +197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::S_LightEnemyController
   m_light: {fileID: 7795455081540127992}
   m_effectRadius: 2.5
+  m_coins: {fileID: 2374480364778439639, guid: 68fcefeb12fbc1f45aa37855b065e400, type: 3}
 --- !u!108 &7795455081540127992
 Light:
   m_ObjectHideFlags: 0
