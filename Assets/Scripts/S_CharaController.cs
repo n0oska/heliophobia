@@ -432,7 +432,7 @@ public class S_CharaController : MonoBehaviour
     private void OnEnterShadow()
     {
         isInShadow = true;
-
+        PS_Spawn();
         if (m_rb != null)
         {
             var sprite = m_rb.GetComponent<SpriteRenderer>().color;
@@ -441,6 +441,7 @@ public class S_CharaController : MonoBehaviour
             sprite.g = 0.5f;
 
             m_rb.GetComponent<SpriteRenderer>().color = sprite;
+            
         }
 
         ShadowForce();
@@ -542,6 +543,7 @@ public class S_CharaController : MonoBehaviour
     {
         Vector3 particleSystemOffset = new Vector3(0f,1.75f,0f);
         particlesInstance = Instantiate(poweredUpParticles, m_rb.transform.position + particleSystemOffset, Quaternion.identity);
+        Debug.Log(particlesInstance);
     }
 
     private void DeactivateBuff()
