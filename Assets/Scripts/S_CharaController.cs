@@ -368,7 +368,7 @@ public class S_CharaController : MonoBehaviour
             m_isCharging = false;
         }
 
-        if(m_isHolding && Input.GetKeyDown(KeyCode.Joystick1Button3))
+        if(m_isHolding && Input.GetKeyDown(KeyCode.Joystick1Button3) || m_isHolding && Input.GetKeyDown(KeyCode.Mouse1))
         {
             float heldTime = Time.time - m_buttonPressTime;
 
@@ -378,7 +378,7 @@ public class S_CharaController : MonoBehaviour
             } 
         }
 
-        if (Input.GetKeyUp(KeyCode.Joystick1Button3))
+        if (Input.GetKeyUp(KeyCode.Joystick1Button3) || Input.GetKeyUp(KeyCode.Mouse1))
         {
             m_isHolding = false;
             float totalHoldTime = Time.time - m_buttonPressTime;
@@ -519,11 +519,12 @@ public class S_CharaController : MonoBehaviour
 
         if (isInShadow)
         {
-            m_damage = m_baseDamage * 2f;
+            m_damage = m_baseDamage * 4f;
             return;
         }
 
-        m_damage = m_baseDamage;
+        if (!isInShadow & !m_isBuffActive)
+            m_damage = m_baseDamage;
     }
 
     private void ActivateBuff()

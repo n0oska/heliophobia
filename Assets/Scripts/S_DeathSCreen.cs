@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class S_DeathSCreen : MonoBehaviour
@@ -27,6 +28,7 @@ public class S_DeathSCreen : MonoBehaviour
         {
             Debug.Log("isDead");
             m_deathScreen.enabled = true;
+            Cursor.visible = true;
             m_restartButton.Select();
             //Time.timeScale = 0;
         }
@@ -34,8 +36,11 @@ public class S_DeathSCreen : MonoBehaviour
 
     public void OnRestartClick()
     {
+        var activeScene = SceneManager.GetActiveScene(); int sceneIndex = activeScene.buildIndex;
         m_charaCon.hasRespawned = true;
         Time.timeScale = 1;
         m_deathScreen.enabled = false;
+        Cursor.visible = false;
+        SceneManager.LoadScene(sceneIndex);
     }
 }

@@ -201,7 +201,7 @@ public class S_EnemyController : MonoBehaviour
             if (chara != null && canAttack)
             {                            
                 canAttack = false;
-                chara.m_playerHealth.TakeDamage(1);              
+                chara.m_playerHealth.TakeDamage(m_damage);              
                 
                 yield return new WaitForSeconds(m_coolDown);
                 canAttack = true;
