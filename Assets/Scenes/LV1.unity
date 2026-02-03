@@ -13660,7 +13660,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 95633a087631abb4f99194de47bd1a00, type: 3}
     - target: {fileID: 6524606961226487598, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
       propertyPath: m_dashForce
-      value: 60
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 6524606961226487598, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
       propertyPath: m_winScreen
