@@ -104,6 +104,7 @@ GameObject:
   - component: {fileID: 3611627691874513639}
   - component: {fileID: 568768599966175995}
   - component: {fileID: 8257064745822161884}
+  - component: {fileID: 9193931842829511063}
   m_Layer: 6
   m_Name: P_TransEnemy
   m_TagString: Untagged
@@ -271,6 +272,7 @@ MonoBehaviour:
   m_rb: {fileID: 3611627691874513639}
   m_channels: {fileID: 0}
   m_ennemyHitPs: {fileID: 7009506689941312136, guid: 63c6eeabb2bceac49a50d3cc7e4847e1, type: 3}
+  m_anim: {fileID: 9193931842829511063}
   m_Value: 75
 --- !u!114 &8257064745822161884
 MonoBehaviour:
@@ -286,3 +288,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::S_transparent_enemy
   O_alpha: 0.5
   O_disableShadows: 1
+--- !u!95 &9193931842829511063
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7400497147665886288}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7099d012924db964c822f771f1bfece1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

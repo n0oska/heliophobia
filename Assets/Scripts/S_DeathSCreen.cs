@@ -1,22 +1,22 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class S_DeathSCreen : MonoBehaviour
 {
-    [SerializeField] Canvas m_deathScreen;
-    [SerializeField] Button m_restartButton;
-    [SerializeField] GameObject m_player;
+    [SerializeField] private Canvas m_deathScreen;
+    [SerializeField] private Button m_restartButton;
+    [SerializeField] private GameObject m_player;
 
     private S_CharaController m_charaCon;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private bool m_isGameOver = false;
+
     void Start()
     {
         m_deathScreen.enabled = false;
         m_charaCon = m_player.GetComponent<S_CharaController>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         CheckDeath();
@@ -24,23 +24,40 @@ public class S_DeathSCreen : MonoBehaviour
 
     private void CheckDeath()
     {
-        if (m_charaCon.m_playerHealth.isDead())
+        if (m_charaCon.m_playerHealth.isDead() && !m_isGameOver)
         {
+            m_isGameOver = true;
+
             Debug.Log("isDead");
+
+            // Ici je check l'affichage
             m_deathScreen.enabled = true;
+
+            // je désactive du joueur (plus d'inputs détecté)
+            m_charaCon.enabled = false;
+
+            // on force l'affochage du curseur
+            Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+
+            // Le bouton est automatiquement sélectionné
             m_restartButton.Select();
-            //Time.timeScale = 0;
+
+            // Le jeu se met en pause
+            Time.timeScale = 0f;
         }
     }
 
     public void OnRestartClick()
     {
-        var activeScene = SceneManager.GetActiveScene(); int sceneIndex = activeScene.buildIndex;
-        m_charaCon.hasRespawned = true;
-        Time.timeScale = 1;
-        m_deathScreen.enabled = false;
+        // Reprise du temps
+        Time.timeScale = 1f;
+
+        // Re-lock du curseur
+        Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        SceneManager.LoadScene(sceneIndex);
+
+        // Reload de la scène
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
