@@ -94,6 +94,7 @@ public class S_CharaController : MonoBehaviour
     public bool setTrigger = false;
     private S_TriggerCam m_trigger;
     private S_EnemySpawner m_spawner;
+    public bool isFollowing;
 
     [Header("Sound Effects")]
     [SerializeField] private AudioSource m_audioSource;
@@ -215,6 +216,7 @@ public class S_CharaController : MonoBehaviour
                 var pChara = m_rb.GetComponent<SpriteRenderer>();
                 //Debug.Log("Cam follow");             
                 m_mainCam.Follow = pChara.transform;
+                isFollowing = true;
                 
                 hasEnteredTriggerCam = false;
                 setTrigger = false;
@@ -595,6 +597,7 @@ public class S_CharaController : MonoBehaviour
         if (other.CompareTag("TriggerCam") || other.CompareTag("TestTrigger"))
         {
             m_triggerCam = other.gameObject;
+            
             m_trigger = m_triggerCam.GetComponent<S_TriggerCam>();
         }
 
@@ -613,8 +616,8 @@ public class S_CharaController : MonoBehaviour
 
     public void CameraTriggerSet()
     {
-        m_mainCam.Follow = null;           
-
+        m_mainCam.Follow = null;
+        isFollowing = false;
     }
 
     // private void UpdateCoinUI()
