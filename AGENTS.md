@@ -8,7 +8,7 @@
   - Layers:
     - Default, TransparentFX, Ignore Raycast, Obstacle, Water, UI, Enemy, Destroyable, Player, Camera
 - Active game object:
-  - Name: BT_Restart
+  - Name: Music
   - Tag: Untagged
-  - Layer: UI
+  - Layer: Default
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->

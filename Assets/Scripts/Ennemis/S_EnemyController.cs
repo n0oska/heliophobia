@@ -47,7 +47,6 @@ public class S_EnemyController : MonoBehaviour
     private Quaternion PsRotation;
     private bool hasPsSpawned = false;
 
-    
 
 
     void Start()
@@ -210,6 +209,7 @@ public class S_EnemyController : MonoBehaviour
                 canAttack = true;
                 m_anim.SetTrigger("Attack");
             }
+
         }
     }
 

@@ -1,2 +1,20 @@
 fileFormatVersion: 2
 guid: 813d39cab3e20bd48b167e21b9e7c452
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - player: {instanceID: 0}
+  - spawner: {instanceID: 0}
+  - ScoreManager: {instanceID: 0}
+  - m_cam: {instanceID: 0}
+  - m_rb: {instanceID: 0}
+  - m_channels: {instanceID: 0}
+  - m_ennemyHitPs: {instanceID: 0}
+  - m_audioSource: {instanceID: 0}
+  - m_hitSFX: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
