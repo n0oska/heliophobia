@@ -130,7 +130,9 @@ public class S_CharaController : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
         m_currentDirection = new Vector3(x, 0, y);
-        m_rb.linearVelocity = m_currentDirection * m_speed;
+
+        if (!isDashing)
+            m_rb.linearVelocity = m_currentDirection * m_speed;
 
         if (x != 0 && x < 0)
         {
@@ -161,14 +163,25 @@ public class S_CharaController : MonoBehaviour
             }
         }
 
+        if (isInShadow)
+        {
+            PS_Spawn();
+        }
+
         if (!canDash)
         {
             m_dashCooldownTimer -= Time.deltaTime;
             if (m_dashCooldownTimer <= 0f)
                 canDash = true;
         }
-        else
-            CheckDash();
+
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash && !isDashing || Input.GetKeyDown(KeyCode.Joystick1Button1) && canDash && !isDashing)
+        {
+            StartCoroutine(C_Dash());
+        }
+
+        
+
 
         CheckAttackInput();
 
@@ -287,6 +300,7 @@ public class S_CharaController : MonoBehaviour
 
         isDashing = false;
         m_dashCooldownTimer = m_dashCooldown;
+        //canDash = true;
     }
 
     private void OnStartMoving()
@@ -296,13 +310,7 @@ public class S_CharaController : MonoBehaviour
 
     private void CheckDash()
     {
-        if (Input.GetKey(KeyCode.LeftShift) && canDash || Input.GetKey(KeyCode.Joystick1Button1)  && canDash)
-        {
-            StartCoroutine(C_Dash());
-        }
-
-        else
-            canDash = true;
+        
     }
 
     private void CheckDamage()
@@ -542,7 +550,7 @@ public class S_CharaController : MonoBehaviour
     private void PS_Spawn()
     {
         Vector3 particleSystemOffset = new Vector3(0f,1.75f,0f);
-        particlesInstance = Instantiate(poweredUpParticles, m_rb.transform.position + particleSystemOffset, Quaternion.identity);
+        particlesInstance = Instantiate(poweredUpParticles, m_rb.transform.position  /*particleSystemOffset*/, Quaternion.identity);
         Debug.Log(particlesInstance);
     }
 
