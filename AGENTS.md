@@ -2,12 +2,13 @@
 - Project name: heliophobia
 - Unity version: Unity 6000.2.7f2
 - Active scene:
+  - Name: WinScreen
   - Tags:
     - Untagged, Respawn, Finish, EditorOnly, MainCamera, Player, GameController, Coin, TriggerCam, Spawner, TestCoin, TestTrigger, EndTrigger
   - Layers:
     - Default, TransparentFX, Ignore Raycast, Obstacle, Water, UI, Enemy, Destroyable, Player, Camera
 - Active game object:
-  - Name: Button_1
+  - Name: Panel
   - Tag: Untagged
   - Layer: UI
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->
