@@ -253,6 +253,10 @@ MonoBehaviour:
     m_maxValue: 10
     isTakingDamage: 0
     previousHealthValue: 0
+    dmgTakenThisFrame: 0
+    m_audioSource: {fileID: 0}
+    m_hitSFX: {fileID: 0}
+    Player: {fileID: 0}
   m_damage: 1
   m_playerLayer:
     serializedVersion: 2
