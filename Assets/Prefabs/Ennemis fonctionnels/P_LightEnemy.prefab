@@ -161,10 +161,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::S_EnemyController
   m_health:
     m_value: 0
-    m_maxValue: 10
+    m_maxValue: 15
     isTakingDamage: 0
     previousHealthValue: 0
-  m_damage: 6
+    dmgTakenThisFrame: 0
+    m_audioSource: {fileID: 0}
+    m_hitSFX: {fileID: 0}
+    Player: {fileID: 0}
+  m_damage: 5
   m_playerLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -172,7 +176,7 @@ MonoBehaviour:
   m_speed: 0.6
   m_stopDistance: 1.5
   m_timerAttack: 0
-  m_coolDown: 2
+  m_coolDown: 4
   canAttack: 1
   m_currentPos: {x: 0, y: 0, z: 0}
   m_castOffset: {x: 0, y: 0, z: 0}

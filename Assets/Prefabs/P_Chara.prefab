@@ -166,7 +166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::S_CharaController
   m_rb: {fileID: 1096431037215456561}
   m_speed: 1
-  m_damage: 0
+  m_damage: 10
   m_baseDamage: 0
   m_sR: {fileID: 1992667733219571544}
   m_dashForce: 0
@@ -201,7 +201,7 @@ MonoBehaviour:
     m_Bits: 64
   m_playerHealth:
     m_value: 0
-    m_maxValue: 10
+    m_maxValue: 50
     isTakingDamage: 0
     previousHealthValue: 0
     dmgTakenThisFrame: 0

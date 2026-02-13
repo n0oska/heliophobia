@@ -533,7 +533,7 @@ public class S_CharaController : MonoBehaviour
 
         if (isInShadow)
         {
-            m_damage = m_baseDamage * 4f;
+            m_damage = m_baseDamage * 2.5f;
             return;
         }
 
@@ -681,7 +681,9 @@ public class HealthManager
     }
     public void TakeDamage(float damage)
     {
-        m_value = Mathf.Max(0, m_value - damage);
+        //m_value = Mathf.Max(0, m_value - damage);
+        m_value = m_value - damage;
+        Debug.Log(damage);
         isTakingDamage = true;
 
         if (Player != null && isTakingDamage)
