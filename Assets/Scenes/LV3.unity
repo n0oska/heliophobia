@@ -1020,7 +1020,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d58551f3db2dee84b8ac29526a47777f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LockCameraY
-  m_ZPosition: -11
+  m_ZPosition: -10
 --- !u!1 &149151082
 GameObject:
   m_ObjectHideFlags: 0
