@@ -203,8 +203,10 @@ public class S_EnemyController : MonoBehaviour
             if (chara != null && canAttack)
             {                            
                 canAttack = false;
-                chara.m_playerHealth.TakeDamage(m_damage);              
-                Debug.Log("ça marche pas ducoup");
+                chara.m_playerHealth.TakeDamage(m_damage);
+                chara.m_animator.SetTrigger("TakeDamage");
+
+
                 yield return new WaitForSeconds(m_coolDown);
                 canAttack = true;
                 m_anim.SetTrigger("Attack");

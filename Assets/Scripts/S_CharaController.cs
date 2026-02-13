@@ -338,6 +338,7 @@ public class S_CharaController : MonoBehaviour
                     {
                         enemyCtrl.m_health.TakeDamage(m_damage);
                         hasHit = true;
+                        
                     }
                     var envirmtCtrl = enemy.GetComponent<S_Environement>();
                     if (envirmtCtrl!=null)
@@ -432,7 +433,7 @@ public class S_CharaController : MonoBehaviour
 //         m_healthManager.TakeDamage(damage);
 //         Debug.Log($"Le joueur prend {damage} dégâts");
 //     }
-// }
+//}
 
 
     private void CheckLight()
@@ -709,8 +710,6 @@ public class HealthManager
     }
 
     public bool isDead() => m_value <= 0;
-
-
 
 
 }
