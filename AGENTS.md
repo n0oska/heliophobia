@@ -8,7 +8,7 @@
   - Layers:
     - Default, TransparentFX, Ignore Raycast, Obstacle, Water, UI, Enemy, Destroyable, Player, Camera
 - Active game object:
-  - Name: Image
+  - Name: StartButton
   - Tag: Untagged
   - Layer: UI
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->
