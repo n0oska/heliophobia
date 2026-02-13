@@ -1033,6 +1033,7 @@ GameObject:
   m_Component:
   - component: {fileID: 92857500}
   - component: {fileID: 92857501}
+  - component: {fileID: 92857502}
   m_Layer: 0
   m_Name: Namiaus
   m_TagString: Untagged
@@ -1051,7 +1052,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -48.99605, y: 15.2, z: -6.21}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
-  m_ConstrainProportionsScale: 1
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 328147312}
   m_Father: {fileID: 0}
@@ -1114,6 +1115,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &92857502
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 92857499}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c919b754bdd338f4dbb40855351de712, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &96027871
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22994,8 +23017,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2107682741853877835, guid: 12a1a91c2a50c8c4da92284c44acc056, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000061035156
+      objectReference: {fileID: 0}
+    - target: {fileID: 2107682741853877835, guid: 12a1a91c2a50c8c4da92284c44acc056, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.3000002
+      value: 1.300003
       objectReference: {fileID: 0}
     - target: {fileID: 2171572333096611593, guid: 12a1a91c2a50c8c4da92284c44acc056, type: 3}
       propertyPath: m_IsActive
@@ -23044,6 +23071,10 @@ PrefabInstance:
     - target: {fileID: 2558197444517481958, guid: 12a1a91c2a50c8c4da92284c44acc056, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2901913640894193594, guid: 12a1a91c2a50c8c4da92284c44acc056, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.86608887
       objectReference: {fileID: 0}
     - target: {fileID: 2901913640894193594, guid: 12a1a91c2a50c8c4da92284c44acc056, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -23366,8 +23397,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 946290029}
     - target: {fileID: 6394001934231439940, guid: 12a1a91c2a50c8c4da92284c44acc056, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.1539917
+      objectReference: {fileID: 0}
+    - target: {fileID: 6394001934231439940, guid: 12a1a91c2a50c8c4da92284c44acc056, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.3000002
+      value: 1.300003
       objectReference: {fileID: 0}
     - target: {fileID: 6654848274904748858, guid: 12a1a91c2a50c8c4da92284c44acc056, type: 3}
       propertyPath: m_LocalPosition.x
@@ -23435,15 +23470,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6664993798710910655, guid: 12a1a91c2a50c8c4da92284c44acc056, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.34475708
+      value: 0.34472656
       objectReference: {fileID: 0}
     - target: {fileID: 6664993798710910655, guid: 12a1a91c2a50c8c4da92284c44acc056, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -12.9
+      value: -12.900002
       objectReference: {fileID: 0}
     - target: {fileID: 7647603422499698580, guid: 12a1a91c2a50c8c4da92284c44acc056, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.8000002
+      value: 1.800003
       objectReference: {fileID: 0}
     - target: {fileID: 7732658514747330867, guid: 12a1a91c2a50c8c4da92284c44acc056, type: 3}
       propertyPath: m_AnchoredPosition.x
