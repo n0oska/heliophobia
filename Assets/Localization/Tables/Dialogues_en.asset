@@ -44,6 +44,22 @@ MonoBehaviour:
       weakens you. So try to stay in the shadows.'
     m_Metadata:
       m_Items: []
+  - m_Id: 9136796916297728
+    m_Localized: "Nameows : \nWell done, Stanislaus, you have already collected a
+      drop of primordial blood. Just two more and you will receive your sacrament.
+      By the way, the barrels can give you \u2018chalices of blood\u2019 which can
+      heal you. "
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9137930947047424
+    m_Localized: "Nameows : \nBy the way, watch out for bats, their eyes produce
+      light!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9138438327808000
+    m_Localized: "Nameows : \nBravo Stan, there is only one left to collect ! "
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

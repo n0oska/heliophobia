@@ -187,7 +187,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 72
   m_offset: {x: 0, y: -0.77, z: 0}
-  poweredUpParticles: {fileID: 0}
+  poweredUpParticles: {fileID: 7910894275221214382, guid: 858d27e6240fa4f4a92a9a984c3b3d11, type: 3}
   m_coinCount: 0
   m_coinsRequiredForBuff: 5
   m_buffDuration: 10
@@ -204,6 +204,10 @@ MonoBehaviour:
     m_maxValue: 10
     isTakingDamage: 0
     previousHealthValue: 0
+    dmgTakenThisFrame: 0
+    m_audioSource: {fileID: 0}
+    m_hitSFX: {fileID: 0}
+    Player: {fileID: 0}
   m_startPos: {fileID: 0}
   hasRespawned: 0
   m_mainCam: {fileID: 0}
@@ -221,6 +225,7 @@ MonoBehaviour:
   m_holdThreshold: 0.5
   hasClearedAllWaves: 0
   setTrigger: 0
+  isFollowing: 0
   m_audioSource: {fileID: 0}
   m_dashSFX: {fileID: 0}
   m_attackSFX: {fileID: 8300000, guid: 95633a087631abb4f99194de47bd1a00, type: 3}

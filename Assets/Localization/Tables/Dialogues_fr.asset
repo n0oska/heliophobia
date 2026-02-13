@@ -43,6 +43,23 @@ MonoBehaviour:
       l'ombre."
     m_Metadata:
       m_Items: []
+  - m_Id: 9136796916297728
+    m_Localized: "Namiaus : \nBien jou\xE9 Stanislaus, tu as d\xE9j\xE0 r\xE9colt\xE9
+      une goutte de sang primordial. Plus que deux et tu auras ton sacrement. Au
+      fait, les tonneaux peuvent te donner des \"calices de sang\" ce qui peut te
+      soigner. "
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9137930947047424
+    m_Localized: "Namiaus : \nD'ailleurs, fais attention aux chauve souris, leur
+      oeil produit de la lumi\xE8re !"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9138438327808000
+    m_Localized: "Namiaus : \nBravo Stan, il ne t'en reste plus qu'une \xE0 r\xE9colter
+      ! "
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

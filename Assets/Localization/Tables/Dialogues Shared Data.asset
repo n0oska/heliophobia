@@ -31,6 +31,18 @@ MonoBehaviour:
     m_Key: LVL1 vampire
     m_Metadata:
       m_Items: []
+  - m_Id: 9136796916297728
+    m_Key: LVL2 Bonjour
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9137930947047424
+    m_Key: LVL2 Ennemies
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9138438327808000
+    m_Key: LVL3 STart
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
