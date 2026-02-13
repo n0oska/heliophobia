@@ -8,7 +8,7 @@
   - Layers:
     - Default, TransparentFX, Ignore Raycast, Obstacle, Water, UI, Enemy, Destroyable, Player, Camera
 - Active game object:
-  - Name: MenuPause
+  - Name: OptionsMenu_Panel
   - Tag: Untagged
   - Layer: Default
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->
