@@ -150,6 +150,8 @@ public class S_CharaController : MonoBehaviour
 
         if (m_currentDirection != Vector3.zero)
             OnStartMoving();
+        else
+            OnStopMoving();
 
         if (m_light != null)
             CheckLight();
@@ -310,7 +312,12 @@ public class S_CharaController : MonoBehaviour
 
     private void OnStartMoving()
     {
-        // display animations
+        m_animator.SetBool("IsMoving", true);
+    }
+
+    private void OnStopMoving()
+    {
+        m_animator.SetBool("IsMoving", false);
     }
 
     private void CheckDash()
