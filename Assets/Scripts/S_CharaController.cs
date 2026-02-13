@@ -360,44 +360,53 @@ public class S_CharaController : MonoBehaviour
 
     private void CheckAttackInput()
     {
-        if(m_cooldownTimer > 0)
+        if (m_cooldownTimer > 0)
         {
             m_cooldownTimer -= Time.deltaTime;
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.Joystick1Button3))
+        // 1. DÈS L'APPUI : On commence à charger visuellement
+        if (Input.GetKeyDown(KeyCode.Joystick1Button3) || Input.GetKeyDown(KeyCode.Mouse1))
         {
             m_buttonPressTime = Time.time;
             m_isHolding = true;
-            m_isCharging = false;
+
+            // On active le booléen dans l'Animator pour lancer l'animation de charge
+            m_animator.SetBool("isCharging", true);
         }
 
-        if(m_isHolding && Input.GetKeyDown(KeyCode.Joystick1Button3) || m_isHolding && Input.GetKeyDown(KeyCode.Mouse1))
+        // 2. PENDANT QU'ON TIENT : On vérifie si le seuil est atteint
+        if (m_isHolding)
         {
             float heldTime = Time.time - m_buttonPressTime;
-
             if (heldTime >= m_holdThreshold)
             {
                 m_isCharging = true;
-            } 
+                // Ici tu pourrais ajouter un petit effet visuel pour dire "C'est prêt !"
+            }
         }
 
+        // 3. AU RELÂCHEMENT : On déclenche l'action
         if (Input.GetKeyUp(KeyCode.Joystick1Button3) || Input.GetKeyUp(KeyCode.Mouse1))
         {
             m_isHolding = false;
-            float totalHoldTime = Time.time - m_buttonPressTime;
-            
-            if(totalHoldTime >= m_holdThreshold)
+
+            // On coupe le booléen de charge immédiatement
+            m_animator.SetBool("isCharging", false);
+
+            if (m_isCharging)
             {
+                // C'était une attaque chargée réussie
                 PerformChargedAttack();
             }
             else
             {
+                // Relâché trop tôt : on fait une attaque normale
                 CheckDamage();
             }
 
-            m_isCharging = false;
+            m_isCharging = false; // Reset pour la prochaine fois
         }
     }
 
