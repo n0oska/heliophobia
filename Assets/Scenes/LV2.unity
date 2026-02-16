@@ -17,7 +17,7 @@ RenderSettings:
   m_Fog: 1
   m_FogColor: {r: 0.111739054, g: 0.22507519, b: 0.254717, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.064
+  m_FogDensity: 0.067
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -23357,7 +23357,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 5fc93c23fa5243e41b68c3d7373cf1a7, type: 3}
+  m_Resource: {fileID: 8300000, guid: 95eb45be28ee94543b59817cfcc468ce, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.1
   m_Pitch: 1
