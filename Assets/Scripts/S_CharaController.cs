@@ -124,6 +124,7 @@ public class S_CharaController : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(isDashing);
         CheckDamage();
         CheckDeath();
         CameraControl();
