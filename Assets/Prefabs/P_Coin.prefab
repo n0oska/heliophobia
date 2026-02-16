@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6376262537825181296}
   - component: {fileID: 6334609423037128840}
   - component: {fileID: 6817206310708776310}
+  - component: {fileID: 7232197769339029712}
   m_Layer: 0
   m_Name: P_Coin
   m_TagString: Coin
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 2374480364778439639}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -27.185024, y: 15.115739, z: -7.7026763}
+  m_LocalPosition: {x: -28.929775, y: 15.115739, z: -7.8699455}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -123,7 +124,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 2
-  m_Color: {r: 0.9716981, g: 0.1512549, b: 0.1512549, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.018394232, a: 1}
   m_Intensity: 15
   m_Range: 18.89
   m_SpotAngle: 30
@@ -207,3 +208,25 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!95 &7232197769339029712
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2374480364778439639}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d52c88e4606fa28429d2dd8182b18130, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

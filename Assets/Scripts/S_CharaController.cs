@@ -104,6 +104,10 @@ public class S_CharaController : MonoBehaviour
     [SerializeField] private AudioClip m_deathSFX;
 
 
+
+    [SerializeField] public CinemachineImpulseSource impulseSource;
+
+
     void Start()
     {
         m_rb = gameObject.GetComponent<Rigidbody>();
@@ -678,6 +682,12 @@ public class S_CharaController : MonoBehaviour
     {
         m_mainCam.Follow = null;
         isFollowing = false;
+    }
+
+    public void CameraShakeTakeDamage()
+    {
+        if (impulseSource != null)
+            impulseSource.GenerateImpulse();
     }
 
     // private void UpdateCoinUI()

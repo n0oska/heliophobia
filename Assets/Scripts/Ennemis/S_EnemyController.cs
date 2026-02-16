@@ -221,7 +221,7 @@ public class S_EnemyController : MonoBehaviour
                 canAttack = false;
                 chara.m_playerHealth.TakeDamage(m_damage);
                 chara.m_animator.SetTrigger("TakeDamage");
-
+                chara.impulseSource.GenerateImpulse();
 
                 yield return new WaitForSeconds(m_coolDown);
                 canAttack = true;
