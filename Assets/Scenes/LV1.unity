@@ -21412,7 +21412,7 @@ Transform:
   m_GameObject: {fileID: 1323131038}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 48, y: 20.214731, z: 6}
+  m_LocalPosition: {x: 48, y: 20.214731, z: 5.28}
   m_LocalScale: {x: 247.6, y: 17.679, z: 3.3481}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -23225,7 +23225,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4988081615248911888, guid: 8d2f4aa888c7e0b42b7bf9fb279b8817, type: 3}
       propertyPath: mSpawnPoints.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4988081615248911888, guid: 8d2f4aa888c7e0b42b7bf9fb279b8817, type: 3}
       propertyPath: 'mSpawnPoints.Array.data[0]'

@@ -178,6 +178,7 @@ MonoBehaviour:
   m_timerAttack: 0
   m_coolDown: 4
   canAttack: 1
+  m_coin: {fileID: 2374480364778439639, guid: 68fcefeb12fbc1f45aa37855b065e400, type: 3}
   m_currentPos: {x: 0, y: 0, z: 0}
   m_castOffset: {x: 0, y: 0, z: 0}
   player: {fileID: 0}

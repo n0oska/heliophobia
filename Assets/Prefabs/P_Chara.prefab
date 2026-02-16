@@ -166,8 +166,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::S_CharaController
   m_rb: {fileID: 1096431037215456561}
   m_speed: 1
-  m_damage: 10
-  m_baseDamage: 0
+  m_damage: 3
+  m_baseDamage: 3
   m_sR: {fileID: 1992667733219571544}
   m_dashForce: 0
   m_dashCooldown: 0
@@ -193,7 +193,7 @@ MonoBehaviour:
   m_buffDuration: 10
   m_damageMultiplierDuringBuff: 2
   m_attackOffset: {x: 0, y: 0, z: 0}
-  m_attackRadius: 0.5
+  m_attackRadius: 1
   m_cooldownTime: 0.5
   m_cooldownTimer: 0
   m_enemyMask:

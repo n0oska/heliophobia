@@ -19,6 +19,7 @@ public class S_EnemyController : MonoBehaviour
     [SerializeField] private float m_timerAttack = 0;
     [SerializeField] private float m_coolDown = 1.5f;
     [SerializeField] private bool canAttack = true;
+    [SerializeField] private GameObject m_coin;
     [SerializeField] Vector3 m_currentPos;
     [SerializeField] Vector3 m_castOffset;
     [SerializeField] GameObject player;
@@ -97,10 +98,14 @@ public class S_EnemyController : MonoBehaviour
                 Debug.Log("score activé sah");
                 scriptScore.m_score += m_Value;
             }
+            StartCoroutine(C_DropCoin());
             //GameObject parent = m_rb.GetComponentInParent<GameObject>();          
             spawnerScript.isDead = true;            
             Destroy(gameObject);
+            
         }
+            
+        
 
         if (m_health.isTakingDamage && !hasPsSpawned)
         {
@@ -134,13 +139,24 @@ public class S_EnemyController : MonoBehaviour
             
             if (stunTime >= 0)
             {
-                StunTarget();               
-
-                
+                StunTarget();                    
             }
 
             
         }       
+    }
+
+    private IEnumerator C_DropCoin()
+    {
+        int randomInt = Random.Range(1, 10);
+
+        if (randomInt >=7 )
+        {
+            Debug.Log(randomInt);
+            m_coin.transform.position = this.transform.position;
+            Instantiate(m_coin);
+            yield return new WaitForEndOfFrame();
+        }
     }
 
     private void StunTarget()
