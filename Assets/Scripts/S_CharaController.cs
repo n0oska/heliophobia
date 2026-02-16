@@ -686,6 +686,7 @@ public class HealthManager
     public void Init()
     {
         m_value = m_maxValue;
+        m_maxValue = m_value;
     }
     public void TakeDamage(float damage)
     {
@@ -700,6 +701,7 @@ public class HealthManager
                 m_audioSource.PlayOneShot(m_hitSFX);
                  Debug.Log("BAAAAAAAAAAAA");
 
+        if (m_value > m_maxValue) m_value = m_maxValue;
 
         //if (isTakingDamage)
         //{            
