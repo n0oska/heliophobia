@@ -128,24 +128,7 @@ public class S_CharaController : MonoBehaviour
         CheckDeath();
         CameraControl();
         ReloadScene();
-        float x = Input.GetAxis("Horizontal");
-        float y = Input.GetAxis("Vertical");
-        m_currentDirection = new Vector3(x, 0, y);
-
-        if (!isDashing)
-            m_rb.linearVelocity = m_currentDirection * m_speed;
-
-        if (x != 0 && x < 0)
-        {
-            m_sR.flipX = true;
-            m_attackOffset = new Vector3(-1, 0, 0);
-        }
-
-        else if (x != 0 && x > 0)
-        {
-            m_sR.flipX = false;
-            m_attackOffset = new Vector3(1, 0, 0);
-        }
+       
 
         if (m_currentDirection != Vector3.zero)
             OnStartMoving();
@@ -209,6 +192,28 @@ public class S_CharaController : MonoBehaviour
         }
 
         m_playerHealth.EndOfFrame();
+    }
+
+    private void FixedUpdate()
+    {
+        float x = Input.GetAxis("Horizontal");
+        float y = Input.GetAxis("Vertical");
+        m_currentDirection = new Vector3(x, 0, y);
+
+        if (!isDashing)
+            m_rb.linearVelocity = m_currentDirection * m_speed;
+
+        if (x != 0 && x < 0)
+        {
+            m_sR.flipX = true;
+            m_attackOffset = new Vector3(-1, 0, 0);
+        }
+
+        else if (x != 0 && x > 0)
+        {
+            m_sR.flipX = false;
+            m_attackOffset = new Vector3(1, 0, 0);
+        }
     }
 
     private void CameraControl()
