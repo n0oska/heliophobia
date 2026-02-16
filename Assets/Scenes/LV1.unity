@@ -22306,6 +22306,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 1096431037215456561, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
+      propertyPath: m_LinearDamping
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 1442676942188797612, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -22342,6 +22346,10 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 0.22373062
       objectReference: {fileID: 0}
+    - target: {fileID: 6524606961226487598, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
+      propertyPath: m_rb
+      value: 
+      objectReference: {fileID: 2011663055}
     - target: {fileID: 6524606961226487598, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
       propertyPath: hasHit
       value: 1
@@ -22440,7 +22448,15 @@ PrefabInstance:
       objectReference: {fileID: 689320476}
     - target: {fileID: 6524606961226487598, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
       propertyPath: m_attackOffset.x
-      value: 0
+      value: -49.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6524606961226487598, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
+      propertyPath: m_attackOffset.y
+      value: 16.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6524606961226487598, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
+      propertyPath: m_attackOffset.z
+      value: -6.66
       objectReference: {fileID: 0}
     - target: {fileID: 6524606961226487598, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
       propertyPath: m_lookTriggerCam
@@ -27481,6 +27497,11 @@ CapsuleCollider:
 --- !u!4 &2011663053 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8702724589190711820, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
+  m_PrefabInstance: {fileID: 1421266117}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &2011663055 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 1096431037215456561, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
   m_PrefabInstance: {fileID: 1421266117}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2016962143

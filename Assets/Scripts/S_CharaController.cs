@@ -135,7 +135,10 @@ public class S_CharaController : MonoBehaviour
 
         if (!isDashing)
             m_rb.linearVelocity = m_currentDirection * m_speed;
-
+        
+        Debug.Log(m_rb.linearVelocity);
+        Debug.Log(m_currentDirection);
+        Debug.Log(m_speed);
         if (x != 0 && x < 0)
         {
             m_sR.flipX = true;
