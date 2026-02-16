@@ -29,6 +29,7 @@ public class S_CharaController : MonoBehaviour
     private Vector3 m_dashDirection;
     private float m_dashTimer;
     private float m_dashCooldownTimer;
+    private bool m_rtReleased = true;
 
     [Header("Shadow Manager")]
     [SerializeField] private Light m_light;
@@ -101,8 +102,6 @@ public class S_CharaController : MonoBehaviour
     [SerializeField] private AudioClip m_dashSFX;
     [SerializeField] private AudioClip m_attackSFX;
     [SerializeField] private AudioClip m_deathSFX;
-
-
 
 
     void Start()
@@ -179,12 +178,24 @@ public class S_CharaController : MonoBehaviour
                 canDash = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash && !isDashing || Input.GetKeyDown(KeyCode.Joystick1Button1) && canDash && !isDashing)
+        // 1. On lit la valeur de la gâchette RT (entre 0 et 1)
+        float rtValue = Input.GetAxis("RightTrigger");
+
+        if (rtValue < 0.2f)
         {
+            m_rtReleased = true;
+        }
+
+        // 2. On vérifie le clavier OU la gâchette
+        bool dashInput = Input.GetKeyDown(KeyCode.LeftShift) || (rtValue > 0.5f && m_rtReleased);
+        
+        if (dashInput && canDash && !isDashing)
+        {
+            m_rtReleased = false;
             StartCoroutine(C_Dash());
         }
 
-        
+
 
 
         CheckAttackInput();
