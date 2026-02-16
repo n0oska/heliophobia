@@ -406,7 +406,8 @@ public class S_CharaController : MonoBehaviour
             if (m_isCharging)
             {
                 // C'était une attaque chargée réussie
-                PerformChargedAttack();
+                //PerformChargedAttack();
+                StartCoroutine(C_PerformChargedAttack());
             }
             else
             {
@@ -415,6 +416,34 @@ public class S_CharaController : MonoBehaviour
             }
 
             m_isCharging = false; // Reset pour la prochaine fois
+        }
+    }
+
+    private IEnumerator C_PerformChargedAttack()
+    {
+        // 1. On déclenche l'animation de frappe immédiatement
+        m_animator.SetTrigger("Attack2");
+
+        // 2. On attend le petit délai (le temps que l'arme "s'abatte")
+        yield return new WaitForSeconds(0.2f);
+
+        // 3. On effectue la détection des dégâts
+        Collider[] enemiesInRange = Physics.OverlapSphere(m_rb.position + m_attackOffset, m_attackRadius * 1.5f, m_enemyMask);
+
+        foreach (var enemy in enemiesInRange)
+        {
+            var enemyCtrl = enemy.GetComponent<S_EnemyController>();
+            if (enemyCtrl != null)
+            {
+                enemyCtrl.m_health.TakeDamage(m_damage * 2f);
+            }
+
+            // Optionnel : ajouter aussi les objets destructibles comme dans ton CheckDamage normal
+            var envirmtCtrl = enemy.GetComponent<S_Environement>();
+            if (envirmtCtrl != null)
+            {
+                envirmtCtrl.m_health.TakeDamage(m_damage * 2f);
+            }
         }
     }
 
