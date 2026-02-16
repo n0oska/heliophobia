@@ -8,6 +8,8 @@ public class S_UIHealthManager : MonoBehaviour
     [SerializeField] GameObject m_chara;
     [SerializeField] Slider m_healthSlider;
     [SerializeField] Slider m_manaSlider;
+
+    public Animator m_anim;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {        
@@ -30,6 +32,14 @@ public class S_UIHealthManager : MonoBehaviour
     {
         float smoothSpeed = 10f;
         m_healthSlider.value = Mathf.Lerp(m_healthSlider.value, m_charaCon.m_playerHealth.m_value, Time.deltaTime * smoothSpeed);
+    }
+
+    public void TriggerDamageUI()
+    {
+        if (m_anim != null)
+        {
+            m_anim.SetTrigger("TakeDamageUI");
+        }
     }
 
     private void UpdateUIMana()

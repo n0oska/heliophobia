@@ -223,6 +223,13 @@ public class S_EnemyController : MonoBehaviour
                 chara.m_animator.SetTrigger("TakeDamage");
                 chara.impulseSource.GenerateImpulse();
 
+
+                S_UIHealthManager uiManager = GameObject.FindFirstObjectByType<S_UIHealthManager>();
+                if (uiManager != null)
+                {
+                    uiManager.TriggerDamageUI();
+                }
+
                 yield return new WaitForSeconds(m_coolDown);
                 canAttack = true;
                 m_anim.SetTrigger("Attack");
