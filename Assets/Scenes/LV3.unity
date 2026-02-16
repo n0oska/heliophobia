@@ -974,7 +974,7 @@ Transform:
   m_GameObject: {fileID: 133699315}
   serializedVersion: 2
   m_LocalRotation: {x: 0.06940828, y: 0, z: 0, w: 0.99758834}
-  m_LocalPosition: {x: -58.34, y: 2.7600002, z: -10}
+  m_LocalPosition: {x: -58.34, y: 2.7600002, z: -8.799999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4651,7 +4651,7 @@ Transform:
   m_GameObject: {fileID: 666044821}
   serializedVersion: 2
   m_LocalRotation: {x: 0.06940828, y: 0, z: 0, w: 0.99758834}
-  m_LocalPosition: {x: -58.34, y: 2.7600002, z: -10}
+  m_LocalPosition: {x: -58.34, y: 2.7600002, z: -8.799999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11352,7 +11352,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 100
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -14201,7 +14201,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7732658514747330867, guid: 12a1a91c2a50c8c4da92284c44acc056, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -4.0000153
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 7922937578321229999, guid: 12a1a91c2a50c8c4da92284c44acc056, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
