@@ -49,7 +49,7 @@ public class S_UIHealthManager : MonoBehaviour
             //Debug.Log("UI/Characon validé");
             float smoothSpeed = 10f;
             m_manaSlider.value = Mathf.Lerp(m_manaSlider.value, m_charaCon.m_coinCount, Time.deltaTime * smoothSpeed);
-            //Debug.Log(m_charaCon.m_coinCount);
+            Debug.Log(m_charaCon.m_coinCount);
         }
     }
 
