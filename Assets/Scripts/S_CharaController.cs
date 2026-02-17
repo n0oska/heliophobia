@@ -38,8 +38,8 @@ public class S_CharaController : MonoBehaviour
     [SerializeField] private LayerMask m_obstacle;
     [SerializeField] private Vector3 m_offset;
     [SerializeField] private ParticleSystem poweredUpParticles;
-
-    private ParticleSystem particlesInstance;
+    public bool hasPsSpawned = false;
+    public ParticleSystem particlesInstance;
 
     private Vector3 m_currentDirection;
 
@@ -506,7 +506,7 @@ public class S_CharaController : MonoBehaviour
     private void OnEnterShadow()
     {
         isInShadow = true;
-        PS_Spawn();
+        //PS_Spawn();
         if (m_rb != null)
         {
             var sprite = m_rb.GetComponent<SpriteRenderer>().color;
@@ -526,7 +526,7 @@ public class S_CharaController : MonoBehaviour
     private void OnExitShadow()
     {
         isInShadow = false;
-
+        hasPsSpawned = false;
         if (m_rb != null)
         {
             var sprite = m_rb.GetComponent<SpriteRenderer>().color;
@@ -619,6 +619,7 @@ public class S_CharaController : MonoBehaviour
     {
         Vector3 particleSystemOffset = new Vector3(0f, 1.75f, 0f);
         particlesInstance = Instantiate(poweredUpParticles, m_rb.transform.position  /*particleSystemOffset*/, Quaternion.identity);
+        hasPsSpawned = true;
         Debug.Log(particlesInstance);
     }
 
@@ -633,6 +634,7 @@ public class S_CharaController : MonoBehaviour
         sprite.g = 1;
 
         m_rb.GetComponent<SpriteRenderer>().color = sprite;
+        hasPsSpawned = false;
         //Debug.Log("Buff ended → Damage back to normal");
     }
 

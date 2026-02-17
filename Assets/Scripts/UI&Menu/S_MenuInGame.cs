@@ -25,10 +25,15 @@ public class S_MenuInGame : MonoBehaviour
     [SerializeField] Button m_controlsBackButton;
     [SerializeField] GameObject m_controlsPanel;
 
+    [Header("Other")]
+    [SerializeField] private Rigidbody m_rb;
+    private S_CharaController m_charaCon;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        m_charaCon = m_rb.GetComponent<S_CharaController>();
         m_canvasMenu.enabled = false;
         m_optionsMenu.enabled = false;
         m_controlsPanel.SetActive(false);
@@ -50,8 +55,9 @@ public class S_MenuInGame : MonoBehaviour
         Cursor.visible = !Cursor.visible;
 
         if (isMenuOpen)
-        {
-            Time.timeScale=0;
+        {           
+
+            Time.timeScale=0;            
             m_canvasMenu.enabled = true;
             m_optionsMenu.enabled=false;
             m_ContinueButton.Select();
