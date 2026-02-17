@@ -17784,7 +17784,7 @@ PrefabInstance:
       objectReference: {fileID: 689320476}
     - target: {fileID: 6524606961226487598, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
       propertyPath: m_attackOffset.x
-      value: 0
+      value: 1.58
       objectReference: {fileID: 0}
     - target: {fileID: 6524606961226487598, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
       propertyPath: m_lookTriggerCam

@@ -142,13 +142,13 @@ public class S_CharaController : MonoBehaviour
         if (x != 0 && x < 0)
         {
             m_sR.flipX = true;
-            m_attackOffset = new Vector3(-1, 0, 0);
+            m_attackOffset = new Vector3(-2, 0, 0);
         }
 
         else if (x != 0 && x > 0)
         {
             m_sR.flipX = false;
-            m_attackOffset = new Vector3(1, 0, 0);
+            m_attackOffset = new Vector3(2, 0, 0);
         }
 
         if (m_currentDirection != Vector3.zero)

@@ -150,7 +150,7 @@ public class S_EnemyController : MonoBehaviour
     {
         int randomInt = Random.Range(1, 10);
 
-        if (randomInt >=7 )
+        if (randomInt >=8)
         {
             Debug.Log(randomInt);
             m_coin.transform.position = this.transform.position;
