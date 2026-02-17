@@ -17,7 +17,7 @@ public class S_DialogueUI : MonoBehaviour
     private int currentIndex = 0;
     //[SerializeField] private TextMeshProUGUI nextTextToshow;
 
-    private bool hasDialogueEnded = false;
+    public bool hasDialogueEnded = false;
     private bool hasSkipped = true;
     private bool firstDialogue = true;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -41,7 +41,7 @@ public class S_DialogueUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.JoystickButton0))
+        if (m_canvas.enabled && Input.GetKeyDown(KeyCode.Space) || m_canvas.enabled && Input.GetKeyDown(KeyCode.JoystickButton0))
         {
             //hasSkipped = true;
             Debug.Log("input");

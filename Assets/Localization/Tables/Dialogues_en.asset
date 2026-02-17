@@ -57,13 +57,22 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 9138438327808000
-    m_Localized: "Nameows : \nBravo Stan, there is only one left to collect ! "
+    m_Localized: 'Nameows
+
+      Well done, Stan. Thanks to these three blood samples,
+      we will be able to revive the vampire race. Therefore, I, Namiaus, hereby crown
+      you the holy vampire lord. '
     m_Metadata:
       m_Items: []
   - m_Id: 10627411701207040
     m_Localized: "Nameows : \nPerhaps you've noticed that sometimes a potion appears
       on the ground. They allow you to heal yourself, and if you collect enough of
       them, you'll be like a shadow even in broad daylight!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10637466496471040
+    m_Localized: "Nameows : \nAll hail the new vampire king Stanislaus Draculaus
+      !"
     m_Metadata:
       m_Items: []
   references:
