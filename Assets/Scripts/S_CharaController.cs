@@ -510,11 +510,13 @@ public class S_CharaController : MonoBehaviour
         if (m_rb != null)
         {
             var sprite = m_rb.GetComponent<SpriteRenderer>().color;
+            
             sprite.b = 0.5f;
             sprite.r = 0.5f;
             sprite.g = 0.5f;
 
             m_rb.GetComponent<SpriteRenderer>().color = sprite;
+            Debug.Log(sprite.r);
             Debug.Log("onentershadow");
         }
 
@@ -602,7 +604,6 @@ public class S_CharaController : MonoBehaviour
         sprite.b = 0.5f;
         sprite.r = 0.5f;
         sprite.g = 0.5f;
-        Debug.Log(sprite.r);
         m_rb.GetComponent<SpriteRenderer>().color = sprite;
 
 
