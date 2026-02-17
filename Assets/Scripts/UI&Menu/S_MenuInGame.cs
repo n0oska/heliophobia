@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class S_MenuInGame : MonoBehaviour
 {
@@ -29,8 +30,6 @@ public class S_MenuInGame : MonoBehaviour
     [SerializeField] private Rigidbody m_rb;
     private S_CharaController m_charaCon;
 
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         m_charaCon = m_rb.GetComponent<S_CharaController>();
@@ -40,14 +39,29 @@ public class S_MenuInGame : MonoBehaviour
         m_soundPanel.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.JoystickButton7))
         {
-           ToggleMenu();                  
-        }       
-    }    
+            ToggleMenu();
+        }
+    }
+
+    // ✅ NOUVELLE MÉTHODE : sélectionne automatiquement le bouton le plus haut actif
+    void SelectTopButton(GameObject parent)
+    {
+        Button[] buttons = parent.GetComponentsInChildren<Button>(true);
+
+        foreach (Button btn in buttons)
+        {
+            if (btn.gameObject.activeInHierarchy && btn.interactable)
+            {
+                EventSystem.current.SetSelectedGameObject(null);
+                btn.Select();
+                return;
+            }
+        }
+    }
 
     void ToggleMenu()
     {
@@ -55,19 +69,20 @@ public class S_MenuInGame : MonoBehaviour
         Cursor.visible = !Cursor.visible;
 
         if (isMenuOpen)
-        {           
-
-            Time.timeScale=0;            
+        {
+            Time.timeScale = 0;
             m_canvasMenu.enabled = true;
-            m_optionsMenu.enabled=false;
-            m_ContinueButton.Select();
-        }
+            m_optionsMenu.enabled = false;
 
+            SelectTopButton(m_canvasMenu.gameObject);
+        }
         else
         {
             Time.timeScale = 1;
             m_canvasMenu.enabled = false;
             m_optionsMenu.enabled = false;
+
+            EventSystem.current.SetSelectedGameObject(null);
         }
     }
 
@@ -75,12 +90,14 @@ public class S_MenuInGame : MonoBehaviour
     {
         m_canvasMenu.enabled = false;
         Time.timeScale = 1;
+        EventSystem.current.SetSelectedGameObject(null);
     }
 
     public void OnQuitClick()
     {
         Time.timeScale = 1;
-        m_canvasMenu.enabled=false;
+        m_canvasMenu.enabled = false;
+        EventSystem.current.SetSelectedGameObject(null);
         SceneManager.LoadScene("SC_Menu");
     }
 
@@ -88,6 +105,7 @@ public class S_MenuInGame : MonoBehaviour
     {
         Time.timeScale = 1;
         m_canvasMenu.enabled = false;
+        EventSystem.current.SetSelectedGameObject(null);
         SceneManager.LoadScene("LV1");
     }
 
@@ -95,37 +113,43 @@ public class S_MenuInGame : MonoBehaviour
     {
         m_optionsMenu.enabled = true;
         m_canvasMenu.enabled = false;
+
+        SelectTopButton(m_optionsMenu.gameObject);
     }
 
     public void OnOptionsBackClick()
     {
         m_optionsMenu.enabled = false;
         m_canvasMenu.enabled = true;
+
+        SelectTopButton(m_canvasMenu.gameObject);
     }
 
     public void OnSoundClick()
     {
         m_soundPanel.SetActive(true);
-        m_soundSlider.Select();
+        SelectTopButton(m_soundPanel);
     }
 
     public void OnControlsClick()
     {
         m_controlsPanel.SetActive(true);
-        m_controlsBackButton.Select();
+        SelectTopButton(m_controlsPanel);
     }
 
     public void OnBackClickSound()
     {
         m_soundPanel.SetActive(false);
         m_optionsMenu.enabled = true;
-        m_soundButton.Select();
+
+        SelectTopButton(m_optionsMenu.gameObject);
     }
 
     public void OnBackClickControls()
     {
         m_controlsPanel.SetActive(false);
         m_optionsMenu.enabled = true;
-        m_soundButton.Select();
+
+        SelectTopButton(m_optionsMenu.gameObject);
     }
 }

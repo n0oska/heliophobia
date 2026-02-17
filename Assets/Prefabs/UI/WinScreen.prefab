@@ -384,10 +384,10 @@ RectTransform:
   - {fileID: 4871201206641851502}
   m_Father: {fileID: 1612313476769727627}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.4183137, y: 0.34335834}
-  m_AnchorMax: {x: 0.5629297, y: 0.4375082}
-  m_AnchoredPosition: {x: -0.28289795, y: 178.45}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.38983324, y: 0.48700002}
+  m_AnchorMax: {x: 0.597, y: 0.6201849}
+  m_AnchoredPosition: {x: -5.282898, y: 2.449997}
+  m_SizeDelta: {x: -120, y: -42}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2601541846616544524
 CanvasRenderer:
@@ -440,10 +440,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnDown: {fileID: 4341458100419198341}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -709,9 +709,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
+    m_SelectOnUp: {fileID: 4711588356929707376}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
