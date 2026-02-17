@@ -115,7 +115,7 @@ public class S_EnemySpawner : MonoBehaviour
             //Debug.Log("devrait changer de Wave");
 
             if(impulseSource != null)
-                impulseSource.GenerateImpulse();
+                //impulseSource.GenerateImpulse();
 
 
             mCurrentWave++;
