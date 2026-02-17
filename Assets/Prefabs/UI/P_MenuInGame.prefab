@@ -2063,7 +2063,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!114 &6349181810299972008
 MonoBehaviour:
@@ -2853,7 +2853,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!114 &6309920640184089976
 MonoBehaviour:
@@ -4210,3 +4210,4 @@ MonoBehaviour:
   m_soundSlider: {fileID: 7922937578321229999}
   m_controlsBackButton: {fileID: 5125252003654309336}
   m_controlsPanel: {fileID: 2438121717303286959}
+  m_rb: {fileID: 0}
