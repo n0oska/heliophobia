@@ -134,3 +134,4 @@ MonoBehaviour:
     m_hitSFX: {fileID: 0}
     Player: {fileID: 0}
   m_coin: {fileID: 2374480364778439639, guid: 68fcefeb12fbc1f45aa37855b065e400, type: 3}
+  m_ennemyHitPs: {fileID: 7009506689941312136, guid: a7fbf291b56451f4e81b891da57a9d83, type: 3}
