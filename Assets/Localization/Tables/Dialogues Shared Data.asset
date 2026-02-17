@@ -43,6 +43,12 @@ MonoBehaviour:
     m_Key: LVL3 STart
     m_Metadata:
       m_Items: []
+  - m_Id: 10627411701207040
+    m_Key: 'LVL2 potions
+
+'
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -515,7 +515,7 @@ public class S_CharaController : MonoBehaviour
             sprite.g = 0.5f;
 
             m_rb.GetComponent<SpriteRenderer>().color = sprite;
-
+            Debug.Log("onentershadow");
         }
 
         ShadowForce();
@@ -602,7 +602,7 @@ public class S_CharaController : MonoBehaviour
         sprite.b = 0.5f;
         sprite.r = 0.5f;
         sprite.g = 0.5f;
-
+        Debug.Log(sprite.r);
         m_rb.GetComponent<SpriteRenderer>().color = sprite;
 
 

@@ -60,6 +60,12 @@ MonoBehaviour:
       ! "
     m_Metadata:
       m_Items: []
+  - m_Id: 10627411701207040
+    m_Localized: "Namiaus : \nPeut-\xEAtre tu as remarqu\xE9 que parfois une potion
+      apparait par terre. Elles te permettent de te soigner et si tu en r\xE9coltes
+      assez tu seras comme dans l'ombre m\xEAme en plein jour !"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

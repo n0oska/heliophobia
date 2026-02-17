@@ -60,6 +60,12 @@ MonoBehaviour:
     m_Localized: "Nameows : \nBravo Stan, there is only one left to collect ! "
     m_Metadata:
       m_Items: []
+  - m_Id: 10627411701207040
+    m_Localized: "Nameows : \nPerhaps you've noticed that sometimes a potion appears
+      on the ground. They allow you to heal yourself, and if you collect enough of
+      them, you'll be like a shadow even in broad daylight!"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
