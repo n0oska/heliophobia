@@ -3395,7 +3395,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1742760636380577861, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
     m_RemovedGameObjects:
     - {fileID: 7746706235243689266, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
     m_AddedGameObjects: []
@@ -4839,6 +4840,7 @@ GameObject:
   - component: {fileID: 447165163}
   - component: {fileID: 447165162}
   - component: {fileID: 447165168}
+  - component: {fileID: 447165169}
   m_Layer: 9
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -5055,6 +5057,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   m_ZPosition: -8
+--- !u!114 &447165169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 447165160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b2d199b96b516448144ab30fb26aed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineImpulseListener
+  ApplyAfter: 2
+  ChannelMask: 2
+  Gain: 1
+  Use2DDistance: 0
+  UseCameraSpace: 1
+  SignalCombinationMode: 0
+  ReactionSettings:
+    m_SecondaryNoise: {fileID: 0}
+    AmplitudeGain: 1
+    FrequencyGain: 1
+    Duration: 1
+    m_NoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1001 &451477561
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7603,6 +7629,33 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4669593470562736021, guid: ed58d07d2055b13469feba71c422521a, type: 3}
   m_PrefabInstance: {fileID: 745265459}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &749083829 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3236471666474036925, guid: bef4bcb816e0a4047bebe576874057e6, type: 3}
+  m_PrefabInstance: {fileID: 1787565503}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &749083830
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749083829}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 03bf32c5959ba364ab27a497d89b852d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &751928885
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21331,6 +21384,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5073618890087602392, guid: bef4bcb816e0a4047bebe576874057e6, type: 3}
+      propertyPath: m_anim
+      value: 
+      objectReference: {fileID: 749083830}
+    - target: {fileID: 5073618890087602392, guid: bef4bcb816e0a4047bebe576874057e6, type: 3}
       propertyPath: m_chara
       value: 
       objectReference: {fileID: 329255233}
@@ -21350,10 +21407,21 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6857066612507660908, guid: bef4bcb816e0a4047bebe576874057e6, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6857066612507660908, guid: bef4bcb816e0a4047bebe576874057e6, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3236471666474036925, guid: bef4bcb816e0a4047bebe576874057e6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 749083830}
   m_SourcePrefab: {fileID: 100100000, guid: bef4bcb816e0a4047bebe576874057e6, type: 3}
 --- !u!114 &1787565504 stripped
 MonoBehaviour:
