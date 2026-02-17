@@ -2,6 +2,7 @@
 - Project name: heliophobia
 - Unity version: Unity 6000.2.7f2
 - Active scene:
+  - Name: LV3
   - Tags:
     - Untagged, Respawn, Finish, EditorOnly, MainCamera, Player, GameController, Coin, TriggerCam, Spawner, TestCoin, TestTrigger, EndTrigger
   - Layers:
