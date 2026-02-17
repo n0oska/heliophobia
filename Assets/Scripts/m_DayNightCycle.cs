@@ -6,6 +6,7 @@ public class mDayNightCycle : MonoBehaviour
     [SerializeField] private float mDayDuration = 60f;
     [SerializeField] private Gradient mLightColor;
     [SerializeField] private AnimationCurve mLightIntensityCurve;
+    [SerializeField] private AnimationCurve m_timeCurve;
 
     [Header("Light Reference")]
     [SerializeField] private Light mDirectionalLight;
@@ -30,13 +31,15 @@ public class mDayNightCycle : MonoBehaviour
     public void CreateCycle()
     {
         mTimer += Time.deltaTime;
-        float t = Mathf.Clamp01(mTimer / mDayDuration);
+        float linearT = Mathf.Clamp01(mTimer / mDayDuration);
 
-        float angle = Mathf.Lerp(0f, 360f, t);
+        float curvedT = m_timeCurve.Evaluate(linearT);
+
+        float angle = Mathf.Lerp(0f, 360f, curvedT);
         transform.rotation = Quaternion.Euler(angle, 0f, 0f);
 
-        mDirectionalLight.color = mLightColor.Evaluate(t);
-        mDirectionalLight.intensity = mLightIntensityCurve.Evaluate(t);
+        mDirectionalLight.color = mLightColor.Evaluate(curvedT);
+        mDirectionalLight.intensity = mLightIntensityCurve.Evaluate(curvedT);
 
         if (mTimer >= mDayDuration)
         {
