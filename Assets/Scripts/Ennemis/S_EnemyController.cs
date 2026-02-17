@@ -148,9 +148,9 @@ public class S_EnemyController : MonoBehaviour
 
     private IEnumerator C_DropCoin()
     {
-        int randomInt = Random.Range(1, 10);
+        int randomInt = Random.Range(1, 7);
 
-        if (randomInt >=8)
+        if (randomInt == 7)
         {
             Debug.Log(randomInt);
             m_coin.transform.position = this.transform.position;
