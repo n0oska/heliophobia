@@ -4720,6 +4720,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NF_Prop_Rock_08 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 247990041732265743, guid: 420d4e5437ac9e8468eb6f2cfb8a1f3d, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 593024953293041077, guid: 420d4e5437ac9e8468eb6f2cfb8a1f3d, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5
@@ -18784,6 +18788,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NF_Prop_Rock_08 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 247990041732265743, guid: 420d4e5437ac9e8468eb6f2cfb8a1f3d, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 593024953293041077, guid: 420d4e5437ac9e8468eb6f2cfb8a1f3d, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5
@@ -18857,6 +18865,10 @@ PrefabInstance:
     - target: {fileID: 103533695531684043, guid: b7725d3b8ade2944a85fb564d380ce22, type: 3}
       propertyPath: m_Name
       value: NF_Prop_Rock_06 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 103533695531684043, guid: b7725d3b8ade2944a85fb564d380ce22, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 730713387704732273, guid: b7725d3b8ade2944a85fb564d380ce22, type: 3}
       propertyPath: m_LocalScale.x
