@@ -68,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 178da72086497c547959b0d10b762f29, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 017d3623df6656742bfbb372646b9d93, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -145,8 +145,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Next level
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 913e4105dd18b8b4cbb5e3cc9f97614e, type: 2}
+  m_sharedMaterial: {fileID: 8388911742619627995, guid: 913e4105dd18b8b4cbb5e3cc9f97614e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -281,15 +281,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: You win
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 913e4105dd18b8b4cbb5e3cc9f97614e, type: 2}
+  m_sharedMaterial: {fileID: 8388911742619627995, guid: 913e4105dd18b8b4cbb5e3cc9f97614e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4289519347
-  m_fontColor: {r: 0.9547169, g: 0.87010795, b: 0.67550725, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -417,7 +417,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f03e220d984e89746aa2ddd7557aba07, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c17f0bb39e59ed547b65aaa42e9aacce, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -550,8 +550,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Restart
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 913e4105dd18b8b4cbb5e3cc9f97614e, type: 2}
+  m_sharedMaterial: {fileID: 8388911742619627995, guid: 913e4105dd18b8b4cbb5e3cc9f97614e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -686,7 +686,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f03e220d984e89746aa2ddd7557aba07, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c17f0bb39e59ed547b65aaa42e9aacce, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
