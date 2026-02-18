@@ -15,14 +15,20 @@ MonoBehaviour:
   m_GroupName: Localization-Assets-English (en)
   m_GUID: 7d169ce8ad03b4e41abbbd2d145b8b61
   m_SerializeEntries:
-  - m_GUID: 3048cd0d14fbd4042b3c322864962f4c
-    m_Address: ControlesMappingStanAnglais
+  - m_GUID: 6cb0119c367f5c442918612391fdf5b6
+    m_Address: yipeee en anglais
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-en
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: cb02397a576c2fb40b46ccad0ab09b5c
     m_Address: united-kingdom-flag-icon
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d3c3cc992657ae24080bbb3ecc61734f
+    m_Address: controls
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-en

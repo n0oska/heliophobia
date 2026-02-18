@@ -15,14 +15,20 @@ MonoBehaviour:
   m_GroupName: Localization-Assets-French (fr)
   m_GUID: 2801ddd9c71aaf34893b0920da9c72b7
   m_SerializeEntries:
+  - m_GUID: 67b94dc18685cb1409dfd6e55adc4de9
+    m_Address: Groupe-black_BTA-Concept_Prais_Fond_Manette
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-fr
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b00e99fdef0e346429ed7544a0ba9371
     m_Address: france-flag-png-2
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-fr
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: d2a5a41059708fe44934cacb02fba41b
-    m_Address: "Sch\xE9maControlsStan"
+  - m_GUID: c0d29273a4145974baa586d4d6510b78
+    m_Address: YIPEEEEE 1
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-fr

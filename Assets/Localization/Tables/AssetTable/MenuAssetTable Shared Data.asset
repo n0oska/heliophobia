@@ -23,6 +23,10 @@ MonoBehaviour:
     m_Key: Drapeau
     m_Metadata:
       m_Items: []
+  - m_Id: 8301534728491008
+    m_Key: ControlsInGameMenu
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items:
     - rid: 4921740104683487320
@@ -47,5 +51,9 @@ MonoBehaviour:
           m_TableCodes:
           - fr
           - en
+        - m_KeyId: 8301534728491008
+          m_TableCodes:
+          - en
+          - fr
         m_TypeString: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
