@@ -145,7 +145,7 @@ public class S_EnemySpawner : MonoBehaviour
             
             StartCoroutine(C_TrackEnemyDeath(enemy));
 
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(1.5f);
         }
         ennemyByWave = wave.mEnemies.Count;
         Debug.Log(ennemyByWave);
