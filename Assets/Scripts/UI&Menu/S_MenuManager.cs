@@ -17,8 +17,13 @@ public class S_MenuManager : MonoBehaviour
     [SerializeField] private Button m_buttonSound;
     [SerializeField] private GameObject m_panelSound;
     [SerializeField] private GameObject m_panelOptions;
+    
     [SerializeField] private Button m_backButtonPanelOptions;
     [SerializeField] private Slider m_sliderSound;
+
+    [Header("Credits")]
+    [SerializeField] private GameObject m_panelCredits;
+    [SerializeField] private Button m_creditsButton;
 
     [Header("Level selector")]
     [SerializeField] private GameObject m_lvlSelectorPanel;
@@ -35,6 +40,7 @@ public class S_MenuManager : MonoBehaviour
         m_panelOptions.SetActive(false);
         m_panelSound.SetActive(false);
         m_lvlSelectorPanel.SetActive(false);
+        m_panelCredits.SetActive(false);
     }
 
     public void Options()
@@ -100,6 +106,18 @@ public class S_MenuManager : MonoBehaviour
     {
         m_lvlSelectorPanel.SetActive(true);
         m_lvl1Button.Select();
+    }
+
+    public void OnCreditsClick()
+    {
+        m_panelCredits.SetActive(true);
+        m_creditsButton.Select();
+    }
+
+    public void OnCreditsBackClick()
+    {
+        m_panelCredits.SetActive(false) ;
+        m_startButton.Select() ;
     }
 
     public void OnFlagClick()
