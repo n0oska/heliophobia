@@ -1160,7 +1160,7 @@ Transform:
   m_GameObject: {fileID: 133699315}
   serializedVersion: 2
   m_LocalRotation: {x: 0.06940828, y: 0, z: 0, w: 0.99758834}
-  m_LocalPosition: {x: -61.22, y: 2.7600002, z: -10.12}
+  m_LocalPosition: {x: 149.66, y: 2.7600002, z: -10.12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2667,6 +2667,10 @@ PrefabInstance:
     - target: {fileID: 5512147194984929290, guid: b44dee12ed920004bb5bb47431132616, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 129.99998
+      objectReference: {fileID: 0}
+    - target: {fileID: 6313527790291290754, guid: b44dee12ed920004bb5bb47431132616, type: 3}
+      propertyPath: m_text
+      value: Quit
       objectReference: {fileID: 0}
     - target: {fileID: 7194786953596399592, guid: b44dee12ed920004bb5bb47431132616, type: 3}
       propertyPath: m_Name
@@ -5153,7 +5157,7 @@ Transform:
   m_GameObject: {fileID: 666044821}
   serializedVersion: 2
   m_LocalRotation: {x: 0.06940828, y: 0, z: 0, w: 0.99758834}
-  m_LocalPosition: {x: -61.22, y: 2.7600002, z: -10.12}
+  m_LocalPosition: {x: 149.66, y: 2.7600002, z: -10.12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5340,7 +5344,7 @@ PrefabInstance:
     - target: {fileID: 6524606961226487598, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
       propertyPath: m_quitButton
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2122815964}
     - target: {fileID: 6524606961226487598, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
       propertyPath: m_triggerCam
       value: 
@@ -5376,7 +5380,7 @@ PrefabInstance:
     - target: {fileID: 6524606961226487598, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
       propertyPath: m_restartButton
       value: 
-      objectReference: {fileID: 1712905962}
+      objectReference: {fileID: 1354906901}
     - target: {fileID: 6524606961226487598, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
       propertyPath: m_attackOffset.x
       value: 0
@@ -5443,7 +5447,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8376844007137121120, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -61.07
+      value: 149.81
       objectReference: {fileID: 0}
     - target: {fileID: 8376844007137121120, guid: 8ba140e2089004647837d08ff8e7e55e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -10863,6 +10867,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6656631065240788883, guid: 675b63f306a631441b2479e1b22058cd, type: 3}
   m_PrefabInstance: {fileID: 1336788540}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1354906901 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4341458100419198341, guid: b44dee12ed920004bb5bb47431132616, type: 3}
+  m_PrefabInstance: {fileID: 349083570}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1001 &1356072171
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13937,17 +13952,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b737d8d7f955058468c313f34588bf94, type: 3}
---- !u!114 &1712905962 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5859791542978320488, guid: b737d8d7f955058468c313f34588bf94, type: 3}
-  m_PrefabInstance: {fileID: 1712905961}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!223 &1712905963 stripped
 Canvas:
   m_CorrespondingSourceObject: {fileID: 4488219678454348860, guid: b737d8d7f955058468c313f34588bf94, type: 3}
