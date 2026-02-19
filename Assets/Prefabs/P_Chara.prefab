@@ -70,6 +70,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1992667733219571544
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -115,6 +116,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_Sprite: {fileID: 119267184, guid: bb077a6b4baa6d54ca5b78493017368a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -124,7 +126,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!54 &1096431037215456561
 Rigidbody:
@@ -189,6 +190,8 @@ MonoBehaviour:
     m_Bits: 72
   m_offset: {x: 0, y: -0.77, z: 0}
   poweredUpParticles: {fileID: 7910894275221214382, guid: 858d27e6240fa4f4a92a9a984c3b3d11, type: 3}
+  hasPsSpawned: 0
+  particlesInstance: {fileID: 0}
   m_coinCount: 0
   m_coinsRequiredForBuff: 5
   m_buffDuration: 10
@@ -228,8 +231,8 @@ MonoBehaviour:
   setTrigger: 0
   isFollowing: 0
   m_audioSource: {fileID: 0}
-  m_dashSFX: {fileID: 0}
-  m_attackSFX: {fileID: 8300000, guid: 95633a087631abb4f99194de47bd1a00, type: 3}
+  m_dashSFX: {fileID: 8300000, guid: 75ee6a039991d45408aa07873433c602, type: 3}
+  m_attackSFX: {fileID: 8300000, guid: a6782a282b346834bb2a889199018f17, type: 3}
   m_deathSFX: {fileID: 0}
   impulseSource: {fileID: 0}
 --- !u!114 &1742760636380577861
