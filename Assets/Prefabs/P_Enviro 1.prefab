@@ -90,6 +90,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &7629242253953505920
 BoxCollider:
@@ -135,3 +136,6 @@ MonoBehaviour:
     Player: {fileID: 0}
   m_coin: {fileID: 2374480364778439639, guid: 68fcefeb12fbc1f45aa37855b065e400, type: 3}
   m_ennemyHitPs: {fileID: 7009506689941312136, guid: a7fbf291b56451f4e81b891da57a9d83, type: 3}
+  m_lowProba: 1
+  m_highProba: 10
+  m_targetProba: 6
