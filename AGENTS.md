@@ -8,7 +8,7 @@
   - Layers:
     - Default, TransparentFX, Ignore Raycast, Obstacle, Water, UI, Enemy, Destroyable, Player, Camera
 - Active game object:
-  - Name: EventSystem
-  - Tag: Untagged
+  - Name: P_Coin (1)
+  - Tag: Coin
   - Layer: Default
 <!-- UNITY CODE ASSIST INSTRUCTIONS END -->
