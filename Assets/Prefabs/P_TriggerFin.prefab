@@ -170,6 +170,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: plaggy_cc0-drops-523
       objectReference: {fileID: 0}
+    - target: {fileID: 5551365386446303774, guid: 2bed37cd6bedc9b4b8c479c64fb73489, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

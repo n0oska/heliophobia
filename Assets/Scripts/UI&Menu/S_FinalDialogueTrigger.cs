@@ -21,33 +21,7 @@ public class S_FinalDialogueTrigger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!hasBeenDestroyed)
-        {
-            if (m_script == null)
-            {
-                Debug.Log("ziz");
-                return;
-            } 
-        
-            if (m_script.hasDialogueEnded)
-            {
-                hasBeenDestroyed = true;
-                m_dialogueUI.enabled = false;
-                Debug.Log("canvas disabled");
-            }
-        }
-            
-
-        if (hasBeenDestroyed && m_dialogueUI.enabled == false)
-        {
-            m_dialogueUI.enabled = false;
-            m_winScreen.enabled = true;
-            Debug.Log("carré");
-            m_button.Select();
-            Cursor.visible = true;
-            var trigger = this.GetComponent<BoxCollider>();
-            Destroy(trigger);
-        }
+       
     }
 
   

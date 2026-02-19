@@ -15,9 +15,9 @@ public class S_CharaController : MonoBehaviour
     [SerializeField] private float m_baseDamage;
     [SerializeField] private SpriteRenderer m_sR;
 
-    //[SerializeField] private HealthManager m_healthManager;
+    //[SerializeField] private HealthManager m_healthManager;
 
-    [Header("Dash system")]
+    [Header("Dash system")]
     [SerializeField] private float m_dashForce;
     [SerializeField] private float m_dashCooldown;
     [SerializeField] private float m_dashRadius;
@@ -66,8 +66,8 @@ public class S_CharaController : MonoBehaviour
 
     [Header("Camera")]
     [SerializeField] private CinemachineCamera m_mainCam;
-    //[SerializeField] private CinemachineBasicMultiChannelPerlin m_channels;
-    [SerializeField] private GameObject m_triggerCam;
+    //[SerializeField] private CinemachineBasicMultiChannelPerlin m_channels;
+    [SerializeField] private GameObject m_triggerCam;
     [SerializeField] private GameObject m_lookTriggerCam;
     public int killCount;
     public int waveCount;
@@ -80,8 +80,8 @@ public class S_CharaController : MonoBehaviour
 
     [Header("Other")]
     private bool m_isBuffActive = false;
-    //private bool hasDashed = false;
-    public bool hasDashHit = false;
+    //private bool hasDashed = false;
+    public bool hasDashHit = false;
     public bool hasHit = false;
     private float m_buffTimer = 0f;
 
@@ -112,13 +112,13 @@ public class S_CharaController : MonoBehaviour
     {
         m_rb = gameObject.GetComponent<Rigidbody>();
         m_playerHealth.Init();
-        //UpdateCoinUI();
-        UpdateDamage();
+        //UpdateCoinUI();
+        UpdateDamage();
         m_attackOffset = new Vector3(1, 0, 0);
         m_spawner = m_triggerCam.GetComponentInChildren<S_EnemySpawner>();
         m_trigger = m_triggerCam.GetComponent<S_TriggerCam>();
-        //m_channels.enabled = false;
-        Cursor.lockState = CursorLockMode.Confined;
+        //m_channels.enabled = false;
+        Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = false;
         m_winScreen.enabled = false;
         if (m_audioSource == null)
@@ -182,16 +182,16 @@ public class S_CharaController : MonoBehaviour
                 canDash = true;
         }
 
-        // 1. On lit la valeur de la gâchette RT (entre 0 et 1)
-        float rtValue = Input.GetAxis("RightTrigger");
+        // 1. On lit la valeur de la gâchette RT (entre 0 et 1)
+        float rtValue = Input.GetAxis("RightTrigger");
 
         if (rtValue < 0.2f)
         {
             m_rtReleased = true;
         }
 
-        // 2. On vérifie le clavier OU la gâchette
-        bool dashInput = Input.GetKeyDown(KeyCode.LeftShift) || (rtValue > 0.5f && m_rtReleased);
+        // 2. On vérifie le clavier OU la gâchette
+        bool dashInput = Input.GetKeyDown(KeyCode.LeftShift) || (rtValue > 0.5f && m_rtReleased);
 
         if (dashInput && canDash && !isDashing)
         {
@@ -234,19 +234,19 @@ public class S_CharaController : MonoBehaviour
                 // {
 
                 var pChara = m_rb.GetComponent<SpriteRenderer>();
-                //Debug.Log("Cam follow");             
-                m_mainCam.Follow = pChara.transform;
+                //Debug.Log("Cam follow");             
+                m_mainCam.Follow = pChara.transform;
                 isFollowing = true;
 
                 hasEnteredTriggerCam = false;
                 setTrigger = false;
-                //Debug.Log(setTrigger);
-            }
+                //Debug.Log(setTrigger);
+            }
         }
         //var m_trigger = FindAnyObjectByType<S_TriggerCam>(FindObjectsInactive.Exclude);
 
         //if (!m_trigger.hasEnteredTriggerCam)
-        //    return;
+        //    return;
 
 
         else
@@ -260,8 +260,8 @@ public class S_CharaController : MonoBehaviour
     {
         if (m_playerHealth.isDead())
         {
-            //death + réinitialiser hp
-            StartCoroutine(C_CheckDeath());
+            //death + réinitialiser hp
+            StartCoroutine(C_CheckDeath());
         }
     }
 
@@ -283,8 +283,8 @@ public class S_CharaController : MonoBehaviour
         canDash = false;
         m_dashDirection = m_currentDirection;
 
-        //float time = 0f;
-        m_dashTimer = 0f;
+        //float time = 0f;
+        m_dashTimer = 0f;
 
         if (m_audioSource && m_dashSFX)
             m_audioSource.PlayOneShot(m_dashSFX);
@@ -303,9 +303,9 @@ public class S_CharaController : MonoBehaviour
 
         if (isDashing)
         {
-            //m_rb.linearVelocity = m_dashDirection * (m_dashForce * curveMultiplier);
+            //m_rb.linearVelocity = m_dashDirection * (m_dashForce * curveMultiplier);
 
-            Collider[] ennemiesInRange = Physics.OverlapSphere(m_rb.position, m_dashRadius, m_enemyMask);
+            Collider[] ennemiesInRange = Physics.OverlapSphere(m_rb.position, m_dashRadius, m_enemyMask);
 
             foreach (var enemy in ennemiesInRange)
             {
@@ -315,15 +315,15 @@ public class S_CharaController : MonoBehaviour
                 if (enemyCtrl != null && hasDashHit)
                 {
                     enemyCtrl.m_health.TakeDamage(m_dashDamage);
-                    //Debug.Log(m_dashDamage);
-                }
+                    //Debug.Log(m_dashDamage);
+                }
             }
         }
 
         isDashing = false;
         m_dashCooldownTimer = m_dashCooldown;
-        //canDash = true;
-    }
+        //canDash = true;
+    }
 
     private void OnStartMoving()
     {
@@ -389,61 +389,61 @@ public class S_CharaController : MonoBehaviour
             return;
         }
 
-        // 1. DÈS L'APPUI : On commence à charger visuellement
-        if (Input.GetKeyDown(KeyCode.Joystick1Button3) || Input.GetKeyDown(KeyCode.Mouse1))
+        // 1. DÈS L'APPUI : On commence à charger visuellement
+        if (Input.GetKeyDown(KeyCode.Joystick1Button3) || Input.GetKeyDown(KeyCode.Mouse1))
         {
             m_buttonPressTime = Time.time;
             m_isHolding = true;
 
-            // On active le booléen dans l'Animator pour lancer l'animation de charge
-            m_animator.SetBool("isCharging", true);
+            // On active le booléen dans l'Animator pour lancer l'animation de charge
+            m_animator.SetBool("isCharging", true);
         }
 
-        // 2. PENDANT QU'ON TIENT : On vérifie si le seuil est atteint
-        if (m_isHolding)
+        // 2. PENDANT QU'ON TIENT : On vérifie si le seuil est atteint
+        if (m_isHolding)
         {
             float heldTime = Time.time - m_buttonPressTime;
             if (heldTime >= m_holdThreshold)
             {
                 m_isCharging = true;
-                // Ici tu pourrais ajouter un petit effet visuel pour dire "C'est prêt !"
-            }
+                // Ici tu pourrais ajouter un petit effet visuel pour dire "C'est prêt !"
+            }
         }
 
-        // 3. AU RELÂCHEMENT : On déclenche l'action
-        if (Input.GetKeyUp(KeyCode.Joystick1Button3) || Input.GetKeyUp(KeyCode.Mouse1))
+        // 3. AU RELÂCHEMENT : On déclenche l'action
+        if (Input.GetKeyUp(KeyCode.Joystick1Button3) || Input.GetKeyUp(KeyCode.Mouse1))
         {
             m_isHolding = false;
 
-            // On coupe le booléen de charge immédiatement
-            m_animator.SetBool("isCharging", false);
+            // On coupe le booléen de charge immédiatement
+            m_animator.SetBool("isCharging", false);
 
             if (m_isCharging)
             {
-                // C'était une attaque chargée réussie
-                //PerformChargedAttack();
-                StartCoroutine(C_PerformChargedAttack());
+                // C'était une attaque chargée réussie
+                //PerformChargedAttack();
+                StartCoroutine(C_PerformChargedAttack());
             }
             else
             {
-                // Relâché trop tôt : on fait une attaque normale
-                CheckDamage();
+                // Relâché trop tôt : on fait une attaque normale
+                CheckDamage();
             }
 
             m_isCharging = false; // Reset pour la prochaine fois
-        }
+        }
     }
 
     private IEnumerator C_PerformChargedAttack()
     {
-        // 1. On déclenche l'animation de frappe immédiatement
-        m_animator.SetTrigger("Attack2");
+        // 1. On déclenche l'animation de frappe immédiatement
+        m_animator.SetTrigger("Attack2");
 
-        // 2. On attend le petit délai (le temps que l'arme "s'abatte")
-        yield return new WaitForSeconds(0.2f);
+        // 2. On attend le petit délai (le temps que l'arme "s'abatte")
+        yield return new WaitForSeconds(0.2f);
 
-        // 3. On effectue la détection des dégâts
-        Collider[] enemiesInRange = Physics.OverlapSphere(m_rb.position + m_attackOffset, m_attackRadius * 1.5f, m_enemyMask);
+        // 3. On effectue la détection des dégâts
+        Collider[] enemiesInRange = Physics.OverlapSphere(m_rb.position + m_attackOffset, m_attackRadius * 1.5f, m_enemyMask);
 
         foreach (var enemy in enemiesInRange)
         {
@@ -453,8 +453,8 @@ public class S_CharaController : MonoBehaviour
                 enemyCtrl.m_health.TakeDamage(m_damage * 2f);
             }
 
-            // Optionnel : ajouter aussi les objets destructibles comme dans ton CheckDamage normal
-            var envirmtCtrl = enemy.GetComponent<S_Environement>();
+            // Optionnel : ajouter aussi les objets destructibles comme dans ton CheckDamage normal
+            var envirmtCtrl = enemy.GetComponent<S_Environement>();
             if (envirmtCtrl != null)
             {
                 envirmtCtrl.m_health.TakeDamage(m_damage * 2f);
@@ -479,11 +479,11 @@ public class S_CharaController : MonoBehaviour
     }
     // public void O_TakeDamage(float damage)
     // {
-    //     if (m_healthManager != null)
-    //     {
-    //         m_healthManager.TakeDamage(damage);
-    //         Debug.Log($"Le joueur prend {damage} dégâts");
-    //     }
+    //     if (m_healthManager != null)
+    //     {
+    //         m_healthManager.TakeDamage(damage);
+    //         Debug.Log($"Le joueur prend {damage} dégâts");
+    //     }
     //}
 
 
@@ -542,14 +542,14 @@ public class S_CharaController : MonoBehaviour
     private void ShadowForce()
     {
         UpdateDamage();
-        //Debug.Log("ombre → damage boosted");
-    }
+        //Debug.Log("ombre → damage boosted");
+    }
 
     private void NormalForce()
     {
         UpdateDamage();
-        //Debug.Log("plus ombre → damage normal");
-    }
+        //Debug.Log("plus ombre → damage normal");
+    }
 
     private void OnDrawGizmos()
     {
@@ -573,11 +573,11 @@ public class S_CharaController : MonoBehaviour
         {
             isInShadow = false;
             UpdateDamage(); // recalcul du damage normal
-            //Debug.Log("Anti-ombre active → damage normal");
-        }
+            //Debug.Log("Anti-ombre active → damage normal");
+        }
     }
-    // ✅ Buff > Ombre > Normal (PAS DE STACK)
-    private void UpdateDamage()
+    // ✅ Buff > Ombre > Normal (PAS DE STACK)
+    private void UpdateDamage()
     {
         if (m_isBuffActive)
         {
@@ -609,16 +609,16 @@ public class S_CharaController : MonoBehaviour
 
         UpdateDamage();
 
-        //Debug.Log($"BUFF ACTIVATED! Damage x{m_damageMultiplierDuringBuff} for {m_buffDuration} seconds");
+        //Debug.Log($"BUFF ACTIVATED! Damage x{m_damageMultiplierDuringBuff} for {m_buffDuration} seconds");
 
-        //m_coinCount = 0;
-        //UpdateCoinUI();
-    }
+        //m_coinCount = 0;
+        //UpdateCoinUI();
+    }
 
     private void PS_Spawn()
     {
         Vector3 particleSystemOffset = new Vector3(0f, 1.75f, 0f);
-        particlesInstance = Instantiate(poweredUpParticles, m_rb.transform.position  /*particleSystemOffset*/, Quaternion.identity);
+        particlesInstance = Instantiate(poweredUpParticles, m_rb.transform.position  /*particleSystemOffset*/, Quaternion.identity);
         hasPsSpawned = true;
         Debug.Log(particlesInstance);
     }
@@ -635,8 +635,8 @@ public class S_CharaController : MonoBehaviour
 
         m_rb.GetComponent<SpriteRenderer>().color = sprite;
         hasPsSpawned = false;
-        //Debug.Log("Buff ended → Damage back to normal");
-    }
+        //Debug.Log("Buff ended → Damage back to normal");
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -649,8 +649,8 @@ public class S_CharaController : MonoBehaviour
             if (m_coinCount >= m_coinsRequiredForBuff && !m_isBuffActive)
                 ActivateBuff(); //display particle system + buff
 
-            //UpdateCoinUI();
-            Destroy(other.gameObject);
+            //UpdateCoinUI();
+            Destroy(other.gameObject);
         }
 
         if (other.CompareTag("TestCoin"))
@@ -658,8 +658,8 @@ public class S_CharaController : MonoBehaviour
             m_coinCount++;
 
             if (m_coinCount >= m_coinsRequiredForBuff && !m_isBuffActive)
-                ActivateBuff(); //display particle system + buff            
-        }
+                ActivateBuff(); //display particle system + buff            
+        }
 
         if (other.CompareTag("TriggerCam") || other.CompareTag("TestTrigger"))
         {
@@ -675,11 +675,11 @@ public class S_CharaController : MonoBehaviour
             m_restartButton.Select();
         }
 
-        // if (other.CompareTag("Ennemy") || other.CompareTag("DestroyableEvmt"))
-        // {
-        //     hasDashHit = true;
-        // }        
-    }
+        // if (other.CompareTag("Ennemy") || other.CompareTag("DestroyableEvmt"))
+        // {
+        //     hasDashHit = true;
+        // }        
+    }
 
     public void CameraTriggerSet()
     {
@@ -693,13 +693,13 @@ public class S_CharaController : MonoBehaviour
             impulseSource.GenerateImpulse();
     }
 
-    // private void UpdateCoinUI()
-    // {
-    //     if (m_coinText != null)
-    //         m_coinText.text = m_coinCount.ToString();
-    // }
+    // private void UpdateCoinUI()
+    // {
+    //     if (m_coinText != null)
+    //         m_coinText.text = m_coinCount.ToString();
+    // }
 
-    public int GetCoinCount()
+    public int GetCoinCount()
     {
         return m_coinCount;
     }
@@ -743,8 +743,8 @@ public class HealthManager
     }
     public void TakeDamage(float damage)
     {
-        //m_value = Mathf.Max(0, m_value - damage);
-        m_value = m_value - damage;
+        //m_value = Mathf.Max(0, m_value - damage);
+        m_value = m_value - damage;
         Debug.Log(damage);
         isTakingDamage = true;
 
@@ -756,12 +756,12 @@ public class HealthManager
 
         if (m_value > m_maxValue)
             m_value = m_maxValue;
-        //if (isTakingDamage)
-        //{            
-        //    isTakingDamage = false;
-        //}
+        //if (isTakingDamage)
+        //{            
+        //    isTakingDamage = false;
+        //}
 
-        previousHealthValue = Mathf.Max(0, m_value + damage);
+        previousHealthValue = Mathf.Max(0, m_value + damage);
 
 
     }
