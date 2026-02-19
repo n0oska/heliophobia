@@ -227,8 +227,8 @@ MonoBehaviour:
   setTrigger: 0
   isFollowing: 0
   m_audioSource: {fileID: 0}
-  m_dashSFX: {fileID: 0}
-  m_attackSFX: {fileID: 8300000, guid: 95633a087631abb4f99194de47bd1a00, type: 3}
+  m_dashSFX: {fileID: 8300000, guid: 6f906b5de3b8c024aa8000d03c7548d7, type: 3}
+  m_attackSFX: {fileID: 8300000, guid: 8cf4ac3cdec4e6a469412554bb60b019, type: 3}
   m_deathSFX: {fileID: 0}
 --- !u!1 &7746706235243689266
 GameObject:
